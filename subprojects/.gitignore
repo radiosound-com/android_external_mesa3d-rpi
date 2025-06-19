@@ -2,3 +2,4 @@
 !*.wrap
 !packagefiles/**
 !.gitignore
+!Android.bp
