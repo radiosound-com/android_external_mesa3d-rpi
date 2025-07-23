@@ -1363,6 +1363,11 @@ zink_is_format_supported(struct pipe_screen *pscreen,
          }
       }
 
+      /* We can't swizzle buffer views */
+      if (bind & (PIPE_BIND_SAMPLER_VIEW | PIPE_BIND_SHADER_IMAGE) &&
+          util_format_is_intensity(format))
+          return false;
+
       if (bind & PIPE_BIND_SAMPLER_VIEW &&
          !(props->bufferFeatures & VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT))
             return false;
@@ -1402,6 +1407,10 @@ zink_is_format_supported(struct pipe_screen *pscreen,
 
       if (bind & PIPE_BIND_SHADER_IMAGE &&
           !(props->optimalTilingFeatures & VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT))
+         return false;
+
+      /* Can't swizzle storage images. */
+      if (bind & PIPE_BIND_SHADER_IMAGE && util_format_is_intensity(format))
          return false;
    }
 
