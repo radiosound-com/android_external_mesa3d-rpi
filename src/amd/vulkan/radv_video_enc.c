@@ -50,7 +50,7 @@
 #define RENCODE_V3_FW_INTERFACE_MINOR_VERSION 27
 
 #define RENCODE_V2_FW_INTERFACE_MAJOR_VERSION 1
-#define RENCODE_V2_FW_INTERFACE_MINOR_VERSION 18
+#define RENCODE_V2_FW_INTERFACE_MINOR_VERSION 20
 
 #define RENCODE_FW_INTERFACE_MAJOR_VERSION 1
 #define RENCODE_FW_INTERFACE_MINOR_VERSION 15
@@ -500,10 +500,9 @@ radv_enc_session_init(struct radv_cmd_buffer *cmd_buffer, const struct VkVideoEn
    RADEON_ENC_CS(vid->enc_session.padding_height);
    RADEON_ENC_CS(vid->enc_session.pre_encode_mode);
    RADEON_ENC_CS(vid->enc_session.pre_encode_chroma_enabled);
-   if (pdev->enc_hw_ver >= RADV_VIDEO_ENC_HW_3) {
+   if (pdev->enc_hw_ver >= RADV_VIDEO_ENC_HW_3)
       RADEON_ENC_CS(vid->enc_session.slice_output_enabled);
-      RADEON_ENC_CS(vid->enc_session.display_remote);
-   }
+   RADEON_ENC_CS(vid->enc_session.display_remote);
    if (pdev->enc_hw_ver == RADV_VIDEO_ENC_HW_4) {
       RADEON_ENC_CS(vid->enc_session.WA_flags);
       RADEON_ENC_CS(0);
@@ -612,8 +611,9 @@ radv_enc_spec_misc_hevc(struct radv_cmd_buffer *cmd_buffer, const struct VkVideo
       RADEON_ENC_CS(!pps->flags.transform_skip_enabled_flag);
       if (pdev->enc_hw_ver >= RADV_VIDEO_ENC_HW_5)
          RADEON_ENC_CS(0);
-      RADEON_ENC_CS(pps->flags.cu_qp_delta_enabled_flag);
    }
+   if (pdev->enc_hw_ver >= RADV_VIDEO_ENC_HW_2)
+      RADEON_ENC_CS(pps->flags.cu_qp_delta_enabled_flag);
    RADEON_ENC_END();
 }
 
@@ -1722,7 +1722,8 @@ radv_enc_rc_per_pic(struct radv_cmd_buffer *cmd_buffer, const VkVideoEncodeInfoK
    RADEON_ENC_CS(per_pic->enabled_filler_data);
    RADEON_ENC_CS(per_pic->skip_frame_enable);
    RADEON_ENC_CS(per_pic->enforce_hrd);
-   RADEON_ENC_CS(0xFFFFFFFF); // reserved_0xff
+   if (pdev->enc_hw_ver >= RADV_VIDEO_ENC_HW_3)
+      RADEON_ENC_CS(0xFFFFFFFF); // qvbr_quality_level
    RADEON_ENC_END();
 }
 
@@ -2618,15 +2619,6 @@ begin(struct radv_cmd_buffer *cmd_buffer, const VkVideoEncodeInfoKHR *enc_info)
 
    radv_enc_op_init(cmd_buffer);
    radv_enc_session_init(cmd_buffer, enc_info);
-   if (vid->vk.op == VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR) {
-      radv_enc_slice_control(cmd_buffer, enc_info);
-      radv_enc_spec_misc_h264(cmd_buffer, enc_info);
-      radv_enc_deblocking_filter_h264(cmd_buffer, enc_info);
-   } else if (vid->vk.op == VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR) {
-      radv_enc_slice_control_hevc(cmd_buffer, enc_info);
-      radv_enc_spec_misc_hevc(cmd_buffer, enc_info);
-      radv_enc_deblocking_filter_hevc(cmd_buffer, enc_info);
-   }
    radv_enc_layer_control(cmd_buffer, &vid->rc_layer_control);
    radv_enc_rc_session_init(cmd_buffer);
    radv_enc_quality_params(cmd_buffer);
@@ -2712,11 +2704,15 @@ radv_vcn_encode_video(struct radv_cmd_buffer *cmd_buffer, const VkVideoEncodeInf
       } while (++i < vid->rc_layer_control.num_temporal_layers);
    }
 
-   // encode headers
-   // ctx
    if (vid->vk.op == VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR) {
+      radv_enc_slice_control(cmd_buffer, enc_info);
+      radv_enc_spec_misc_h264(cmd_buffer, enc_info);
+      radv_enc_deblocking_filter_h264(cmd_buffer, enc_info);
       radv_enc_headers_h264(cmd_buffer, enc_info);
    } else if (vid->vk.op == VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR) {
+      radv_enc_slice_control_hevc(cmd_buffer, enc_info);
+      radv_enc_spec_misc_hevc(cmd_buffer, enc_info);
+      radv_enc_deblocking_filter_hevc(cmd_buffer, enc_info);
       radv_enc_headers_hevc(cmd_buffer, enc_info);
    } else if (vid->vk.op == VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR) {
       radv_enc_av1_tile_config(cmd_buffer, enc_info);
@@ -3050,6 +3046,9 @@ radv_video_patch_encode_session_parameters(struct radv_device *device, struct vk
    case VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR:
       for (unsigned i = 0; i < params->h264_enc.h264_pps_count; i++) {
          params->h264_enc.h264_pps[i].base.pic_init_qp_minus26 = 0;
+         params->h264_enc.h264_pps[i].base.pic_init_qs_minus26 = 0;
+         if (pdev->enc_hw_ver < RADV_VIDEO_ENC_HW_5)
+            params->h264_enc.h264_pps[i].base.flags.transform_8x8_mode_flag = 0;
       }
       break;
    case VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR: {
@@ -3063,6 +3062,8 @@ radv_video_patch_encode_session_parameters(struct radv_device *device, struct vk
          params->h265_enc.h265_pps[i].base.diff_cu_qp_delta_depth = 0;
          params->h265_enc.h265_pps[i].base.init_qp_minus26 = 0;
          params->h265_enc.h265_pps[i].base.flags.dependent_slice_segments_enabled_flag = 1;
+         if (pdev->enc_hw_ver < RADV_VIDEO_ENC_HW_3)
+            params->h265_enc.h265_pps[i].base.flags.transform_skip_enabled_flag = 0;
       }
       break;
    }

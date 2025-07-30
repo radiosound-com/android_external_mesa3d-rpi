@@ -2203,8 +2203,13 @@ VKAPI_ATTR void VKAPI_CALL lvp_GetDeviceBufferMemoryRequirements(
    VkBuffer _buffer;
    if (lvp_CreateBuffer(_device, pInfo->pCreateInfo, NULL, &_buffer) != VK_SUCCESS)
       return;
-   LVP_FROM_HANDLE(lvp_buffer, buffer, _buffer);
-   pMemoryRequirements->memoryRequirements.size = buffer->total_size;
+
+   assert(pInfo->pNext == NULL);
+   const VkBufferMemoryRequirementsInfo2 info = {
+      .sType = VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2,
+      .buffer = _buffer,
+   };
+   lvp_GetBufferMemoryRequirements2(_device, &info, pMemoryRequirements);
    lvp_DestroyBuffer(_device, _buffer, NULL);
 }
 
@@ -2221,8 +2226,22 @@ VKAPI_ATTR void VKAPI_CALL lvp_GetDeviceImageMemoryRequirements(
    if (lvp_CreateImage(_device, pInfo->pCreateInfo, NULL, &_image) != VK_SUCCESS)
       return;
    LVP_FROM_HANDLE(lvp_image, image, _image);
-   pMemoryRequirements->memoryRequirements.size = image->size;
-   pMemoryRequirements->memoryRequirements.alignment = image->alignment;
+
+   /* Per spec VUs of VkImageMemoryRequirementsInfo2 */
+   const bool need_plane_info =
+      image->vk.create_flags & VK_IMAGE_CREATE_DISJOINT_BIT &&
+      (image->plane_count > 1 ||
+       image->vk.tiling == VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT);
+   const VkImagePlaneMemoryRequirementsInfo plane_info = {
+      .sType = VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO,
+      .planeAspect = pInfo->planeAspect,
+   };
+   const VkImageMemoryRequirementsInfo2 base_info = {
+      .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2,
+      .pNext = need_plane_info ? &plane_info : NULL,
+      .image = _image,
+   };
+   lvp_GetImageMemoryRequirements2(_device, &base_info, pMemoryRequirements);
    lvp_DestroyImage(_device, _image, NULL);
 }
 
@@ -2379,6 +2398,7 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_BindImageMemory2(VkDevice _device,
       const VkBindImageMemoryInfo *bind_info = &pBindInfos[i];
       LVP_FROM_HANDLE(lvp_device_memory, mem, bind_info->memory);
       LVP_FROM_HANDLE(lvp_image, image, bind_info->image);
+      uint64_t mem_offset = bind_info->memoryOffset;
       VkBindMemoryStatusKHR *status = (void*)vk_find_struct_const(&pBindInfos[i], BIND_MEMORY_STATUS_KHR);
 
       if (!mem) {
@@ -2392,6 +2412,7 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_BindImageMemory2(VkDevice _device,
          assert(swapchain_info && swapchain_info->swapchain != VK_NULL_HANDLE);
          mem = lvp_device_memory_from_handle(wsi_common_get_memory(
             swapchain_info->swapchain, swapchain_info->imageIndex));
+         mem_offset = 0;
 #endif
       }
 
@@ -2403,7 +2424,7 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_BindImageMemory2(VkDevice _device,
             vk_find_struct_const(pBindInfos[i].pNext, BIND_IMAGE_PLANE_MEMORY_INFO);
          uint8_t plane = lvp_image_aspects_to_plane(image, plane_info->planeAspect);
          result = lvp_image_plane_bind(device, &image->planes[plane],
-                                       mem, bind_info->memoryOffset, &offset_B);
+                                       mem, mem_offset, &offset_B);
          if (status)
             *status->pResult = result;
          if (result != VK_SUCCESS)
@@ -2412,7 +2433,7 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_BindImageMemory2(VkDevice _device,
          VkResult fail = VK_SUCCESS;
          for (unsigned plane = 0; plane < image->plane_count; plane++) {
             result = lvp_image_plane_bind(device, &image->planes[plane],
-                                          mem, bind_info->memoryOffset + image->offset, &offset_B);
+                                          mem, mem_offset + image->offset, &offset_B);
             if (status)
                *status->pResult = res;
             if (result != VK_SUCCESS)
