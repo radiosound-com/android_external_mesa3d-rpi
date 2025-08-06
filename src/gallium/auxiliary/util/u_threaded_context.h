@@ -476,7 +476,7 @@ struct tc_renderpass_info {
       uint8_t data8[8];
    };
    /* only valid if has_resolve is true and the resolve member of pipe_framebuffer_state is NULL */
-   struct pipe_resource *resolve;
+   struct pipe_resource *resolve[2]; //[color, depth]
 };
 
 static inline bool
@@ -685,6 +685,8 @@ struct threaded_context {
    struct tc_renderpass_info *renderpass_info_recording;
    /* accessed by driver thread */
    struct tc_renderpass_info *renderpass_info;
+   /* internal-only: if dsa/fs are bound between render passes */
+   void *pending_renderpass_dsa, *pending_renderpass_fs;
 };
 
 

@@ -57,6 +57,8 @@
 #include "clc6c0.h"
 #include "clc997.h"
 #include "clcdc0.h"
+#include "clce97.h"
+
 static uint32_t
 nvk_get_vk_version(const struct nv_device_info *info)
 {
@@ -91,6 +93,10 @@ nvk_is_conformant(const struct nv_device_info *info)
 
    /* Everything Maxwell through Ada is conformant */
    if (info->cls_eng3d >= MAXWELL_A && info->cls_eng3d <= ADA_A)
+      return true;
+
+   /* And also Blackwell B */
+   if (info->cls_eng3d == BLACKWELL_B)
       return true;
 
    return false;
@@ -712,6 +718,12 @@ nvk_get_device_features(const struct nv_device_info *info,
 
       /* VK_NV_shader_sm_builtins */
       .shaderSMBuiltins = true,
+
+      /* VK_KHR_present_id2 */
+      .presentId2 = supported_extensions->KHR_present_id2,
+
+      /* VK_KHR_present_wait2 */
+      .presentWait2 = supported_extensions->KHR_present_wait2,
    };
 }
 

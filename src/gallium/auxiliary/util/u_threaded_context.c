@@ -136,6 +136,45 @@ tc_batch_rp_info(struct tc_renderpass_info *info)
 }
 
 static void
+tc_parse_dsa(struct threaded_context *tc, void *dsa)
+{
+   /* dsa info is only ever added during a renderpass;
+      * changes outside of a renderpass reset the data
+      */
+   if (!tc->in_renderpass) {
+      tc->renderpass_info_recording->zsbuf_write_dsa = 0;
+      tc->renderpass_info_recording->zsbuf_read_dsa = 0;
+   }
+   /* let the driver parse its own state */
+   tc->options.dsa_parse(dsa, tc->renderpass_info_recording);
+}
+
+static void
+tc_parse_fs(struct threaded_context *tc, void *fs)
+{
+      /* fs info is only ever added during a renderpass;
+       * changes outside of a renderpass reset the data
+       */
+      if (!tc->in_renderpass) {
+         tc->renderpass_info_recording->cbuf_fbfetch = 0;
+         tc->renderpass_info_recording->zsbuf_write_fs = 0;
+      }
+      /* let the driver parse its own state */
+      tc->options.fs_parse(fs, tc->renderpass_info_recording);
+}
+
+static void
+tc_parse_pending_rp_info(struct threaded_context *tc)
+{
+   if (tc->pending_renderpass_dsa)
+      tc_parse_dsa(tc, tc->pending_renderpass_dsa);
+   if (tc->pending_renderpass_fs)
+      tc_parse_fs(tc, tc->pending_renderpass_fs);
+   tc->pending_renderpass_dsa = NULL;
+   tc->pending_renderpass_fs = NULL;
+}
+
+static void
 tc_sanitize_renderpass_info(struct threaded_context *tc)
 {
    tc->renderpass_info_recording->cbuf_invalidate = 0;
@@ -232,21 +271,23 @@ tc_batch_increment_renderpass_info(struct threaded_context *tc, unsigned batch_i
       /* copy the previous data in its entirety: this is still the same renderpass */
       if (tc->renderpass_info_recording) {
          tc_info[batch->renderpass_info_idx].info.data = tc->renderpass_info_recording->data;
-         tc_info[batch->renderpass_info_idx].info.resolve = tc->renderpass_info_recording->resolve;
-         tc->renderpass_info_recording->resolve = NULL;
+         memcpy(tc_info[batch->renderpass_info_idx].info.resolve, tc->renderpass_info_recording->resolve, sizeof(tc->renderpass_info_recording->resolve));
+         memset(tc->renderpass_info_recording->resolve, 0, sizeof(tc->renderpass_info_recording->resolve));
          tc_batch_rp_info(tc->renderpass_info_recording)->next = &tc_info[batch->renderpass_info_idx];
          tc_info[batch->renderpass_info_idx].prev = tc_batch_rp_info(tc->renderpass_info_recording);
          /* guard against deadlock scenario */
          assert(&tc_batch_rp_info(tc->renderpass_info_recording)->next->info != tc->renderpass_info_recording);
       } else {
          tc_info[batch->renderpass_info_idx].info.data = 0;
-         pipe_resource_reference(&tc_info[batch->renderpass_info_idx].info.resolve, NULL);
+         for (unsigned i = 0; i < ARRAY_SIZE(tc_info[batch->renderpass_info_idx].info.resolve); i++)
+            pipe_resource_reference(&tc_info[batch->renderpass_info_idx].info.resolve[i], NULL);
          tc_info[batch->renderpass_info_idx].prev = NULL;
       }
    } else {
       /* selectively copy: only the CSO metadata is copied, and a new framebuffer state will be added later */
       tc_info[batch->renderpass_info_idx].info.data = 0;
-      pipe_resource_reference(&tc_info[batch->renderpass_info_idx].info.resolve, NULL);
+      for (unsigned i = 0; i < ARRAY_SIZE(tc_info[batch->renderpass_info_idx].info.resolve); i++)
+         pipe_resource_reference(&tc_info[batch->renderpass_info_idx].info.resolve[i], NULL);
       if (tc->renderpass_info_recording) {
          tc_info[batch->renderpass_info_idx].info.data16[2] = tc->renderpass_info_recording->data16[2];
          tc_batch_rp_info(tc->renderpass_info_recording)->next = NULL;
@@ -263,6 +304,8 @@ tc_batch_increment_renderpass_info(struct threaded_context *tc, unsigned batch_i
    /* this is now the current recording renderpass info */
    tc->renderpass_info_recording = &tc_info[batch->renderpass_info_idx].info;
    batch->max_renderpass_info_idx = batch->renderpass_info_idx;
+
+   tc_parse_pending_rp_info(tc);
 }
 
 static ALWAYS_INLINE struct tc_renderpass_info *
@@ -1341,15 +1384,12 @@ TC_CSO_WHOLE(rasterizer)
 TC_CSO_CREATE(depth_stencil_alpha, depth_stencil_alpha)
 TC_CSO_BIND(depth_stencil_alpha,
    if (param && tc->options.parse_renderpass_info) {
-      /* dsa info is only ever added during a renderpass;
-       * changes outside of a renderpass reset the data
-       */
-      if (!tc->in_renderpass) {
-         tc_get_renderpass_info(tc)->zsbuf_write_dsa = 0;
-         tc_get_renderpass_info(tc)->zsbuf_read_dsa = 0;
-      }
-      /* let the driver parse its own state */
-      tc->options.dsa_parse(param, tc_get_renderpass_info(tc));
+      if (tc->renderpass_info_recording->ended)
+         tc->pending_renderpass_dsa = param;
+      else
+         tc_parse_dsa(tc, param);
+   } else {
+      tc->pending_renderpass_dsa = NULL;
    }
 )
 TC_CSO_DELETE(depth_stencil_alpha)
@@ -1357,15 +1397,12 @@ TC_CSO_WHOLE(compute)
 TC_CSO_CREATE(fs, shader)
 TC_CSO_BIND(fs,
    if (param && tc->options.parse_renderpass_info) {
-      /* fs info is only ever added during a renderpass;
-       * changes outside of a renderpass reset the data
-       */
-      if (!tc->in_renderpass) {
-         tc_get_renderpass_info(tc)->cbuf_fbfetch = 0;
-         tc_get_renderpass_info(tc)->zsbuf_write_fs = 0;
-      }
-      /* let the driver parse its own state */
-      tc->options.fs_parse(param, tc_get_renderpass_info(tc));
+      if (tc->renderpass_info_recording->ended)
+         tc->pending_renderpass_fs = param;
+      else
+         tc_parse_fs(tc, param);
+   } else {
+      tc->pending_renderpass_fs = NULL;
    }
 )
 TC_CSO_DELETE(fs)
@@ -1512,8 +1549,10 @@ tc_set_framebuffer_state(struct pipe_context *_pipe,
           */
          tc->batch_slots[tc->next].renderpass_info_idx = 0;
          tc->renderpass_info_recording->has_resolve = false;
+         tc_parse_pending_rp_info(tc);
       }
-      assert(!tc->renderpass_info_recording->resolve);
+      assert(!tc->renderpass_info_recording->resolve[0] &&
+             !tc->renderpass_info_recording->resolve[1]);
       tc->seen_fb_state = true;
    }
    /* ref for cmd */
@@ -4579,11 +4618,11 @@ tc_blit(struct pipe_context *_pipe, const struct pipe_blit_info *info)
        info->src.box.width != info->dst.box.width ||
        info->src.box.height != info->dst.box.height ||
        info->src.box.depth != info->dst.box.depth ||
+       !tc->in_renderpass ||
 #if TC_RESOLVE_STRICT
        info->src.box.width != tc->fb_width ||
        info->src.box.height != tc->fb_height ||
 #endif
-       tc->renderpass_info_recording->ended ||
        (info->dst.resource->array_size && info->dst.resource->array_size != tc->fb_layers) ||
        (!tc->renderpass_info_recording->has_draw && !tc->renderpass_info_recording->cbuf_clear && !tc->renderpass_info_recording->zsbuf_clear)) {
       if (tc->options.parse_renderpass_info && tc->in_renderpass)
@@ -4592,7 +4631,9 @@ tc_blit(struct pipe_context *_pipe, const struct pipe_blit_info *info)
       return;
    }
 
-   struct pipe_resource *src = tc->nr_cbufs ? tc->fb_resources[0] : tc->fb_resources[PIPE_MAX_COLOR_BUFS];
+   bool is_depth = util_format_is_depth_or_stencil(info->src.format);
+   struct pipe_resource *src = !is_depth ? tc->fb_resources[0] : tc->fb_resources[PIPE_MAX_COLOR_BUFS];
+   bool is_resolve = false;
    if (tc->fb_resolve == info->dst.resource) {
 #if TC_DEBUG >= 3
       tc_printf("WSI RESOLVE MERGE");
@@ -4600,24 +4641,29 @@ tc_blit(struct pipe_context *_pipe, const struct pipe_blit_info *info)
       /* optimize out this blit entirely */
       tc->renderpass_info_recording->has_resolve = true;
       tc->renderpass_info_recording->ended = true;
-      tc_signal_renderpass_info_ready(tc);
-   } else if (src == info->src.resource &&
-              (!tc->renderpass_info_recording->has_resolve ||
-               tc->renderpass_info_recording->resolve == info->dst.resource)) {
+      is_resolve = true;
+   } else if (src == info->src.resource) {
 #if TC_DEBUG >= 3
       tc_printf("RESOLVE MERGE");
 #endif
-      /* can only optimize out the first resolve */
-      tc->renderpass_info_recording->has_resolve = true;
-      pipe_resource_reference(&tc->renderpass_info_recording->resolve, info->dst.resource);
+      /* only optimizing out one depth and one color resolve */
+      assert(!tc->renderpass_info_recording->resolve[is_depth] || tc->renderpass_info_recording->resolve[is_depth] == info->dst.resource);
+      pipe_resource_reference(&tc->renderpass_info_recording->resolve[is_depth], info->dst.resource);
       tc_set_resource_batch_usage(tc, info->dst.resource);
+      if (tc->renderpass_info_recording->has_resolve) {
+         assert(tc->renderpass_info_recording->ended);
+         /* driver will already expect a rp-terminating resolve, don't send a second one */
+         return;
+      }
+      tc->renderpass_info_recording->has_resolve = true;
       tc->renderpass_info_recording->ended = true;
-      tc_signal_renderpass_info_ready(tc);
+      is_resolve = true;
    } else if (tc->in_renderpass) {
       tc_check_fb_access(tc, info->src.resource, info->dst.resource);
    }
    struct tc_blit_call *blit = tc_blit_enqueue(tc, info);
-   blit->base.call_id = TC_CALL_resolve;
+   if (is_resolve)
+      blit->base.call_id = TC_CALL_resolve;
 }
 
 struct tc_generate_mipmap {

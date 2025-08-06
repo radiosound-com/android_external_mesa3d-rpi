@@ -71,8 +71,7 @@ update_tc_info(struct zink_context *ctx)
    if (ctx->track_renderpasses) {
       const struct tc_renderpass_info *info = threaded_context_get_renderpass_info(ctx->tc);
       ctx->rp_changed |= ctx->dynamic_fb.tc_info.data != info->data;
-      ctx->dynamic_fb.tc_info.data = info->data;
-      ctx->dynamic_fb.tc_info.resolve = info->resolve;
+      ctx->dynamic_fb.tc_info = *info;
       ctx->awaiting_resolve = ctx->dynamic_fb.tc_info.has_resolve;
    } else {
       struct tc_renderpass_info info = ctx->dynamic_fb.tc_info;
@@ -3163,41 +3162,48 @@ begin_rendering(struct zink_context *ctx, bool check_msaa_expand)
       }
    }
    if (use_tc_info && ctx->dynamic_fb.tc_info.has_resolve) {
-      struct zink_resource *res = zink_resource(ctx->fb_state.resolve);
-      if (!res)
-         res = zink_resource(ctx->dynamic_fb.tc_info.resolve);
-      assert(res);
-      zink_batch_resource_usage_set(ctx->bs, res, true, false);
-      bool is_depth = util_format_is_depth_or_stencil(res->base.b.format);
-      enum pipe_format format = res->base.b.format;
-      if (!ctx->fb_state.resolve)
-         format = is_depth ? ctx->fb_state.zsbuf.format : ctx->fb_state.cbufs[0].format;
-      if (zink_format_needs_mutable(res->base.b.format, format))
-         /* mutable not set by default */
-         zink_resource_object_init_mutable(ctx, res);
-      struct pipe_surface tmpl = {
-         .format = format,
-         .texture = &res->base.b
+      struct zink_resource *resolves[3] = {
+         zink_resource(ctx->fb_state.resolve),
+         zink_resource(ctx->dynamic_fb.tc_info.resolve[1]),
       };
-      if (zink_is_swapchain(res)) {
-         if (!zink_kopper_acquire(ctx, res, UINT64_MAX))
-            return 0;
-      }
-      VkImageViewCreateInfo ivci = create_ivci(screen, res, &tmpl, ctx->dynamic_fb.info.layerCount > 1 ? PIPE_TEXTURE_2D_ARRAY : PIPE_TEXTURE_2D);
-      struct zink_surface *surf = zink_get_surface(ctx, &tmpl, &ivci);
-      VkImageLayout layout = is_depth ? VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL : VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-      if (screen->driver_workarounds.general_layout)
-         layout = VK_IMAGE_LAYOUT_GENERAL;
-      unsigned idx = util_format_is_depth_or_stencil(res->base.b.format) ? PIPE_MAX_COLOR_BUFS : 0;
-      screen->image_barrier(ctx, res, layout, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
-      res->obj->unordered_read = res->obj->unordered_write = false;
-      ctx->dynamic_fb.attachments[idx].resolveMode = VK_RESOLVE_MODE_AVERAGE_BIT;
-      ctx->dynamic_fb.attachments[idx].resolveImageLayout = res->layout;
-      ctx->dynamic_fb.attachments[idx].resolveImageView = surf->image_view;
-      if (idx == PIPE_MAX_COLOR_BUFS) {
-         ctx->dynamic_fb.attachments[idx + 1].resolveMode = VK_RESOLVE_MODE_AVERAGE_BIT;
-         ctx->dynamic_fb.attachments[idx + 1].resolveImageLayout = res->layout;
-         ctx->dynamic_fb.attachments[idx + 1].resolveImageView = surf->image_view;
+      if (!resolves[0])
+         resolves[0] = zink_resource(ctx->dynamic_fb.tc_info.resolve[0]);
+      for (unsigned i = 0; i < ARRAY_SIZE(resolves); i++) {
+         struct zink_resource *res = resolves[i];
+         if (!res)
+            continue;
+         zink_batch_resource_usage_set(ctx->bs, res, true, false);
+         bool is_depth = util_format_is_depth_or_stencil(res->base.b.format);
+         enum pipe_format format = res->base.b.format;
+         if (!ctx->fb_state.resolve)
+            format = is_depth ? ctx->fb_state.zsbuf.format : ctx->fb_state.cbufs[0].format;
+         if (zink_format_needs_mutable(res->base.b.format, format))
+            /* mutable not set by default */
+            zink_resource_object_init_mutable(ctx, res);
+         struct pipe_surface tmpl = {
+            .format = format,
+            .texture = &res->base.b
+         };
+         if (zink_is_swapchain(res)) {
+            if (!zink_kopper_acquire(ctx, res, UINT64_MAX))
+               return 0;
+         }
+         VkImageViewCreateInfo ivci = create_ivci(screen, res, &tmpl, ctx->dynamic_fb.info.layerCount > 1 ? PIPE_TEXTURE_2D_ARRAY : PIPE_TEXTURE_2D);
+         struct zink_surface *surf = zink_get_surface(ctx, &tmpl, &ivci);
+         VkImageLayout layout = is_depth ? VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL : VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+         if (screen->driver_workarounds.general_layout)
+            layout = VK_IMAGE_LAYOUT_GENERAL;
+         unsigned idx = is_depth ? PIPE_MAX_COLOR_BUFS : 0;
+         screen->image_barrier(ctx, res, layout, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
+         res->obj->unordered_read = res->obj->unordered_write = false;
+         ctx->dynamic_fb.attachments[idx].resolveMode = is_depth ? VK_RESOLVE_MODE_SAMPLE_ZERO_BIT : VK_RESOLVE_MODE_AVERAGE_BIT;
+         ctx->dynamic_fb.attachments[idx].resolveImageLayout = res->layout;
+         ctx->dynamic_fb.attachments[idx].resolveImageView = surf->image_view;
+         if (idx == PIPE_MAX_COLOR_BUFS) {
+            ctx->dynamic_fb.attachments[idx + 1].resolveMode = VK_RESOLVE_MODE_SAMPLE_ZERO_BIT;
+            ctx->dynamic_fb.attachments[idx + 1].resolveImageLayout = res->layout;
+            ctx->dynamic_fb.attachments[idx + 1].resolveImageView = surf->image_view;
+         }
       }
    }
    ctx->zsbuf_unused = !zsbuf_used;
@@ -3335,6 +3341,12 @@ zink_batch_no_rp_safe(struct zink_context *ctx)
       zink_query_renderpass_suspend(ctx);
    VKCTX(CmdEndRendering)(ctx->bs->cmdbuf);
    ctx->in_rp = false;
+   for (unsigned i = 0; i < ctx->fb_state.nr_cbufs; i++)
+      ctx->dynamic_fb.attachments[i].resolveImageView = VK_NULL_HANDLE;
+   if (ctx->fb_state.zsbuf.texture) {
+      ctx->dynamic_fb.attachments[PIPE_MAX_COLOR_BUFS].resolveImageView = VK_NULL_HANDLE;
+      ctx->dynamic_fb.attachments[PIPE_MAX_COLOR_BUFS + 1].resolveImageView = VK_NULL_HANDLE;
+   }
 }
 
 void
@@ -4402,6 +4414,7 @@ rebind_ubo(struct zink_context *ctx, gl_shader_stage shader, unsigned slot)
    if (res) {
       res->obj->unordered_read = false;
       res->obj->access |= VK_ACCESS_SHADER_READ_BIT;
+      res->obj->access_stage |= mesa_to_vk_shader_stage(shader);
    }
    ctx->invalidate_descriptor_state(ctx, shader, ZINK_DESCRIPTOR_TYPE_UBO, slot, 1);
    return res;
@@ -4424,6 +4437,7 @@ rebind_ssbo(struct zink_context *ctx, gl_shader_stage shader, unsigned slot)
    if (res) {
       res->obj->unordered_read = false;
       res->obj->access |= VK_ACCESS_SHADER_READ_BIT;
+      res->obj->access_stage |= mesa_to_vk_shader_stage(shader);
       if (ctx->writable_ssbos[shader] & BITFIELD_BIT(slot)) {
          res->obj->unordered_write = false;
          res->obj->access |= VK_ACCESS_SHADER_WRITE_BIT;
@@ -4447,6 +4461,7 @@ rebind_tbo(struct zink_context *ctx, gl_shader_stage shader, unsigned slot)
    if (res) {
       res->obj->unordered_read = false;
       res->obj->access |= VK_ACCESS_SHADER_READ_BIT;
+      res->obj->access_stage |= mesa_to_vk_shader_stage(shader);
    }
    ctx->invalidate_descriptor_state(ctx, shader, ZINK_DESCRIPTOR_TYPE_SAMPLER_VIEW, slot, 1);
    return res;
@@ -4469,6 +4484,7 @@ rebind_ibo(struct zink_context *ctx, gl_shader_stage shader, unsigned slot)
    if (res) {
       res->obj->unordered_read = false;
       res->obj->access |= VK_ACCESS_SHADER_READ_BIT;
+      res->obj->access_stage |= mesa_to_vk_shader_stage(shader);
       if (image_view->base.access & PIPE_IMAGE_ACCESS_WRITE) {
          res->obj->unordered_write = false;
          res->obj->access |= VK_ACCESS_SHADER_WRITE_BIT;
@@ -5216,7 +5232,8 @@ zink_context_replace_buffer_storage(struct pipe_context *pctx, struct pipe_resou
       num_rebinds = d->bind_count[0] + d->bind_count[1];
       rebind_mask = 0;
    }
-   if (num_rebinds && rebind_buffer(ctx, d, rebind_mask, num_rebinds) < num_rebinds)
+   unsigned rebind_count = num_rebinds ? rebind_buffer(ctx, d, rebind_mask, num_rebinds) : 0;
+   if (rebind_count != d->bind_count[0] + d->bind_count[1])
       ctx->buffer_rebind_counter = p_atomic_inc_return(&screen->buffer_rebind_counter);
 }
 
