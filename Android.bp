@@ -1631,7 +1631,7 @@ cc_library_shared {
         "src/gbm/main/backend.c",
         "src/gbm/main/gbm.c",
     ],
-    cflags: ["-DDEFAULT_BACKENDS_PATH=\"/vendor/lib64\""],
+    cflags: ["-DDEFAULT_BACKENDS_PATH=\"/apex/com.android.hardware.graphics.allocator.minigbm_gbm_mesa/lib64\""],
     shared_libs: [
         "libcutils",
         "libdrm",
