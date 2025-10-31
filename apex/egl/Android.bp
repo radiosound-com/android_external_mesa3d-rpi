@@ -1,0 +1,39 @@
+//
+// Copyright (C) 2025 KonstaKANG
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+linker_config {
+    name: "android.hardware.egl.mesa-linker-config",
+    src: "apex_linkerconfig.json",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "android.hardware.egl.mesa.rc",
+    src: "android.hardware.egl.mesa.rc",
+    installable: false,
+}
+
+apex {
+    name: "com.android.hardware.egl.mesa",
+    manifest: "apex_manifest.json",
+    file_contexts: "apex_file_contexts",
+    key: "com.android.hardware.key",
+    certificate: ":com.android.hardware.certificate",
+    updatable: false,
+    vendor: true,
+
+    native_shared_libs: [
+        "libEGL_mesa",
+        "libGLESv1_CM_mesa",
+        "libGLESv2_mesa",
+        "libgallium_dri",
+    ],
+    prebuilts: [
+        "android.hardware.egl.mesa-linker-config",
+        "android.hardware.egl.mesa.rc",
+        "android.software.opengles.deqp.level-latest.prebuilt.xml",
+    ],
+}
