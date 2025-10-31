@@ -1,0 +1,7 @@
+# `on init` is normally not available for .rc files in vendor apexes
+# But the egl apex is okay because it's bootstrap APEX.
+# For bootstrap APEXes, `on init` is the earliest available trigger.
+on init
+    setprop ro.egl.apex com.android.hardware.egl.mesa
+    setprop ro.hardware.egl mesa
+    setprop ro.opengles.version 196609
