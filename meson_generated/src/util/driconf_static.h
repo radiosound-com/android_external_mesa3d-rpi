@@ -55,7 +55,7 @@ struct driconf_device {
 
 
     
-static const struct driconf_option engine_384_options[] = {
+static const struct driconf_option engine_387_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
@@ -64,7 +64,7 @@ static const struct driconf_engine device_1_engines[] = {
     { .engine_name_match = "UnrealEngine4.*",
       .engine_versions = "0:23",
       .num_options = 1,
-      .options = engine_384_options,
+      .options = engine_387_options,
     },
 };
 
@@ -444,10 +444,11 @@ static const struct driconf_option application_163_options[] = {
     
 static const struct driconf_option application_165_options[] = {
     { .name = "allow_multisampled_copyteximage", .value = "true" },
+    { .name = "vertex_program_default_out", .value = "true" },
 };
 
     
-static const struct driconf_option application_167_options[] = {
+static const struct driconf_option application_168_options[] = {
     { .name = "vblank_mode", .value = "0" },
     { .name = "glthread_nop_check_framebuffer_status", .value = "true" },
     { .name = "allow_glsl_extension_directive_midshader", .value = "true" },
@@ -460,102 +461,101 @@ static const struct driconf_option application_167_options[] = {
 };
 
     
-static const struct driconf_option application_177_options[] = {
+static const struct driconf_option application_178_options[] = {
     { .name = "ignore_map_unsynchronized", .value = "true" },
 };
 
     
-static const struct driconf_option application_179_options[] = {
+static const struct driconf_option application_180_options[] = {
     { .name = "force_integer_tex_nearest", .value = "true" },
     { .name = "allow_glsl_extension_directive_midshader", .value = "true" },
 };
 
     
-static const struct driconf_option application_182_options[] = {
+static const struct driconf_option application_183_options[] = {
     { .name = "glsl_correct_derivatives_after_discard", .value = "true" },
 };
 
     
-static const struct driconf_option application_184_options[] = {
+static const struct driconf_option application_185_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_186_options[] = {
+static const struct driconf_option application_187_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_188_options[] = {
+static const struct driconf_option application_189_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_190_options[] = {
+static const struct driconf_option application_191_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_192_options[] = {
+static const struct driconf_option application_193_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_194_options[] = {
+static const struct driconf_option application_195_options[] = {
     { .name = "allow_glsl_120_subset_in_110", .value = "true" },
 };
 
     
-static const struct driconf_option application_196_options[] = {
+static const struct driconf_option application_197_options[] = {
+    { .name = "allow_glsl_120_subset_in_110", .value = "true" },
+};
+
+    
+static const struct driconf_option application_199_options[] = {
     { .name = "mesa_extension_override", .value = "-GL_MESA_pack_invert -GL_MESA_framebuffer_flip_y -GL_MESA_window_pos" },
-};
-
-    
-static const struct driconf_option application_198_options[] = {
-    { .name = "mesa_extension_override", .value = "-GL_MESA_pack_invert -GL_MESA_framebuffer_flip_y -GL_MESA_window_pos" },
-    { .name = "do_dce_before_clip_cull_analysis", .value = "true" },
 };
 
     
 static const struct driconf_option application_201_options[] = {
     { .name = "mesa_extension_override", .value = "-GL_MESA_pack_invert -GL_MESA_framebuffer_flip_y -GL_MESA_window_pos" },
+    { .name = "do_dce_before_clip_cull_analysis", .value = "true" },
 };
 
     
-static const struct driconf_option application_203_options[] = {
+static const struct driconf_option application_204_options[] = {
+    { .name = "mesa_extension_override", .value = "-GL_MESA_pack_invert -GL_MESA_framebuffer_flip_y -GL_MESA_window_pos" },
+};
+
+    
+static const struct driconf_option application_206_options[] = {
     { .name = "force_glsl_extensions_warn", .value = "true" },
 };
 
     
-static const struct driconf_option application_205_options[] = {
+static const struct driconf_option application_208_options[] = {
     { .name = "force_direct_glx_context", .value = "true" },
 };
 
     
-static const struct driconf_option application_207_options[] = {
+static const struct driconf_option application_210_options[] = {
     { .name = "keep_native_window_glx_drawable", .value = "true" },
     { .name = "allow_rgb10_configs", .value = "false" },
 };
 
     
-static const struct driconf_option application_210_options[] = {
+static const struct driconf_option application_213_options[] = {
     { .name = "force_gl_vendor", .value = "ATI Technologies Inc." },
 };
 
     
-static const struct driconf_option application_212_options[] = {
+static const struct driconf_option application_215_options[] = {
     { .name = "force_compat_shaders", .value = "true" },
 };
 
     
-static const struct driconf_option application_214_options[] = {
+static const struct driconf_option application_217_options[] = {
     { .name = "mesa_glthread_app_profile", .value = "0" },
-};
-
-    
-static const struct driconf_option application_216_options[] = {
-    { .name = "vk_wsi_force_swapchain_to_current_extent", .value = "true" },
-    { .name = "vk_x11_ignore_suboptimal", .value = "true" },
 };
 
     
@@ -590,202 +590,202 @@ static const struct driconf_option application_231_options[] = {
 
     
 static const struct driconf_option application_234_options[] = {
+    { .name = "vk_wsi_force_swapchain_to_current_extent", .value = "true" },
+    { .name = "vk_x11_ignore_suboptimal", .value = "true" },
+};
+
+    
+static const struct driconf_option application_237_options[] = {
     { .name = "mesa_glthread_app_profile", .value = "0" },
 };
 
     
-static const struct driconf_option application_236_options[] = {
+static const struct driconf_option application_239_options[] = {
     { .name = "mesa_glthread_app_profile", .value = "0" },
 };
 
     
-static const struct driconf_option application_238_options[] = {
+static const struct driconf_option application_241_options[] = {
     { .name = "mesa_glthread_app_profile", .value = "0" },
-};
-
-    
-static const struct driconf_option application_240_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-    { .name = "v3d_nonmsaa_texture_size_limit", .value = "true" },
 };
 
     
 static const struct driconf_option application_243_options[] = {
     { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_245_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_247_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_249_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_251_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_253_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_255_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_257_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_259_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_261_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_263_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_265_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_267_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_269_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_271_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_273_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
     { .name = "v3d_nonmsaa_texture_size_limit", .value = "true" },
+};
+
+    
+static const struct driconf_option application_246_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_248_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_250_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_252_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_254_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_256_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_258_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_260_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_262_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_264_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_266_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_268_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_270_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_272_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_274_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
 };
 
     
 static const struct driconf_option application_276_options[] = {
     { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_278_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_280_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_282_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_284_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_286_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_288_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_290_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_292_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_294_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_296_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_298_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_300_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_302_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_304_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_306_options[] = {
-    { .name = "adaptive_sync", .value = "false" },
-};
-
-    
-static const struct driconf_option application_308_options[] = {
     { .name = "v3d_nonmsaa_texture_size_limit", .value = "true" },
 };
 
     
-static const struct driconf_option application_310_options[] = {
-    { .name = "mesa_glthread_app_profile", .value = "0" },
-    { .name = "vk_x11_override_min_image_count", .value = "2" },
-    { .name = "vk_wsi_force_bgra8_unorm_first", .value = "true" },
+static const struct driconf_option application_279_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
 };
 
     
-static const struct driconf_option application_314_options[] = {
+static const struct driconf_option application_281_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_283_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_285_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_287_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_289_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_291_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_293_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_295_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_297_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_299_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_301_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_303_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_305_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_307_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_309_options[] = {
+    { .name = "adaptive_sync", .value = "false" },
+};
+
+    
+static const struct driconf_option application_311_options[] = {
+    { .name = "v3d_nonmsaa_texture_size_limit", .value = "true" },
+};
+
+    
+static const struct driconf_option application_313_options[] = {
+    { .name = "mesa_glthread_app_profile", .value = "0" },
     { .name = "vk_x11_override_min_image_count", .value = "2" },
-    { .name = "vk_x11_strict_image_count", .value = "true" },
+    { .name = "vk_wsi_force_bgra8_unorm_first", .value = "true" },
 };
 
     
@@ -796,158 +796,164 @@ static const struct driconf_option application_317_options[] = {
 
     
 static const struct driconf_option application_320_options[] = {
-    { .name = "vk_x11_override_min_image_count", .value = "3" },
+    { .name = "vk_x11_override_min_image_count", .value = "2" },
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
 static const struct driconf_option application_323_options[] = {
+    { .name = "vk_x11_override_min_image_count", .value = "3" },
+    { .name = "vk_x11_strict_image_count", .value = "true" },
+};
+
+    
+static const struct driconf_option application_326_options[] = {
     { .name = "glx_extension_override", .value = "-GLX_OML_swap_method" },
     { .name = "allow_higher_compat_version", .value = "true" },
 };
 
     
-static const struct driconf_option application_326_options[] = {
+static const struct driconf_option application_329_options[] = {
     { .name = "glsl_correct_derivatives_after_discard", .value = "true" },
 };
 
     
-static const struct driconf_option application_328_options[] = {
+static const struct driconf_option application_331_options[] = {
     { .name = "glsl_correct_derivatives_after_discard", .value = "true" },
 };
 
     
-static const struct driconf_option application_330_options[] = {
+static const struct driconf_option application_333_options[] = {
     { .name = "vs_position_always_precise", .value = "true" },
 };
 
     
-static const struct driconf_option application_332_options[] = {
+static const struct driconf_option application_335_options[] = {
     { .name = "vs_position_always_precise", .value = "true" },
 };
 
     
-static const struct driconf_option application_334_options[] = {
+static const struct driconf_option application_337_options[] = {
     { .name = "vs_position_always_precise", .value = "true" },
 };
 
     
-static const struct driconf_option application_336_options[] = {
+static const struct driconf_option application_339_options[] = {
     { .name = "vs_position_always_precise", .value = "true" },
 };
 
     
-static const struct driconf_option application_338_options[] = {
+static const struct driconf_option application_341_options[] = {
     { .name = "glsl_zero_init", .value = "true" },
 };
 
     
-static const struct driconf_option application_340_options[] = {
+static const struct driconf_option application_343_options[] = {
     { .name = "ignore_discard_framebuffer", .value = "true" },
 };
 
     
-static const struct driconf_option application_342_options[] = {
+static const struct driconf_option application_345_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_344_options[] = {
+static const struct driconf_option application_347_options[] = {
     { .name = "vk_x11_ensure_min_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_346_options[] = {
+static const struct driconf_option application_349_options[] = {
     { .name = "vk_zero_vram", .value = "true" },
 };
 
     
-static const struct driconf_option application_348_options[] = {
+static const struct driconf_option application_351_options[] = {
     { .name = "vk_zero_vram", .value = "true" },
 };
 
     
-static const struct driconf_option application_350_options[] = {
+static const struct driconf_option application_353_options[] = {
     { .name = "vk_zero_vram", .value = "true" },
 };
 
     
-static const struct driconf_option application_352_options[] = {
+static const struct driconf_option application_355_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_354_options[] = {
+static const struct driconf_option application_357_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_356_options[] = {
+static const struct driconf_option application_359_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_358_options[] = {
+static const struct driconf_option application_361_options[] = {
     { .name = "vk_dont_care_as_load", .value = "true" },
 };
 
     
-static const struct driconf_option application_360_options[] = {
+static const struct driconf_option application_363_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_362_options[] = {
+static const struct driconf_option application_365_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_364_options[] = {
+static const struct driconf_option application_367_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_366_options[] = {
+static const struct driconf_option application_369_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_368_options[] = {
+static const struct driconf_option application_371_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_370_options[] = {
+static const struct driconf_option application_373_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_372_options[] = {
+static const struct driconf_option application_375_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_374_options[] = {
+static const struct driconf_option application_377_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_376_options[] = {
+static const struct driconf_option application_379_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_378_options[] = {
+static const struct driconf_option application_381_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_380_options[] = {
+static const struct driconf_option application_383_options[] = {
     { .name = "no_fp16", .value = "true" },
 };
 
     
-static const struct driconf_option application_382_options[] = {
+static const struct driconf_option application_385_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
@@ -1305,1653 +1311,1652 @@ static const struct driconf_application device_1_applications[] = {
     },
     { .name = "Penumbra: Overture",
       .executable = "Penumbra.exe",
-      .num_options = 1,
+      .num_options = 2,
       .options = application_165_options,
     },
     { .name = "SPECviewperf13",
       .executable = "viewperf",
       .num_options = 9,
-      .options = application_167_options,
+      .options = application_168_options,
     },
     { .name = "Dead-Cells",
       .executable = "com.playdigious.deadcells.mobile",
       .num_options = 1,
-      .options = application_177_options,
+      .options = application_178_options,
     },
     { .name = "Teardown",
       .executable = "teardown.exe",
       .num_options = 2,
-      .options = application_179_options,
+      .options = application_180_options,
     },
     { .name = "Golf With Your Friends",
       .executable = "Golf With Your Friends.x86_64",
       .num_options = 1,
-      .options = application_182_options,
+      .options = application_183_options,
     },
     { .name = "Cossacks 3",
       .executable = "cossacks.exe",
       .num_options = 1,
-      .options = application_184_options,
+      .options = application_185_options,
     },
     { .name = "Kaiju-A-Gogo",
       .executable = "kaiju.exe",
       .num_options = 1,
-      .options = application_186_options,
+      .options = application_187_options,
     },
     { .name = "Captain Lycop: Invasion of the Heters (Wine)",
       .executable = "lycop.exe",
       .num_options = 1,
-      .options = application_188_options,
+      .options = application_189_options,
     },
     { .name = "Captain Lycop: Invasion of the Heters",
       .executable = "lycop",
       .num_options = 1,
-      .options = application_190_options,
+      .options = application_191_options,
     },
     { .name = "Joe Danger (Wine)",
       .executable = "JoeDanger.exe",
       .num_options = 1,
-      .options = application_192_options,
+      .options = application_193_options,
     },
     { .name = "Joe Danger 2 (Wine)",
       .executable = "JoeDanger2.exe",
       .num_options = 1,
-      .options = application_194_options,
+      .options = application_195_options,
+    },
+    { .name = "Investigation Stories : gunsound (Wine)",
+      .executable = "gunsound.exe",
+      .num_options = 1,
+      .options = application_197_options,
     },
     { .name = "BETA CAE Systems - GL detect tool",
       .executable = "detect_opengl_tool",
       .num_options = 1,
-      .options = application_196_options,
+      .options = application_199_options,
     },
     { .name = "BETA CAE Systems - ANSA",
       .executable = "ansa_linux_x86_64",
       .num_options = 2,
-      .options = application_198_options,
+      .options = application_201_options,
     },
     { .name = "BETA CAE Systems - META",
       .executable = "meta_post_x86_64",
       .num_options = 1,
-      .options = application_201_options,
+      .options = application_204_options,
     },
     { .name = "Mari",
       .executable_regexp = "Mari[0-9]+[.][0-9]+v[0-9]+",
       .num_options = 1,
-      .options = application_203_options,
+      .options = application_206_options,
     },
     { .name = "Discovery Studio 2020",
       .executable = "DiscoveryStudio2020-bin",
       .num_options = 1,
-      .options = application_205_options,
+      .options = application_208_options,
     },
     { .name = "Abaqus",
       .executable = "ABQcaeK",
       .num_options = 2,
-      .options = application_207_options,
+      .options = application_210_options,
     },
     { .name = "Maya",
       .executable = "maya.bin",
       .num_options = 1,
-      .options = application_210_options,
+      .options = application_213_options,
     },
     { .name = "SD Gundam G Generation Cross Rays",
       .executable = "togg.exe",
       .num_options = 1,
-      .options = application_212_options,
+      .options = application_215_options,
     },
     { .name = "FINAL FANTASY XI",
       .executable = "pol.exe",
       .num_options = 1,
-      .options = application_214_options,
+      .options = application_217_options,
     },
     { .name = "Talos Principle",
       .executable = "Talos",
       .num_options = 2,
-      .options = application_216_options,
+      .options = application_219_options,
     },
     { .name = "Talos Principle (Unrestricted)",
       .executable = "Talos_Unrestricted",
       .num_options = 2,
-      .options = application_219_options,
+      .options = application_222_options,
     },
     { .name = "Talos Principle VR",
       .executable = "Talos_VR",
       .num_options = 2,
-      .options = application_222_options,
+      .options = application_225_options,
     },
     { .name = "Talos Principle VR (Unrestricted)",
       .executable = "Talos_Unrestricted_VR",
       .num_options = 2,
-      .options = application_225_options,
+      .options = application_228_options,
     },
     { .name = "Serious Sam Fusion",
       .executable = "Sam2017",
       .num_options = 2,
-      .options = application_228_options,
+      .options = application_231_options,
     },
     { .name = "Serious Sam Fusion (Unrestricted)",
       .executable = "Sam2017_Unrestricted",
       .num_options = 2,
-      .options = application_231_options,
+      .options = application_234_options,
     },
     { .name = "DeusExMD",
       .executable = "DeusExMD",
       .num_options = 1,
-      .options = application_234_options,
+      .options = application_237_options,
     },
     { .name = "F1 2015",
       .executable = "F12015",
       .num_options = 1,
-      .options = application_236_options,
+      .options = application_239_options,
     },
     { .name = "KWin Wayland",
       .executable = "kwin_wayland",
       .num_options = 1,
-      .options = application_238_options,
+      .options = application_241_options,
     },
     { .name = "gnome-shell",
       .executable = "gnome-shell",
       .num_options = 2,
-      .options = application_240_options,
+      .options = application_243_options,
     },
     { .name = "Desktop — Plasma",
       .executable = "plasmashell",
       .num_options = 1,
-      .options = application_243_options,
+      .options = application_246_options,
     },
     { .name = "budgie-wm",
       .executable = "budgie-wm",
       .num_options = 1,
-      .options = application_245_options,
+      .options = application_248_options,
     },
     { .name = "kwin_x11",
       .executable = "kwin_x11",
       .num_options = 1,
-      .options = application_247_options,
+      .options = application_250_options,
     },
     { .name = "ksmserver-logout-greeter",
       .executable = "ksmserver-logout-greeter",
       .num_options = 1,
-      .options = application_249_options,
+      .options = application_252_options,
     },
     { .name = "ksmserver-switchuser-greeter",
       .executable = "ksmserver-switchuser-greeter",
       .num_options = 1,
-      .options = application_251_options,
+      .options = application_254_options,
     },
     { .name = "kscreenlocker_greet",
       .executable = "kscreenlocker_greet",
       .num_options = 1,
-      .options = application_253_options,
+      .options = application_256_options,
     },
     { .name = "startplasma",
       .executable = "startplasma",
       .num_options = 1,
-      .options = application_255_options,
+      .options = application_258_options,
     },
     { .name = "sddm-greeter",
       .executable = "sddm-greeter",
       .num_options = 1,
-      .options = application_257_options,
+      .options = application_260_options,
     },
     { .name = "krunner",
       .executable = "krunner",
       .num_options = 1,
-      .options = application_259_options,
+      .options = application_262_options,
     },
     { .name = "spectacle",
       .executable = "spectacle",
       .num_options = 1,
-      .options = application_261_options,
+      .options = application_264_options,
     },
     { .name = "marco",
       .executable = "marco",
       .num_options = 1,
-      .options = application_263_options,
+      .options = application_266_options,
     },
     { .name = "compton",
       .executable = "compton",
       .num_options = 1,
-      .options = application_265_options,
+      .options = application_268_options,
     },
     { .name = "picom",
       .executable = "picom",
       .num_options = 1,
-      .options = application_267_options,
+      .options = application_270_options,
     },
     { .name = "xfwm4",
       .executable = "xfwm4",
       .num_options = 1,
-      .options = application_269_options,
+      .options = application_272_options,
     },
     { .name = "Enlightenment",
       .executable = "enlightenment",
       .num_options = 1,
-      .options = application_271_options,
+      .options = application_274_options,
     },
     { .name = "mutter",
       .executable = "mutter",
       .num_options = 2,
-      .options = application_273_options,
+      .options = application_276_options,
     },
     { .name = "muffin",
       .executable = "muffin",
       .num_options = 1,
-      .options = application_276_options,
+      .options = application_279_options,
     },
     { .name = "cinnamon",
       .executable = "cinnamon",
       .num_options = 1,
-      .options = application_278_options,
+      .options = application_281_options,
     },
     { .name = "compiz",
       .executable = "compiz",
       .num_options = 1,
-      .options = application_280_options,
+      .options = application_283_options,
     },
     { .name = "Firefox",
       .executable = "firefox",
       .num_options = 1,
-      .options = application_282_options,
+      .options = application_285_options,
     },
     { .name = "Firefox ESR",
       .executable = "firefox-esr",
       .num_options = 1,
-      .options = application_284_options,
+      .options = application_287_options,
     },
     { .name = "Chromium",
       .executable = "chromium",
       .num_options = 1,
-      .options = application_286_options,
+      .options = application_289_options,
     },
     { .name = "Google Chrome",
       .executable = "chrome",
       .num_options = 1,
-      .options = application_288_options,
+      .options = application_291_options,
     },
     { .name = "Iceweasel",
       .executable = "iceweasel",
       .num_options = 1,
-      .options = application_290_options,
+      .options = application_293_options,
     },
     { .name = "Epiphany",
       .executable = "epiphany",
       .num_options = 1,
-      .options = application_292_options,
+      .options = application_295_options,
     },
     { .name = "Konqueror",
       .executable = "konqueror",
       .num_options = 1,
-      .options = application_294_options,
+      .options = application_297_options,
     },
     { .name = "Falkon",
       .executable = "falkon",
       .num_options = 1,
-      .options = application_296_options,
+      .options = application_299_options,
     },
     { .name = "Seamonkey",
       .executable = "seamonkey",
       .num_options = 1,
-      .options = application_298_options,
+      .options = application_301_options,
     },
     { .name = "Waterfox",
       .executable = "waterfox",
       .num_options = 1,
-      .options = application_300_options,
+      .options = application_303_options,
     },
     { .name = "VLC Media Player",
       .executable = "vlc",
       .num_options = 1,
-      .options = application_302_options,
+      .options = application_305_options,
     },
     { .name = "Totem",
       .executable = "totem",
       .num_options = 1,
-      .options = application_304_options,
+      .options = application_307_options,
     },
     { .name = "Dragon Player",
       .executable = "dragon",
       .num_options = 1,
-      .options = application_306_options,
+      .options = application_309_options,
     },
     { .name = "Xorg",
       .executable = "Xorg",
       .num_options = 1,
-      .options = application_308_options,
+      .options = application_311_options,
     },
     { .name = "gfxbench",
       .executable = "testfw_app",
       .num_options = 3,
-      .options = application_310_options,
+      .options = application_313_options,
     },
     { .name = "Rainbow Six Siege (Vulkan)",
       .executable = "RainbowSix_Vulkan.exe",
       .num_options = 2,
-      .options = application_314_options,
+      .options = application_317_options,
     },
     { .name = "Rainbow Six Extraction (Wine)",
       .executable = "R6-Extraction.exe",
       .num_options = 2,
-      .options = application_317_options,
+      .options = application_320_options,
     },
     { .name = "Hades",
       .executable = "Hades.exe",
       .num_options = 2,
-      .options = application_320_options,
+      .options = application_323_options,
     },
     { .name = "Brink",
       .executable = "brink.exe",
       .num_options = 2,
-      .options = application_323_options,
+      .options = application_326_options,
     },
     { .name = "Enter The Gungeon (32 bits)",
       .executable = "EtG.x86",
       .num_options = 1,
-      .options = application_326_options,
+      .options = application_329_options,
     },
     { .name = "Enter The Gungeon (64 bits)",
       .executable = "EtG.x86_64",
       .num_options = 1,
-      .options = application_328_options,
+      .options = application_331_options,
     },
     { .name = "Assault Android Cactus (32-bit)",
       .executable = "cactus_demo.x86",
       .num_options = 1,
-      .options = application_330_options,
+      .options = application_333_options,
     },
     { .name = "Assault Android Cactus (64-bit)",
       .executable = "cactus_demo.x86_64",
       .num_options = 1,
-      .options = application_332_options,
+      .options = application_335_options,
     },
     { .name = "Assault Android Cactus (32-bit)",
       .executable = "cactus.x86",
       .num_options = 1,
-      .options = application_334_options,
+      .options = application_337_options,
     },
     { .name = "Assault Android Cactus (64-bit)",
       .executable = "cactus.x86_64",
       .num_options = 1,
-      .options = application_336_options,
+      .options = application_339_options,
     },
     { .name = "Limbo",
       .executable = "limbo",
       .num_options = 1,
-      .options = application_338_options,
+      .options = application_341_options,
     },
     { .name = "Genshin Impact",
       .executable = "com.miHoYo.GenshinImpact",
       .num_options = 1,
-      .options = application_340_options,
+      .options = application_343_options,
     },
     { .name = "DOOM",
       .executable = "DOOMx64vk.exe",
       .num_options = 1,
-      .options = application_342_options,
+      .options = application_345_options,
     },
     { .name = "DOOMEternal",
       .executable = "DOOMEternalx64vk.exe",
       .num_options = 1,
-      .options = application_344_options,
+      .options = application_347_options,
     },
     { .name = "Path of Exile",
       .executable = "PathOfExile_x64Steam.exe",
       .num_options = 1,
-      .options = application_346_options,
+      .options = application_349_options,
     },
     { .name = "Path of Exile",
       .executable = "PathOfExileSteam.exe",
       .num_options = 1,
-      .options = application_348_options,
+      .options = application_351_options,
     },
     { .name = "X4 Foundations",
       .executable = "X4",
       .num_options = 1,
-      .options = application_350_options,
+      .options = application_353_options,
     },
     { .name = "Wolfenstein: Youngblood(x64vk)",
       .executable = "Youngblood_x64vk.exe",
       .num_options = 1,
-      .options = application_352_options,
+      .options = application_355_options,
     },
     { .name = "Wolfenstein II: The New Colossus",
       .executable = "NewColossus_x64vk.exe",
       .num_options = 1,
-      .options = application_354_options,
+      .options = application_357_options,
     },
     { .name = "Metro: Exodus",
       .application_name_match = "metroexodus",
       .num_options = 1,
-      .options = application_356_options,
+      .options = application_359_options,
     },
     { .name = "Forsaken Remastered",
       .executable = "ForsakenEx",
       .num_options = 1,
-      .options = application_358_options,
+      .options = application_361_options,
     },
     { .name = "Atlas Fallen",
       .executable = "AtlasFallen (VK).exe",
       .num_options = 1,
-      .options = application_360_options,
+      .options = application_363_options,
     },
     { .name = "Firefox",
       .executable = "firefox",
       .num_options = 1,
-      .options = application_362_options,
+      .options = application_365_options,
     },
     { .name = "Firefox ESR",
       .executable = "firefox-esr",
       .num_options = 1,
-      .options = application_364_options,
+      .options = application_367_options,
     },
     { .name = "Chromium",
       .executable = "chromium",
       .num_options = 1,
-      .options = application_366_options,
+      .options = application_369_options,
     },
     { .name = "Google Chrome",
       .executable = "chrome",
       .num_options = 1,
-      .options = application_368_options,
+      .options = application_371_options,
     },
     { .name = "Iceweasel",
       .executable = "iceweasel",
       .num_options = 1,
-      .options = application_370_options,
+      .options = application_373_options,
     },
     { .name = "Epiphany",
       .executable = "epiphany",
       .num_options = 1,
-      .options = application_372_options,
+      .options = application_375_options,
     },
     { .name = "Konqueror",
       .executable = "konqueror",
       .num_options = 1,
-      .options = application_374_options,
+      .options = application_377_options,
     },
     { .name = "Falkon",
       .executable = "falkon",
       .num_options = 1,
-      .options = application_376_options,
+      .options = application_379_options,
     },
     { .name = "Seamonkey",
       .executable = "seamonkey",
       .num_options = 1,
-      .options = application_378_options,
+      .options = application_381_options,
     },
     { .name = "Waterfox",
       .executable = "waterfox",
       .num_options = 1,
-      .options = application_380_options,
+      .options = application_383_options,
     },
     { .name = "Detroit Become Human",
       .application_name_match = "DetroitBecomeHuman",
       .num_options = 1,
-      .options = application_382_options,
+      .options = application_385_options,
     },
 };
 
 static const struct driconf_device device_1 = {
     .num_engines = 1,
     .engines = device_1_engines,
-    .num_applications = 167,
+    .num_applications = 168,
     .applications = device_1_applications,
 };
 
 
     
-static const struct driconf_option application_387_options[] = {
+static const struct driconf_option application_390_options[] = {
     { .name = "glx_extension_override", .value = "-GLX_OML_sync_control -GLX_SGI_video_sync" },
 };
 
     
-static const struct driconf_option application_389_options[] = {
+static const struct driconf_option application_392_options[] = {
     { .name = "glx_extension_override", .value = "-GLX_OML_sync_control -GLX_SGI_video_sync" },
 };
 
     
-static const struct driconf_option application_391_options[] = {
+static const struct driconf_option application_394_options[] = {
     { .name = "glx_extension_override", .value = "-GLX_OML_sync_control" },
 };
 
 
-static const struct driconf_application device_386_applications[] = {
+static const struct driconf_application device_389_applications[] = {
     { .name = "gnome-shell",
       .executable = "gnome-shell",
       .num_options = 1,
-      .options = application_387_options,
+      .options = application_390_options,
     },
     { .name = "cinnamon",
       .executable = "cinnamon",
       .num_options = 1,
-      .options = application_389_options,
+      .options = application_392_options,
     },
     { .name = "Compiz",
       .executable = "Compiz",
       .num_options = 1,
-      .options = application_391_options,
+      .options = application_394_options,
     },
 };
 
-static const struct driconf_device device_386 = {
+static const struct driconf_device device_389 = {
     .driver = "vmwgfx",
     .num_engines = 0,
     .num_applications = 3,
-    .applications = device_386_applications,
+    .applications = device_389_applications,
 };
 
 
     
-static const struct driconf_option application_394_options[] = {
+static const struct driconf_option application_397_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
     
-static const struct driconf_option application_396_options[] = {
+static const struct driconf_option application_399_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
-};
-
-    
-static const struct driconf_option application_398_options[] = {
-    { .name = "radeonsi_zerovram", .value = "true" },
-    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
 };
 
     
 static const struct driconf_option application_401_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
+    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
 };
 
     
-static const struct driconf_option application_403_options[] = {
+static const struct driconf_option application_404_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
 };
 
     
-static const struct driconf_option application_405_options[] = {
+static const struct driconf_option application_406_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
 };
 
     
-static const struct driconf_option application_407_options[] = {
-    { .name = "radeonsi_sync_compile", .value = "true" },
+static const struct driconf_option application_408_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
 };
 
     
 static const struct driconf_option application_410_options[] = {
     { .name = "radeonsi_sync_compile", .value = "true" },
-};
-
-    
-static const struct driconf_option application_412_options[] = {
-    { .name = "radeonsi_sync_compile", .value = "true" },
-};
-
-    
-static const struct driconf_option application_414_options[] = {
-    { .name = "radeonsi_sync_compile", .value = "true" },
-};
-
-    
-static const struct driconf_option application_416_options[] = {
-    { .name = "radeonsi_sync_compile", .value = "true" },
-};
-
-    
-static const struct driconf_option application_418_options[] = {
-    { .name = "radeonsi_sync_compile", .value = "true" },
-};
-
-    
-static const struct driconf_option application_420_options[] = {
-    { .name = "radeonsi_no_infinite_interp", .value = "true" },
-};
-
-    
-static const struct driconf_option application_422_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
 };
 
     
-static const struct driconf_option application_424_options[] = {
-    { .name = "radeonsi_zerovram", .value = "true" },
-};
-
-    
-static const struct driconf_option application_426_options[] = {
+static const struct driconf_option application_413_options[] = {
     { .name = "radeonsi_sync_compile", .value = "true" },
 };
 
     
-static const struct driconf_option application_428_options[] = {
-    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
+static const struct driconf_option application_415_options[] = {
+    { .name = "radeonsi_sync_compile", .value = "true" },
 };
 
     
-static const struct driconf_option application_430_options[] = {
-    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
+static const struct driconf_option application_417_options[] = {
+    { .name = "radeonsi_sync_compile", .value = "true" },
 };
 
     
-static const struct driconf_option application_432_options[] = {
-    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
+static const struct driconf_option application_419_options[] = {
+    { .name = "radeonsi_sync_compile", .value = "true" },
+};
+
+    
+static const struct driconf_option application_421_options[] = {
+    { .name = "radeonsi_sync_compile", .value = "true" },
+};
+
+    
+static const struct driconf_option application_423_options[] = {
     { .name = "radeonsi_no_infinite_interp", .value = "true" },
+};
+
+    
+static const struct driconf_option application_425_options[] = {
+    { .name = "radeonsi_zerovram", .value = "true" },
+};
+
+    
+static const struct driconf_option application_427_options[] = {
+    { .name = "radeonsi_zerovram", .value = "true" },
+};
+
+    
+static const struct driconf_option application_429_options[] = {
+    { .name = "radeonsi_sync_compile", .value = "true" },
+};
+
+    
+static const struct driconf_option application_431_options[] = {
+    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
+};
+
+    
+static const struct driconf_option application_433_options[] = {
+    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
 };
 
     
 static const struct driconf_option application_435_options[] = {
+    { .name = "radeonsi_clamp_div_by_zero", .value = "true" },
+    { .name = "radeonsi_no_infinite_interp", .value = "true" },
+};
+
+    
+static const struct driconf_option application_438_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
     
-static const struct driconf_option application_437_options[] = {
+static const struct driconf_option application_440_options[] = {
     { .name = "force_gl_vendor", .value = "ATI Technologies Inc." },
 };
 
     
-static const struct driconf_option application_439_options[] = {
+static const struct driconf_option application_442_options[] = {
     { .name = "force_gl_vendor", .value = "ATI Technologies Inc." },
 };
 
     
-static const struct driconf_option application_441_options[] = {
+static const struct driconf_option application_444_options[] = {
     { .name = "force_gl_vendor", .value = "ATI Technologies Inc." },
     { .name = "radeonsi_force_use_fma32", .value = "true" },
 };
 
     
-static const struct driconf_option application_444_options[] = {
+static const struct driconf_option application_447_options[] = {
     { .name = "radeonsi_zerovram", .value = "true" },
 };
 
 
-static const struct driconf_application device_393_applications[] = {
+static const struct driconf_application device_396_applications[] = {
     { .name = "Alien Isolation",
       .executable = "AlienIsolation",
       .num_options = 1,
-      .options = application_394_options,
+      .options = application_397_options,
     },
     { .name = "American Truck Simulator",
       .executable = "amtrucks",
       .num_options = 1,
-      .options = application_396_options,
+      .options = application_399_options,
     },
     { .name = "Counter-Strike Global Offensive",
       .executable = "csgo_linux64",
       .num_options = 2,
-      .options = application_398_options,
+      .options = application_401_options,
     },
     { .name = "Exanima",
       .executable = "Exanima.exe",
       .num_options = 1,
-      .options = application_401_options,
+      .options = application_404_options,
     },
     { .name = "Nowhere Patrol",
       .executable = "NowherePatrol.exe",
       .num_options = 1,
-      .options = application_403_options,
+      .options = application_406_options,
     },
     { .name = "Rocket League",
       .executable = "RocketLeague",
       .num_options = 1,
-      .options = application_405_options,
+      .options = application_408_options,
     },
     { .name = "Monolith demo5",
       .executable = "runner",
       .sha1 = "0c40d509a74e357f0280cb1bd882e9cd94b91bdf",
       .num_options = 2,
-      .options = application_407_options,
+      .options = application_410_options,
     },
     { .name = "Memoranda / Riptale",
       .executable = "runner",
       .sha1 = "aa13dec6af63c88f308ebb487693896434a4db56",
       .num_options = 1,
-      .options = application_410_options,
+      .options = application_413_options,
     },
     { .name = "Nuclear Throne",
       .executable = "runner",
       .sha1 = "84814e8db125e889f5d9d4195a0ca72a871ea1fd",
       .num_options = 1,
-      .options = application_412_options,
+      .options = application_415_options,
     },
     { .name = "Undertale",
       .executable = "runner",
       .sha1 = "dfa302e7ec78641d0696dbbc1a06fc29f34ff1ff",
       .num_options = 1,
-      .options = application_414_options,
+      .options = application_417_options,
     },
     { .name = "Turmoil",
       .executable = "runner",
       .sha1 = "cbbf757aaab289859f8dae191a7d63afc30643d9",
       .num_options = 1,
-      .options = application_416_options,
+      .options = application_419_options,
     },
     { .name = "Peace, Death!",
       .executable = "runner",
       .sha1 = "5b909f3d21799773370adf084f649848f098234e",
       .num_options = 1,
-      .options = application_418_options,
+      .options = application_421_options,
     },
     { .name = "Kerbal Space Program",
       .executable = "KSP.x86_64",
       .num_options = 1,
-      .options = application_420_options,
+      .options = application_423_options,
     },
     { .name = "7 Days to Die",
       .executable = "7DaysToDie.x86_64",
       .num_options = 1,
-      .options = application_422_options,
+      .options = application_425_options,
     },
     { .name = "7 Days to Die",
       .executable = "7DaysToDie.x86",
       .num_options = 1,
-      .options = application_424_options,
+      .options = application_427_options,
     },
     { .name = "SPECviewperf13",
       .executable = "viewperf",
       .num_options = 1,
-      .options = application_426_options,
+      .options = application_429_options,
     },
     { .name = "Road Redemption",
       .executable = "RoadRedemption.x86_64",
       .num_options = 1,
-      .options = application_428_options,
+      .options = application_431_options,
     },
     { .name = "Wasteland 2",
       .executable = "WL2",
       .num_options = 1,
-      .options = application_430_options,
+      .options = application_433_options,
     },
     { .name = "Teardown",
       .executable = "teardown.exe",
       .num_options = 2,
-      .options = application_432_options,
+      .options = application_435_options,
     },
     { .name = "SpaceEngine",
       .executable = "SpaceEngine.exe",
       .num_options = 1,
-      .options = application_435_options,
+      .options = application_438_options,
     },
     { .name = "BETA CAE Systems - GL detect tool",
       .executable = "detect_opengl_tool",
       .num_options = 1,
-      .options = application_437_options,
+      .options = application_440_options,
     },
     { .name = "BETA CAE Systems - ANSA",
       .executable = "ansa_linux_x86_64",
       .num_options = 1,
-      .options = application_439_options,
+      .options = application_442_options,
     },
     { .name = "BETA CAE Systems - META",
       .executable = "meta_post_x86_64",
       .num_options = 2,
-      .options = application_441_options,
+      .options = application_444_options,
     },
     { .name = "Black Geyser: Couriers of Darkness",
       .executable = "BlackGeyser.x86_64",
       .num_options = 1,
-      .options = application_444_options,
+      .options = application_447_options,
     },
 };
 
-static const struct driconf_device device_393 = {
+static const struct driconf_device device_396 = {
     .driver = "radeonsi",
     .num_engines = 0,
     .num_applications = 24,
-    .applications = device_393_applications,
+    .applications = device_396_applications,
 };
 
 
     
-static const struct driconf_option application_447_options[] = {
+static const struct driconf_option application_450_options[] = {
     { .name = "mesa_glthread_app_profile", .value = "0" },
 };
 
     
-static const struct driconf_option application_449_options[] = {
+static const struct driconf_option application_452_options[] = {
     { .name = "glsl_correct_derivatives_after_discard", .value = "true" },
 };
 
     
-static const struct driconf_option application_451_options[] = {
+static const struct driconf_option application_454_options[] = {
     { .name = "mesa_extension_override", .value = "+GL_EXT_shader_image_load_store" },
 };
 
     
-static const struct driconf_option application_453_options[] = {
+static const struct driconf_option application_456_options[] = {
     { .name = "zink_emulate_point_smooth", .value = "true" },
 };
 
     
-static const struct driconf_option application_455_options[] = {
+static const struct driconf_option application_458_options[] = {
     { .name = "zink_emulate_point_smooth", .value = "true" },
 };
 
     
-static const struct driconf_option application_457_options[] = {
+static const struct driconf_option application_460_options[] = {
     { .name = "zink_emulate_point_smooth", .value = "true" },
 };
 
     
-static const struct driconf_option application_459_options[] = {
+static const struct driconf_option application_462_options[] = {
     { .name = "zink_shader_object_enable", .value = "true" },
 };
 
 
-static const struct driconf_application device_446_applications[] = {
+static const struct driconf_application device_449_applications[] = {
     { .name = "Hyperdimension Neptunia Re;Birth1",
       .executable = "NeptuniaReBirth1.exe",
       .num_options = 1,
-      .options = application_447_options,
+      .options = application_450_options,
     },
     { .name = "Borderlands 2 (Native, OpenGL, 32bit)",
       .executable = "Borderlands2",
       .num_options = 1,
-      .options = application_449_options,
+      .options = application_452_options,
     },
     { .name = "SPECviewperf13",
       .executable = "viewperf",
       .num_options = 1,
-      .options = application_451_options,
+      .options = application_454_options,
     },
     { .name = "Quake II",
       .executable = "quake2-engine",
       .num_options = 1,
-      .options = application_453_options,
+      .options = application_456_options,
     },
     { .name = "Quake II (yamagi)",
       .executable = "yamagi-quake2",
       .num_options = 1,
-      .options = application_455_options,
+      .options = application_458_options,
     },
     { .name = "Quake II (wine)",
       .executable = "quake2.exe",
       .num_options = 1,
-      .options = application_457_options,
+      .options = application_460_options,
     },
     { .name = "Tomb Raider 2013",
       .executable = "TombRaider",
       .num_options = 1,
-      .options = application_459_options,
+      .options = application_462_options,
     },
 };
 
-static const struct driconf_device device_446 = {
+static const struct driconf_device device_449 = {
     .driver = "zink",
     .num_engines = 0,
     .num_applications = 7,
-    .applications = device_446_applications,
+    .applications = device_449_applications,
 };
 
 
     
-static const struct driconf_option application_462_options[] = {
+static const struct driconf_option application_465_options[] = {
     { .name = "vs_position_always_invariant", .value = "true" },
 };
 
     
-static const struct driconf_option application_464_options[] = {
+static const struct driconf_option application_467_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_466_options[] = {
+static const struct driconf_option application_469_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
     
-static const struct driconf_option application_468_options[] = {
+static const struct driconf_option application_471_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
     
-static const struct driconf_option application_470_options[] = {
+static const struct driconf_option application_473_options[] = {
     { .name = "mesa_extension_override", .value = "+GL_EXT_shader_image_load_store" },
 };
 
 
-static const struct driconf_application device_461_applications[] = {
+static const struct driconf_application device_464_applications[] = {
     { .name = "Middle Earth: Shadow of Mordor",
       .executable = "ShadowOfMordor",
       .num_options = 1,
-      .options = application_462_options,
+      .options = application_465_options,
     },
     { .name = "glmark2",
       .executable = "glmark2",
       .num_options = 1,
-      .options = application_464_options,
+      .options = application_467_options,
     },
     { .name = "Counter-Strike: Global Offensive",
       .executable = "csgo_linux64",
       .num_options = 1,
-      .options = application_466_options,
+      .options = application_469_options,
     },
     { .name = "Insurgency",
       .executable = "insurgency_linux",
       .num_options = 1,
-      .options = application_468_options,
+      .options = application_471_options,
     },
     { .name = "SPECviewperf13",
       .executable = "viewperf",
       .num_options = 1,
-      .options = application_470_options,
+      .options = application_473_options,
     },
 };
 
-static const struct driconf_device device_461 = {
+static const struct driconf_device device_464 = {
     .driver = "iris",
     .num_engines = 0,
     .num_applications = 5,
-    .applications = device_461_applications,
+    .applications = device_464_applications,
 };
 
 
     
-static const struct driconf_option application_473_options[] = {
+static const struct driconf_option application_476_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_475_options[] = {
+static const struct driconf_option application_478_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
     
-static const struct driconf_option application_477_options[] = {
+static const struct driconf_option application_480_options[] = {
     { .name = "force_gl_vendor", .value = "X.Org" },
 };
 
 
-static const struct driconf_application device_472_applications[] = {
+static const struct driconf_application device_475_applications[] = {
     { .name = "glmark2",
       .executable = "glmark2",
       .num_options = 1,
-      .options = application_473_options,
+      .options = application_476_options,
     },
     { .name = "Counter-Strike: Global Offensive",
       .executable = "csgo_linux64",
       .num_options = 1,
-      .options = application_475_options,
+      .options = application_478_options,
     },
     { .name = "Insurgency",
       .executable = "insurgency_linux",
       .num_options = 1,
-      .options = application_477_options,
+      .options = application_480_options,
     },
 };
 
-static const struct driconf_device device_472 = {
+static const struct driconf_device device_475 = {
     .driver = "crocus",
     .num_engines = 0,
     .num_applications = 3,
-    .applications = device_472_applications,
+    .applications = device_475_applications,
 };
     
-static const struct driconf_option engine_575_options[] = {
+static const struct driconf_option engine_578_options[] = {
     { .name = "anv_force_filter_addr_rounding", .value = "true" },
 };
 
     
-static const struct driconf_option engine_577_options[] = {
+static const struct driconf_option engine_580_options[] = {
     { .name = "anv_enable_buffer_comp", .value = "true" },
 };
 
     
-static const struct driconf_option engine_579_options[] = {
+static const struct driconf_option engine_582_options[] = {
     { .name = "anv_enable_buffer_comp", .value = "true" },
 };
 
     
-static const struct driconf_option engine_581_options[] = {
+static const struct driconf_option engine_584_options[] = {
     { .name = "no_16bit", .value = "true" },
 };
 
     
-static const struct driconf_option engine_583_options[] = {
+static const struct driconf_option engine_586_options[] = {
     { .name = "anv_disable_fcv", .value = "true" },
     { .name = "anv_assume_full_subgroups", .value = "16" },
 };
 
     
-static const struct driconf_option engine_586_options[] = {
+static const struct driconf_option engine_589_options[] = {
     { .name = "compression_control_enabled", .value = "true" },
 };
 
     
-static const struct driconf_option engine_588_options[] = {
+static const struct driconf_option engine_591_options[] = {
     { .name = "custom_border_colors_without_format", .value = "true" },
 };
 
 
-static const struct driconf_engine device_479_engines[] = {
+static const struct driconf_engine device_482_engines[] = {
     { .engine_name_match = "vkd3d|DXVK",
       .num_options = 1,
-      .options = engine_575_options,
+      .options = engine_578_options,
     },
     { .engine_name_match = "Source2",
       .num_options = 1,
-      .options = engine_577_options,
+      .options = engine_580_options,
     },
     { .engine_name_match = "vkd3d",
       .num_options = 1,
-      .options = engine_579_options,
+      .options = engine_582_options,
     },
     { .engine_name_match = "mesa zink",
       .num_options = 1,
-      .options = engine_581_options,
+      .options = engine_584_options,
     },
     { .engine_name_match = "UnrealEngine5.1",
       .num_options = 2,
-      .options = engine_583_options,
+      .options = engine_586_options,
     },
     { .engine_name_match = "vkd3d",
       .num_options = 1,
-      .options = engine_586_options,
+      .options = engine_589_options,
     },
     { .engine_name_match = "ANGLE",
       .num_options = 1,
-      .options = engine_588_options,
+      .options = engine_591_options,
     },
 };
 
     
-static const struct driconf_option application_480_options[] = {
+static const struct driconf_option application_483_options[] = {
     { .name = "anv_assume_full_subgroups", .value = "32" },
 };
 
     
-static const struct driconf_option application_482_options[] = {
+static const struct driconf_option application_485_options[] = {
     { .name = "intel_storage_cache_policy_wt", .value = "true" },
 };
 
     
-static const struct driconf_option application_484_options[] = {
+static const struct driconf_option application_487_options[] = {
     { .name = "anv_assume_full_subgroups_with_barrier", .value = "true" },
 };
 
     
-static const struct driconf_option application_486_options[] = {
+static const struct driconf_option application_489_options[] = {
     { .name = "hasvk_report_vk_1_3_version", .value = "true" },
 };
 
     
-static const struct driconf_option application_488_options[] = {
+static const struct driconf_option application_491_options[] = {
     { .name = "anv_assume_full_subgroups", .value = "32" },
     { .name = "fp64_workaround_enabled", .value = "true" },
 };
 
     
-static const struct driconf_option application_491_options[] = {
+static const struct driconf_option application_494_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_493_options[] = {
+static const struct driconf_option application_496_options[] = {
     { .name = "anv_large_workgroup_non_coherent_image_workaround", .value = "true" },
 };
 
     
-static const struct driconf_option application_495_options[] = {
+static const struct driconf_option application_498_options[] = {
     { .name = "anv_large_workgroup_non_coherent_image_workaround", .value = "true" },
 };
 
     
-static const struct driconf_option application_497_options[] = {
+static const struct driconf_option application_500_options[] = {
     { .name = "anv_assume_full_subgroups_with_shared_memory", .value = "true" },
 };
 
     
-static const struct driconf_option application_499_options[] = {
+static const struct driconf_option application_502_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_501_options[] = {
+static const struct driconf_option application_504_options[] = {
     { .name = "anv_sample_mask_out_opengl_behaviour", .value = "true" },
 };
 
     
-static const struct driconf_option application_503_options[] = {
+static const struct driconf_option application_506_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_505_options[] = {
+static const struct driconf_option application_508_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_507_options[] = {
+static const struct driconf_option application_510_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_509_options[] = {
+static const struct driconf_option application_512_options[] = {
     { .name = "vk_lower_terminate_to_discard", .value = "true" },
 };
 
     
-static const struct driconf_option application_511_options[] = {
+static const struct driconf_option application_514_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_513_options[] = {
+static const struct driconf_option application_516_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_515_options[] = {
+static const struct driconf_option application_518_options[] = {
     { .name = "limit_trig_input_range", .value = "true" },
 };
 
     
-static const struct driconf_option application_517_options[] = {
+static const struct driconf_option application_520_options[] = {
     { .name = "shader_spilling_rate", .value = "15" },
 };
 
     
-static const struct driconf_option application_519_options[] = {
+static const struct driconf_option application_522_options[] = {
     { .name = "fake_sparse", .value = "true" },
 };
 
     
-static const struct driconf_option application_521_options[] = {
+static const struct driconf_option application_524_options[] = {
     { .name = "fake_sparse", .value = "true" },
-};
-
-    
-static const struct driconf_option application_523_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-    { .name = "shader_spilling_rate", .value = "0" },
 };
 
     
 static const struct driconf_option application_526_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
+    { .name = "shader_spilling_rate", .value = "0" },
 };
 
     
-static const struct driconf_option application_528_options[] = {
+static const struct driconf_option application_529_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
-    { .name = "intel_storage_cache_policy_wt", .value = "true" },
 };
 
     
 static const struct driconf_option application_531_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_533_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_535_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_537_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_539_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_541_options[] = {
     { .name = "intel_storage_cache_policy_wt", .value = "true" },
 };
 
     
-static const struct driconf_option application_543_options[] = {
+static const struct driconf_option application_534_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_545_options[] = {
+static const struct driconf_option application_536_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_547_options[] = {
+static const struct driconf_option application_538_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_540_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_542_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_544_options[] = {
+    { .name = "intel_storage_cache_policy_wt", .value = "true" },
+};
+
+    
+static const struct driconf_option application_546_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_548_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_550_options[] = {
     { .name = "anv_disable_fcv", .value = "true" },
 };
 
     
-static const struct driconf_option application_549_options[] = {
+static const struct driconf_option application_552_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_551_options[] = {
+static const struct driconf_option application_554_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_553_options[] = {
+static const struct driconf_option application_556_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_555_options[] = {
+static const struct driconf_option application_558_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_557_options[] = {
+static const struct driconf_option application_560_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_559_options[] = {
+static const struct driconf_option application_562_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_561_options[] = {
+static const struct driconf_option application_564_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_563_options[] = {
+static const struct driconf_option application_566_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_565_options[] = {
+static const struct driconf_option application_568_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_567_options[] = {
+static const struct driconf_option application_570_options[] = {
     { .name = "force_vk_vendor", .value = "-1" },
 };
 
     
-static const struct driconf_option application_569_options[] = {
+static const struct driconf_option application_572_options[] = {
     { .name = "fp64_workaround_enabled", .value = "true" },
 };
 
     
-static const struct driconf_option application_571_options[] = {
+static const struct driconf_option application_574_options[] = {
     { .name = "anv_upper_bound_descriptor_pool_sampler", .value = "true" },
 };
 
     
-static const struct driconf_option application_573_options[] = {
+static const struct driconf_option application_576_options[] = {
     { .name = "anv_fake_nonlocal_memory", .value = "true" },
 };
 
 
-static const struct driconf_application device_479_applications[] = {
+static const struct driconf_application device_482_applications[] = {
     { .name = "Aperture Desk Job",
       .executable = "deskjob",
       .num_options = 1,
-      .options = application_480_options,
+      .options = application_483_options,
     },
     { .name = "A Plague Tale : Requiem",
       .executable = "APlagueTaleRequiem_x64.exe",
       .num_options = 1,
-      .options = application_482_options,
+      .options = application_485_options,
     },
     { .name = "Breaking Limit",
       .executable = "GPUScoreVulkan",
       .num_options = 1,
-      .options = application_484_options,
+      .options = application_487_options,
     },
     { .name = "Brawlhalla",
       .executable = "BrawlhallaGame.exe",
       .num_options = 1,
-      .options = application_486_options,
+      .options = application_489_options,
     },
     { .name = "DOOMEternal",
       .executable = "DOOMEternalx64vk.exe",
       .num_options = 2,
-      .options = application_488_options,
+      .options = application_491_options,
     },
     { .name = "Drive Beyond Horizons",
       .executable = "DriveBeyondHorizons.exe",
       .num_options = 1,
-      .options = application_491_options,
+      .options = application_494_options,
     },
     { .name = "The Last Of Us Part I",
       .executable = "tlou-i.exe",
       .num_options = 1,
-      .options = application_493_options,
+      .options = application_496_options,
     },
     { .name = "The Last Of Us Part II Remastered",
       .executable = "tlou-ii.exe",
       .num_options = 1,
-      .options = application_495_options,
+      .options = application_498_options,
     },
     { .name = "RESIDENT EVIL 2",
       .executable = "re2.exe",
       .num_options = 1,
-      .options = application_497_options,
+      .options = application_500_options,
     },
     { .name = "Wolfenstein: Youngblood(x64vk)",
       .executable = "Youngblood_x64vk.exe",
       .num_options = 1,
-      .options = application_499_options,
+      .options = application_502_options,
     },
     { .name = "Batman™: Arkham Knight",
       .executable = "BatmanAK.exe",
       .num_options = 1,
-      .options = application_501_options,
+      .options = application_504_options,
     },
     { .name = "Company of Heroes 3",
       .executable = "RelicCoH3.exe",
       .num_options = 1,
-      .options = application_503_options,
+      .options = application_506_options,
     },
     { .name = "Rise of the Tomb Raider",
       .executable = "RiseOfTheTombRaider",
       .num_options = 1,
-      .options = application_505_options,
+      .options = application_508_options,
     },
     { .name = "Rise of the Tomb Raider",
       .executable = "ROTTR.exe",
       .num_options = 1,
-      .options = application_507_options,
+      .options = application_510_options,
     },
     { .name = "Sky: Children of the Light",
       .executable = "Sky.exe",
       .num_options = 1,
-      .options = application_509_options,
+      .options = application_512_options,
     },
     { .name = "NieR Replicant ver.1.22474487139",
       .executable = "NieR Replicant ver.1.22474487139.exe",
       .num_options = 1,
-      .options = application_511_options,
+      .options = application_514_options,
     },
     { .name = "NieR:Automata",
       .executable = "NieRAutomata.exe",
       .num_options = 1,
-      .options = application_513_options,
+      .options = application_516_options,
     },
     { .name = "Valheim",
       .executable = "valheim.x86_64",
       .num_options = 1,
-      .options = application_515_options,
+      .options = application_518_options,
     },
     { .name = "Cyberpunk 2077",
       .executable = "Cyberpunk2077.exe",
       .num_options = 1,
-      .options = application_517_options,
+      .options = application_520_options,
     },
     { .name = "Elden Ring",
       .executable = "eldenring.exe",
       .num_options = 1,
-      .options = application_519_options,
+      .options = application_522_options,
     },
     { .name = "Armored Core 6",
       .executable = "armoredcore6.exe",
       .num_options = 1,
-      .options = application_521_options,
+      .options = application_524_options,
     },
     { .name = "Marvel's Spider-Man Remastered",
       .executable = "Spider-Man.exe",
       .num_options = 2,
-      .options = application_523_options,
+      .options = application_526_options,
     },
     { .name = "Hitman 3",
       .executable = "hitman3.exe",
       .num_options = 1,
-      .options = application_526_options,
+      .options = application_529_options,
     },
     { .name = "Hogwarts Legacy",
       .executable = "HogwartsLegacy.exe",
       .num_options = 2,
-      .options = application_528_options,
+      .options = application_531_options,
     },
     { .name = "DEATH STRANDING",
       .executable = "ds.exe",
       .num_options = 1,
-      .options = application_531_options,
+      .options = application_534_options,
     },
     { .name = "Diablo IV",
       .executable = "Diablo IV.exe",
       .num_options = 1,
-      .options = application_533_options,
+      .options = application_536_options,
     },
     { .name = "Faaast Penguin",
       .executable = "FaaastPenguinClient.exe",
       .num_options = 1,
-      .options = application_535_options,
+      .options = application_538_options,
     },
     { .name = "Satisfactory Steam",
       .executable = "FactoryGameSteam-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_537_options,
+      .options = application_540_options,
     },
     { .name = "Satisfactory EGS",
       .executable = "FactoryGameEGS-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_539_options,
+      .options = application_542_options,
     },
     { .name = "Space Engineers 2",
       .executable = "SpaceEngineers2.exe",
       .num_options = 1,
-      .options = application_541_options,
+      .options = application_544_options,
     },
     { .name = "Dying Light 2",
       .executable = "DyingLightGame_x64_rwdi.exe",
       .num_options = 1,
-      .options = application_543_options,
+      .options = application_546_options,
     },
     { .name = "Witcher3",
       .executable = "witcher3.exe",
       .num_options = 1,
-      .options = application_545_options,
+      .options = application_548_options,
     },
     { .name = "Baldur's Gate 3",
       .executable = "bg3.exe",
       .num_options = 1,
-      .options = application_547_options,
+      .options = application_550_options,
     },
     { .name = "The Finals",
       .executable = "Discovery.exe",
       .num_options = 1,
-      .options = application_549_options,
+      .options = application_552_options,
     },
     { .name = "Palworld2",
       .executable = "Palworld-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_551_options,
+      .options = application_554_options,
     },
     { .name = "Red Dead Redemption 2",
       .executable = "RDR2.exe",
       .num_options = 1,
-      .options = application_553_options,
+      .options = application_556_options,
     },
     { .name = "Shadow of the Tomb Raider",
       .executable = "SOTTR.exe",
       .num_options = 1,
-      .options = application_555_options,
+      .options = application_558_options,
     },
     { .name = "Silent Hill 2",
       .executable = "SHProto-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_557_options,
+      .options = application_560_options,
     },
     { .name = "Marvel Rivals",
       .executable = "Marvel-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_559_options,
+      .options = application_562_options,
     },
     { .name = "Bellwright",
       .executable = "BellwrightGame-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_561_options,
+      .options = application_564_options,
     },
     { .name = "A Game About Digging A Hole",
       .executable = "DiggingGame.exe",
       .num_options = 1,
-      .options = application_563_options,
+      .options = application_566_options,
     },
     { .name = "Jusant",
       .executable = "ASC-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_565_options,
+      .options = application_568_options,
     },
     { .name = "Wuthering Waves",
       .executable = "Client-Win64-Shipping.exe",
       .num_options = 1,
-      .options = application_567_options,
+      .options = application_570_options,
     },
     { .name = "DIRT 5",
       .executable = "DIRT5.exe",
       .num_options = 1,
-      .options = application_569_options,
+      .options = application_572_options,
     },
     { .name = "X4 Foundations",
       .executable = "X4",
       .num_options = 1,
-      .options = application_571_options,
+      .options = application_574_options,
     },
     { .name = "Total War: WARHAMMER III",
       .executable = "TotalWarhammer3",
       .num_options = 1,
-      .options = application_573_options,
+      .options = application_576_options,
     },
 };
 
-static const struct driconf_device device_479 = {
+static const struct driconf_device device_482 = {
     .driver = "anv",
     .num_engines = 7,
-    .engines = device_479_engines,
+    .engines = device_482_engines,
     .num_applications = 46,
-    .applications = device_479_applications,
+    .applications = device_482_applications,
 };
 
 
     
-static const struct driconf_option application_591_options[] = {
+static const struct driconf_option application_594_options[] = {
     { .name = "dzn_enable_8bit_loads_stores", .value = "true" },
     { .name = "dzn_claim_wide_lines", .value = "true" },
 };
 
     
-static const struct driconf_option application_594_options[] = {
+static const struct driconf_option application_597_options[] = {
     { .name = "dzn_claim_wide_lines", .value = "true" },
 };
 
     
-static const struct driconf_option application_596_options[] = {
+static const struct driconf_option application_599_options[] = {
     { .name = "dzn_disable", .value = "true" },
 };
 
     
-static const struct driconf_option application_598_options[] = {
+static const struct driconf_option application_601_options[] = {
     { .name = "dzn_disable", .value = "true" },
 };
 
 
-static const struct driconf_application device_590_applications[] = {
+static const struct driconf_application device_593_applications[] = {
     { .name = "DOOMEternal",
       .executable = "DOOMEternalx64vk.exe",
       .num_options = 2,
-      .options = application_591_options,
+      .options = application_594_options,
     },
     { .name = "No Man's Sky",
       .executable = "NMS.exe",
       .num_options = 1,
-      .options = application_594_options,
+      .options = application_597_options,
     },
     { .name = "Red Dead Redemption 2",
       .executable = "RDR2.exe",
       .num_options = 1,
-      .options = application_596_options,
+      .options = application_599_options,
     },
     { .name = "Baldur's Gate 3",
       .executable = "bg3.exe",
-      .num_options = 1,
-      .options = application_598_options,
-    },
-};
-
-static const struct driconf_device device_590 = {
-    .driver = "dzn",
-    .num_engines = 0,
-    .num_applications = 4,
-    .applications = device_590_applications,
-};
-
-
-    
-static const struct driconf_option application_601_options[] = {
-    { .name = "mesa_extension_override", .value = "+GL_ARB_texture_view" },
-};
-
-
-static const struct driconf_application device_600_applications[] = {
-    { .name = "Blender",
-      .executable = "blender.exe",
       .num_options = 1,
       .options = application_601_options,
     },
 };
 
-static const struct driconf_device device_600 = {
-    .driver = "d3d12",
+static const struct driconf_device device_593 = {
+    .driver = "dzn",
     .num_engines = 0,
-    .num_applications = 1,
-    .applications = device_600_applications,
+    .num_applications = 4,
+    .applications = device_593_applications,
 };
 
 
     
 static const struct driconf_option application_604_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_606_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
-};
-
-    
-static const struct driconf_option application_608_options[] = {
-    { .name = "force_vk_vendor", .value = "-1" },
+    { .name = "mesa_extension_override", .value = "+GL_ARB_texture_view" },
 };
 
 
 static const struct driconf_application device_603_applications[] = {
-    { .name = "Artifact Classic",
-      .executable = "dcg",
+    { .name = "Blender",
+      .executable = "blender.exe",
       .num_options = 1,
       .options = application_604_options,
-    },
-    { .name = "Deep Rock Galactic",
-      .executable = "FSD.exe",
-      .num_options = 1,
-      .options = application_606_options,
-    },
-    { .name = "X4 Foundations",
-      .executable = "X4",
-      .num_options = 1,
-      .options = application_608_options,
     },
 };
 
 static const struct driconf_device device_603 = {
-    .driver = "nvk",
+    .driver = "d3d12",
     .num_engines = 0,
-    .num_applications = 3,
+    .num_applications = 1,
     .applications = device_603_applications,
 };
 
 
     
-static const struct driconf_option application_611_options[] = {
-    { .name = "r300_nohiz", .value = "true" },
-    { .name = "r300_nozmask", .value = "true" },
+static const struct driconf_option application_607_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
 };
+
+    
+static const struct driconf_option application_609_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+    
+static const struct driconf_option application_611_options[] = {
+    { .name = "force_vk_vendor", .value = "-1" },
+};
+
+
+static const struct driconf_application device_606_applications[] = {
+    { .name = "Artifact Classic",
+      .executable = "dcg",
+      .num_options = 1,
+      .options = application_607_options,
+    },
+    { .name = "Deep Rock Galactic",
+      .executable = "FSD.exe",
+      .num_options = 1,
+      .options = application_609_options,
+    },
+    { .name = "X4 Foundations",
+      .executable = "X4",
+      .num_options = 1,
+      .options = application_611_options,
+    },
+};
+
+static const struct driconf_device device_606 = {
+    .driver = "nvk",
+    .num_engines = 0,
+    .num_applications = 3,
+    .applications = device_606_applications,
+};
+
 
     
 static const struct driconf_option application_614_options[] = {
@@ -2997,114 +3002,98 @@ static const struct driconf_option application_632_options[] = {
 
     
 static const struct driconf_option application_635_options[] = {
+    { .name = "r300_nohiz", .value = "true" },
+    { .name = "r300_nozmask", .value = "true" },
+};
+
+    
+static const struct driconf_option application_638_options[] = {
     { .name = "r300_ffmath", .value = "true" },
 };
 
     
-static const struct driconf_option application_637_options[] = {
+static const struct driconf_option application_640_options[] = {
     { .name = "r300_ffmath", .value = "true" },
 };
 
 
-static const struct driconf_application device_610_applications[] = {
+static const struct driconf_application device_613_applications[] = {
     { .name = "X server",
       .executable = "X",
       .num_options = 2,
-      .options = application_611_options,
+      .options = application_614_options,
     },
     { .name = "X server",
       .executable = "Xorg",
       .num_options = 2,
-      .options = application_614_options,
+      .options = application_617_options,
     },
     { .name = "Compiz",
       .executable = "check_gl_texture_size",
       .num_options = 2,
-      .options = application_617_options,
+      .options = application_620_options,
     },
     { .name = "Compiz",
       .executable = "Compiz",
       .num_options = 2,
-      .options = application_620_options,
+      .options = application_623_options,
     },
     { .name = "GNOME Shell",
       .executable = "gnome-session-check-accelerated-helper",
       .num_options = 2,
-      .options = application_623_options,
+      .options = application_626_options,
     },
     { .name = "GNOME Shell",
       .executable = "gnome-shell",
       .num_options = 2,
-      .options = application_626_options,
+      .options = application_629_options,
     },
     { .name = "KWin",
       .executable = "kwin_opengl_test",
       .num_options = 2,
-      .options = application_629_options,
+      .options = application_632_options,
     },
     { .name = "KWin",
       .executable = "kwin",
       .num_options = 2,
-      .options = application_632_options,
+      .options = application_635_options,
     },
     { .name = "Unigine Tropics",
       .executable = "Tropics",
       .num_options = 1,
-      .options = application_635_options,
+      .options = application_638_options,
     },
     { .name = "Oilrush",
       .executable = "Oilrush_x86",
-      .num_options = 1,
-      .options = application_637_options,
-    },
-};
-
-static const struct driconf_device device_610 = {
-    .driver = "r300",
-    .num_engines = 0,
-    .num_applications = 10,
-    .applications = device_610_applications,
-};
-
-
-    
-static const struct driconf_option application_640_options[] = {
-    { .name = "mesa_extension_override", .value = "-GL_ARB_shader_image_load_store" },
-};
-
-
-static const struct driconf_application device_639_applications[] = {
-    { .name = "Tomb Raider 2013",
-      .executable = "TombRaider",
       .num_options = 1,
       .options = application_640_options,
     },
 };
 
-static const struct driconf_device device_639 = {
-    .driver = "r600",
+static const struct driconf_device device_613 = {
+    .driver = "r300",
     .num_engines = 0,
-    .num_applications = 1,
-    .applications = device_639_applications,
+    .num_applications = 10,
+    .applications = device_613_applications,
 };
 
 
     
 static const struct driconf_option application_643_options[] = {
-    { .name = "format_l8_srgb_enable_readback", .value = "true" },
+    { .name = "mesa_extension_override", .value = "-GL_ARB_shader_image_load_store" },
 };
 
 
 static const struct driconf_application device_642_applications[] = {
-    { .name = "Counter-Strike Global Offensive",
-      .executable = "csgo_linux64",
+    { .name = "Tomb Raider 2013",
+      .executable = "TombRaider",
       .num_options = 1,
       .options = application_643_options,
     },
 };
 
 static const struct driconf_device device_642 = {
-    .driver = "virtio_gpu",
+    .driver = "r600",
     .num_engines = 0,
     .num_applications = 1,
     .applications = device_642_applications,
@@ -3113,234 +3102,235 @@ static const struct driconf_device device_642 = {
 
     
 static const struct driconf_option application_646_options[] = {
-    { .name = "force_gl_renderer", .value = "Adreno (TM) 618" },
-    { .name = "force_gl_vendor", .value = "Qualcomm" },
-};
-
-    
-static const struct driconf_option application_649_options[] = {
-    { .name = "force_gl_renderer", .value = "Adreno (TM) 630" },
-    { .name = "force_gl_vendor", .value = "Qualcomm" },
-};
-
-    
-static const struct driconf_option application_652_options[] = {
-    { .name = "force_gl_renderer", .value = "Adreno (TM) 618" },
-    { .name = "force_gl_vendor", .value = "Qualcomm" },
-};
-
-    
-static const struct driconf_option application_655_options[] = {
-    { .name = "force_gl_renderer", .value = "Adreno (TM) 630" },
-    { .name = "force_gl_vendor", .value = "Qualcomm" },
+    { .name = "format_l8_srgb_enable_readback", .value = "true" },
 };
 
 
 static const struct driconf_application device_645_applications[] = {
-    { .name = "Call of Duty Mobile",
-      .executable = "com.activision.callofduty.shooter",
-      .num_options = 2,
+    { .name = "Counter-Strike Global Offensive",
+      .executable = "csgo_linux64",
+      .num_options = 1,
       .options = application_646_options,
-    },
-    { .name = "Asphalt 8",
-      .executable = "com.gameloft.android.ANMP.GloftA8HM",
-      .num_options = 2,
-      .options = application_649_options,
-    },
-    { .name = "Asphalt 9",
-      .executable = "com.gameloft.android.ANMP.GloftA9HM",
-      .num_options = 2,
-      .options = application_652_options,
-    },
-    { .name = "PUBG Mobile",
-      .executable = "com.tencent.ig",
-      .num_options = 2,
-      .options = application_655_options,
     },
 };
 
 static const struct driconf_device device_645 = {
-    .driver = "msm",
-    .device = "FD618",
+    .driver = "virtio_gpu",
     .num_engines = 0,
-    .num_applications = 4,
+    .num_applications = 1,
     .applications = device_645_applications,
 };
 
 
     
-static const struct driconf_option application_659_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
+static const struct driconf_option application_649_options[] = {
+    { .name = "force_gl_renderer", .value = "Adreno (TM) 618" },
+    { .name = "force_gl_vendor", .value = "Qualcomm" },
 };
 
     
-static const struct driconf_option application_661_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
+static const struct driconf_option application_652_options[] = {
+    { .name = "force_gl_renderer", .value = "Adreno (TM) 630" },
+    { .name = "force_gl_vendor", .value = "Qualcomm" },
 };
 
     
-static const struct driconf_option application_663_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
+static const struct driconf_option application_655_options[] = {
+    { .name = "force_gl_renderer", .value = "Adreno (TM) 618" },
+    { .name = "force_gl_vendor", .value = "Qualcomm" },
 };
 
     
-static const struct driconf_option application_665_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
-};
-
-    
-static const struct driconf_option application_667_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
-};
-
-    
-static const struct driconf_option application_669_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
-};
-
-    
-static const struct driconf_option application_671_options[] = {
-    { .name = "force_gl_vendor", .value = "angleisbroken" },
-};
-
-    
-static const struct driconf_option application_673_options[] = {
-    { .name = "disable_explicit_sync_heuristic", .value = "true" },
+static const struct driconf_option application_658_options[] = {
+    { .name = "force_gl_renderer", .value = "Adreno (TM) 630" },
+    { .name = "force_gl_vendor", .value = "Qualcomm" },
 };
 
 
-static const struct driconf_application device_658_applications[] = {
-    { .name = "Chromium",
-      .executable = "chromium",
-      .num_options = 1,
-      .options = application_659_options,
-    },
-    { .name = "Chromium",
-      .executable = "chromium-browser",
-      .num_options = 1,
-      .options = application_661_options,
-    },
-    { .name = "Chromium",
-      .executable = "chrome",
-      .num_options = 1,
-      .options = application_663_options,
-    },
-    { .name = "VS Code",
-      .executable = "code",
-      .num_options = 1,
-      .options = application_665_options,
-    },
-    { .name = "element-desktop",
-      .executable = "element-desktop",
-      .num_options = 1,
-      .options = application_667_options,
-    },
-    { .name = "vivaldi-bin",
-      .executable = "vivaldi-bin",
-      .num_options = 1,
-      .options = application_669_options,
-    },
-    { .name = "code",
-      .executable = "vivaldi-bin",
-      .num_options = 1,
-      .options = application_671_options,
-    },
-    { .name = "Xwayland",
-      .executable = "Xwayland",
-      .num_options = 1,
-      .options = application_673_options,
-    },
-};
-
-static const struct driconf_device device_658 = {
-    .driver = "msm",
-    .num_engines = 0,
-    .num_applications = 8,
-    .applications = device_658_applications,
-};
-    
-static const struct driconf_option engine_678_options[] = {
-    { .name = "tu_allow_oob_indirect_ubo_loads", .value = "true" },
-};
-
-    
-static const struct driconf_option engine_680_options[] = {
-    { .name = "tu_disable_d24s8_border_color_workaround", .value = "true" },
-    { .name = "tu_use_tex_coord_round_nearest_even_mode", .value = "true" },
-};
-
-
-static const struct driconf_engine device_675_engines[] = {
-    { .engine_name_match = "DXVK",
-      .engine_versions = "0:8400896",
-      .num_options = 1,
-      .options = engine_678_options,
-    },
-    { .engine_name_match = "DXVK|vkd3d",
+static const struct driconf_application device_648_applications[] = {
+    { .name = "Call of Duty Mobile",
+      .executable = "com.activision.callofduty.shooter",
       .num_options = 2,
-      .options = engine_680_options,
+      .options = application_649_options,
     },
+    { .name = "Asphalt 8",
+      .executable = "com.gameloft.android.ANMP.GloftA8HM",
+      .num_options = 2,
+      .options = application_652_options,
+    },
+    { .name = "Asphalt 9",
+      .executable = "com.gameloft.android.ANMP.GloftA9HM",
+      .num_options = 2,
+      .options = application_655_options,
+    },
+    { .name = "PUBG Mobile",
+      .executable = "com.tencent.ig",
+      .num_options = 2,
+      .options = application_658_options,
+    },
+};
+
+static const struct driconf_device device_648 = {
+    .driver = "msm",
+    .device = "FD618",
+    .num_engines = 0,
+    .num_applications = 4,
+    .applications = device_648_applications,
+};
+
+
+    
+static const struct driconf_option application_662_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_664_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_666_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_668_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_670_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_672_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
+};
+
+    
+static const struct driconf_option application_674_options[] = {
+    { .name = "force_gl_vendor", .value = "angleisbroken" },
 };
 
     
 static const struct driconf_option application_676_options[] = {
-    { .name = "tu_ignore_frag_depth_direction", .value = "true" },
+    { .name = "disable_explicit_sync_heuristic", .value = "true" },
 };
 
 
-static const struct driconf_application device_675_applications[] = {
-    { .name = "Sons Of The Forest",
-      .executable = "SonsOfTheForest.exe",
+static const struct driconf_application device_661_applications[] = {
+    { .name = "Chromium",
+      .executable = "chromium",
+      .num_options = 1,
+      .options = application_662_options,
+    },
+    { .name = "Chromium",
+      .executable = "chromium-browser",
+      .num_options = 1,
+      .options = application_664_options,
+    },
+    { .name = "Chromium",
+      .executable = "chrome",
+      .num_options = 1,
+      .options = application_666_options,
+    },
+    { .name = "VS Code",
+      .executable = "code",
+      .num_options = 1,
+      .options = application_668_options,
+    },
+    { .name = "element-desktop",
+      .executable = "element-desktop",
+      .num_options = 1,
+      .options = application_670_options,
+    },
+    { .name = "vivaldi-bin",
+      .executable = "vivaldi-bin",
+      .num_options = 1,
+      .options = application_672_options,
+    },
+    { .name = "code",
+      .executable = "vivaldi-bin",
+      .num_options = 1,
+      .options = application_674_options,
+    },
+    { .name = "Xwayland",
+      .executable = "Xwayland",
       .num_options = 1,
       .options = application_676_options,
     },
 };
 
-static const struct driconf_device device_675 = {
-    .driver = "turnip",
-    .num_engines = 2,
-    .engines = device_675_engines,
-    .num_applications = 1,
-    .applications = device_675_applications,
+static const struct driconf_device device_661 = {
+    .driver = "msm",
+    .num_engines = 0,
+    .num_applications = 8,
+    .applications = device_661_applications,
 };
     
-static const struct driconf_option engine_684_options[] = {
+static const struct driconf_option engine_681_options[] = {
+    { .name = "tu_allow_oob_indirect_ubo_loads", .value = "true" },
+};
+
+    
+static const struct driconf_option engine_683_options[] = {
+    { .name = "tu_disable_d24s8_border_color_workaround", .value = "true" },
+    { .name = "tu_use_tex_coord_round_nearest_even_mode", .value = "true" },
+};
+
+
+static const struct driconf_engine device_678_engines[] = {
+    { .engine_name_match = "DXVK",
+      .engine_versions = "0:8400896",
+      .num_options = 1,
+      .options = engine_681_options,
+    },
+    { .engine_name_match = "DXVK|vkd3d",
+      .num_options = 2,
+      .options = engine_683_options,
+    },
+};
+
+    
+static const struct driconf_option application_679_options[] = {
+    { .name = "tu_ignore_frag_depth_direction", .value = "true" },
+};
+
+
+static const struct driconf_application device_678_applications[] = {
+    { .name = "Sons Of The Forest",
+      .executable = "SonsOfTheForest.exe",
+      .num_options = 1,
+      .options = application_679_options,
+    },
+};
+
+static const struct driconf_device device_678 = {
+    .driver = "turnip",
+    .num_engines = 2,
+    .engines = device_678_engines,
+    .num_applications = 1,
+    .applications = device_678_applications,
+};
+    
+static const struct driconf_option engine_687_options[] = {
     { .name = "hk_disable_border_emulation", .value = "true" },
 };
 
     
-static const struct driconf_option engine_686_options[] = {
+static const struct driconf_option engine_689_options[] = {
     { .name = "hk_fake_minmax", .value = "true" },
 };
 
 
-static const struct driconf_engine device_683_engines[] = {
+static const struct driconf_engine device_686_engines[] = {
     { .engine_name_match = "DXVK|vkd3d",
       .num_options = 1,
-      .options = engine_684_options,
+      .options = engine_687_options,
     },
     { .engine_name_match = "vkd3d",
-      .num_options = 1,
-      .options = engine_686_options,
-    },
-};
-
-
-
-static const struct driconf_device device_683 = {
-    .driver = "hk",
-    .num_engines = 2,
-    .engines = device_683_engines,
-    .num_applications = 0,
-};
-    
-static const struct driconf_option engine_689_options[] = {
-    { .name = "pan_enable_vertex_pipeline_stores_atomics", .value = "true" },
-};
-
-
-static const struct driconf_engine device_688_engines[] = {
-    { .engine_name_match = "ANGLE",
       .num_options = 1,
       .options = engine_689_options,
     },
@@ -3348,30 +3338,51 @@ static const struct driconf_engine device_688_engines[] = {
 
 
 
-static const struct driconf_device device_688 = {
+static const struct driconf_device device_686 = {
+    .driver = "hk",
+    .num_engines = 2,
+    .engines = device_686_engines,
+    .num_applications = 0,
+};
+    
+static const struct driconf_option engine_692_options[] = {
+    { .name = "pan_enable_vertex_pipeline_stores_atomics", .value = "true" },
+};
+
+
+static const struct driconf_engine device_691_engines[] = {
+    { .engine_name_match = "ANGLE",
+      .num_options = 1,
+      .options = engine_692_options,
+    },
+};
+
+
+
+static const struct driconf_device device_691 = {
     .driver = "panvk",
     .num_engines = 1,
-    .engines = device_688_engines,
+    .engines = device_691_engines,
     .num_applications = 0,
 };
 
 static const struct driconf_device *driconf[] = {
     &device_1,
-    &device_386,
-    &device_393,
-    &device_446,
-    &device_461,
-    &device_472,
-    &device_479,
-    &device_590,
-    &device_600,
+    &device_389,
+    &device_396,
+    &device_449,
+    &device_464,
+    &device_475,
+    &device_482,
+    &device_593,
     &device_603,
-    &device_610,
-    &device_639,
+    &device_606,
+    &device_613,
     &device_642,
     &device_645,
-    &device_658,
-    &device_675,
-    &device_683,
-    &device_688,
+    &device_648,
+    &device_661,
+    &device_678,
+    &device_686,
+    &device_691,
 };
