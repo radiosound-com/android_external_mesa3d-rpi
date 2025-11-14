@@ -212,12 +212,15 @@ droid_window_enqueue_buffer(_EGLDisplay *disp,
 static void
 droid_window_cancel_buffer(struct dri2_egl_surface *dri2_surf)
 {
-   int ret;
+   int ret = -1;
    int fence_fd = dri2_surf->out_fence_fd;
 
    dri2_surf->out_fence_fd = -1;
+   // HACK: don't crash turning off display on AOSP16 QPR1
+   /*
    ret = ANativeWindow_cancelBuffer(dri2_surf->window, dri2_surf->buffer,
                                     fence_fd);
+   */
    dri2_surf->buffer = NULL;
    if (ret < 0) {
       _eglLog(_EGL_WARNING, "ANativeWindow_cancelBuffer failed");
