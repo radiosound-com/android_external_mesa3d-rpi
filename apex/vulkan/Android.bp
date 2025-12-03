@@ -31,5 +31,9 @@ apex {
     prebuilts: [
         "android.hardware.vulkan.broadcom-linker-config",
         "android.hardware.vulkan.broadcom.rc",
+        "android.hardware.vulkan.compute-0.prebuilt.xml",
+        "android.hardware.vulkan.level-1.prebuilt.xml",
+        "android.hardware.vulkan.version-1_3.prebuilt.xml",
+        "android.software.vulkan.deqp.level-latest.prebuilt.xml",
     ],
 }

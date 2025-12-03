@@ -34,5 +34,6 @@ apex {
     prebuilts: [
         "android.hardware.egl.mesa-linker-config",
         "android.hardware.egl.mesa.rc",
+        "android.software.opengles.deqp.level-latest.prebuilt.xml",
     ],
 }
