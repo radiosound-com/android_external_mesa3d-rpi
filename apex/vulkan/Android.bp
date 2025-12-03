@@ -1,0 +1,35 @@
+//
+// Copyright (C) 2025 KonstaKANG
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+linker_config {
+    name: "android.hardware.vulkan.broadcom-linker-config",
+    src: "apex_linkerconfig.json",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "android.hardware.vulkan.broadcom.rc",
+    src: "android.hardware.vulkan.broadcom.rc",
+    installable: false,
+}
+
+apex {
+    name: "com.android.hardware.vulkan.broadcom",
+    manifest: "apex_manifest.json",
+    file_contexts: "apex_file_contexts",
+    key: "com.android.hardware.key",
+    certificate: ":com.android.hardware.certificate",
+    updatable: false,
+    vendor: true,
+
+    native_shared_libs: [
+        "vulkan.broadcom",
+    ],
+    prebuilts: [
+        "android.hardware.vulkan.broadcom-linker-config",
+        "android.hardware.vulkan.broadcom.rc",
+    ],
+}

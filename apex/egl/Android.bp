@@ -5,19 +5,19 @@
 //
 
 linker_config {
-    name: "android.hardware.vulkan.broadcom-linker-config",
+    name: "android.hardware.egl.mesa-linker-config",
     src: "apex_linkerconfig.json",
     installable: false,
 }
 
 prebuilt_etc {
-    name: "android.hardware.vulkan.broadcom.rc",
-    src: "android.hardware.vulkan.broadcom.rc",
+    name: "android.hardware.egl.mesa.rc",
+    src: "android.hardware.egl.mesa.rc",
     installable: false,
 }
 
 apex {
-    name: "com.android.hardware.vulkan.broadcom",
+    name: "com.android.hardware.egl.mesa",
     manifest: "apex_manifest.json",
     file_contexts: "apex_file_contexts",
     key: "com.android.hardware.key",
@@ -25,11 +25,14 @@ apex {
     updatable: false,
     vendor: true,
 
-    prebuilts: [
-        "android.hardware.vulkan.broadcom-linker-config",
-        "android.hardware.vulkan.broadcom.rc",
-    ],
     native_shared_libs: [
-        "vulkan.broadcom",
+        "libEGL_mesa",
+        "libGLESv1_CM_mesa",
+        "libGLESv2_mesa",
+        "libgallium_dri",
+    ],
+    prebuilts: [
+        "android.hardware.egl.mesa-linker-config",
+        "android.hardware.egl.mesa.rc",
     ],
 }
