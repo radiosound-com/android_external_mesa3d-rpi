@@ -2664,6 +2664,7 @@ vk_free_cmd_debug_marker_begin_ext(struct vk_cmd_queue *queue,
                                    struct vk_cmd_queue_entry *cmd)
 {
    if (cmd->u.debug_marker_begin_ext.marker_info) {
+      vk_free(queue->alloc, (void*)cmd->u.debug_marker_begin_ext.marker_info->pMarkerName);
    }
    vk_free(queue->alloc, (void*)cmd->u.debug_marker_begin_ext.marker_info);
 
@@ -2684,7 +2685,7 @@ VkResult vk_enqueue_cmd_debug_marker_begin_ext(struct vk_cmd_queue *queue
       VkDebugMarkerMarkerInfoEXT *tmp_dst1 = (void *)cmd->u.debug_marker_begin_ext.marker_info;
       VkDebugMarkerMarkerInfoEXT *tmp_src2 = (void *)pMarkerInfo;
       memcpy(tmp_dst1, tmp_src2, sizeof(VkDebugMarkerMarkerInfoEXT));
-      tmp_dst1->pMarkerName = strdup(tmp_src2->pMarkerName);
+      tmp_dst1->pMarkerName = vk_strdup(queue->alloc, tmp_src2->pMarkerName, VK_SYSTEM_ALLOCATION_SCOPE_OBJECT);
    } else {
       cmd->u.debug_marker_begin_ext.marker_info = NULL;
    }
@@ -2722,6 +2723,7 @@ vk_free_cmd_debug_marker_insert_ext(struct vk_cmd_queue *queue,
                                     struct vk_cmd_queue_entry *cmd)
 {
    if (cmd->u.debug_marker_insert_ext.marker_info) {
+      vk_free(queue->alloc, (void*)cmd->u.debug_marker_insert_ext.marker_info->pMarkerName);
    }
    vk_free(queue->alloc, (void*)cmd->u.debug_marker_insert_ext.marker_info);
 
@@ -2742,7 +2744,7 @@ VkResult vk_enqueue_cmd_debug_marker_insert_ext(struct vk_cmd_queue *queue
       VkDebugMarkerMarkerInfoEXT *tmp_dst1 = (void *)cmd->u.debug_marker_insert_ext.marker_info;
       VkDebugMarkerMarkerInfoEXT *tmp_src2 = (void *)pMarkerInfo;
       memcpy(tmp_dst1, tmp_src2, sizeof(VkDebugMarkerMarkerInfoEXT));
-      tmp_dst1->pMarkerName = strdup(tmp_src2->pMarkerName);
+      tmp_dst1->pMarkerName = vk_strdup(queue->alloc, tmp_src2->pMarkerName, VK_SYSTEM_ALLOCATION_SCOPE_OBJECT);
    } else {
       cmd->u.debug_marker_insert_ext.marker_info = NULL;
    }
@@ -3328,6 +3330,7 @@ vk_free_cmd_begin_debug_utils_label_ext(struct vk_cmd_queue *queue,
                                         struct vk_cmd_queue_entry *cmd)
 {
    if (cmd->u.begin_debug_utils_label_ext.label_info) {
+      vk_free(queue->alloc, (void*)cmd->u.begin_debug_utils_label_ext.label_info->pLabelName);
    }
    vk_free(queue->alloc, (void*)cmd->u.begin_debug_utils_label_ext.label_info);
 
@@ -3348,7 +3351,7 @@ VkResult vk_enqueue_cmd_begin_debug_utils_label_ext(struct vk_cmd_queue *queue
       VkDebugUtilsLabelEXT *tmp_dst1 = (void *)cmd->u.begin_debug_utils_label_ext.label_info;
       VkDebugUtilsLabelEXT *tmp_src2 = (void *)pLabelInfo;
       memcpy(tmp_dst1, tmp_src2, sizeof(VkDebugUtilsLabelEXT));
-      tmp_dst1->pLabelName = strdup(tmp_src2->pLabelName);
+      tmp_dst1->pLabelName = vk_strdup(queue->alloc, tmp_src2->pLabelName, VK_SYSTEM_ALLOCATION_SCOPE_OBJECT);
    } else {
       cmd->u.begin_debug_utils_label_ext.label_info = NULL;
    }
@@ -3386,6 +3389,7 @@ vk_free_cmd_insert_debug_utils_label_ext(struct vk_cmd_queue *queue,
                                          struct vk_cmd_queue_entry *cmd)
 {
    if (cmd->u.insert_debug_utils_label_ext.label_info) {
+      vk_free(queue->alloc, (void*)cmd->u.insert_debug_utils_label_ext.label_info->pLabelName);
    }
    vk_free(queue->alloc, (void*)cmd->u.insert_debug_utils_label_ext.label_info);
 
@@ -3406,7 +3410,7 @@ VkResult vk_enqueue_cmd_insert_debug_utils_label_ext(struct vk_cmd_queue *queue
       VkDebugUtilsLabelEXT *tmp_dst1 = (void *)cmd->u.insert_debug_utils_label_ext.label_info;
       VkDebugUtilsLabelEXT *tmp_src2 = (void *)pLabelInfo;
       memcpy(tmp_dst1, tmp_src2, sizeof(VkDebugUtilsLabelEXT));
-      tmp_dst1->pLabelName = strdup(tmp_src2->pLabelName);
+      tmp_dst1->pLabelName = vk_strdup(queue->alloc, tmp_src2->pLabelName, VK_SYSTEM_ALLOCATION_SCOPE_OBJECT);
    } else {
       cmd->u.insert_debug_utils_label_ext.label_info = NULL;
    }
