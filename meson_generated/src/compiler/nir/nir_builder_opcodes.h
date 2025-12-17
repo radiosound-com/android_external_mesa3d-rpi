@@ -3800,6 +3800,7 @@ struct _nir_load_shared_ir3_indices {
 struct _nir_load_shared_uniform_block_intel_indices {
    int _; /* exists to avoid empty initializers */
    int base;
+   enum gl_access_qualifier access;
    unsigned align_mul;
    unsigned align_offset;
 };
@@ -11491,6 +11492,7 @@ _nir_build_load_shared_uniform_block_intel(nir_builder *build, unsigned num_comp
    if (!indices.align_mul)
       indices.align_mul = intrin->def.bit_size / 8u;
    nir_intrinsic_set_base(intrin, indices.base);
+   nir_intrinsic_set_access(intrin, indices.access);
    nir_intrinsic_set_align_mul(intrin, indices.align_mul);
    nir_intrinsic_set_align_offset(intrin, indices.align_offset);
 
