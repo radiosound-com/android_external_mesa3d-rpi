@@ -6270,8 +6270,6 @@ _mesa_glthread_init_dispatch6(struct gl_context *ctx, struct _glapi_table *table
       SET_EGLImageTargetTexStorageEXT(table, _mesa_marshal_EGLImageTargetTexStorageEXT);
       SET_GetTexParameterIiv(table, _mesa_marshal_GetTexParameterIiv);
       SET_GetTexParameterIuiv(table, _mesa_marshal_GetTexParameterIuiv);
-      SET_InternalInvalidateFramebufferAncillaryMESA(table, _mesa_marshal_InternalInvalidateFramebufferAncillaryMESA);
-      SET_InternalReleaseBufferMESA(table, _mesa_marshal_InternalReleaseBufferMESA);
       SET_NamedRenderbufferStorageMultisampleAdvancedAMD(table, _mesa_marshal_NamedRenderbufferStorageMultisampleAdvancedAMD);
       SET_RenderbufferStorageMultisampleAdvancedAMD(table, _mesa_marshal_RenderbufferStorageMultisampleAdvancedAMD);
       SET_TexParameterIiv(table, _mesa_marshal_TexParameterIiv);
@@ -6289,6 +6287,8 @@ _mesa_glthread_init_dispatch6(struct gl_context *ctx, struct _glapi_table *table
       SET_EGLImageTargetTexture2DOES(table, _mesa_marshal_EGLImageTargetTexture2DOES);
       SET_GetObjectLabelEXT(table, _mesa_marshal_GetObjectLabelEXT);
       SET_InternalBufferSubDataCopyMESA(table, _mesa_marshal_InternalBufferSubDataCopyMESA);
+      SET_InternalInvalidateFramebufferAncillaryMESA(table, _mesa_marshal_InternalInvalidateFramebufferAncillaryMESA);
+      SET_InternalReleaseBufferMESA(table, _mesa_marshal_InternalReleaseBufferMESA);
       SET_InternalSetError(table, _mesa_marshal_InternalSetError);
       SET_LabelObjectEXT(table, _mesa_marshal_LabelObjectEXT);
       SET_PolygonOffsetClampEXT(table, _mesa_marshal_PolygonOffsetClampEXT);

@@ -38211,7 +38211,7 @@ evaluate_fsat(nir_const_value *_dst_val,
                   _mesa_half_to_float(_src[0][_i].u16);
 
          
-            float16_t dst = fmin(fmax(src0, 0.0), 1.0);
+            float16_t dst = util_min_num(util_max_num(src0, 0.0), 1.0);
 
             if (nir_is_rounding_mode_rtz(execution_mode, 16)) {
                _dst_val[_i].u16 = _mesa_float_to_float16_rtz(dst);
@@ -38236,7 +38236,7 @@ evaluate_fsat(nir_const_value *_dst_val,
                   _src[0][_i].f32;
 
          
-            float32_t dst = fmin(fmax(src0, 0.0), 1.0);
+            float32_t dst = util_min_num(util_max_num(src0, 0.0), 1.0);
 
             _dst_val[_i].f32 = dst;
 
@@ -38257,7 +38257,7 @@ evaluate_fsat(nir_const_value *_dst_val,
                   _src[0][_i].f64;
 
          
-            float64_t dst = fmin(fmax(src0, 0.0), 1.0);
+            float64_t dst = util_min_num(util_max_num(src0, 0.0), 1.0);
 
             _dst_val[_i].f64 = dst;
 
@@ -41354,7 +41354,7 @@ int base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (offset < 0 || bits < 0 || offset + bits > 32) {
+} else if (offset < 0 || bits < 0 || offset + bits > bit_size) {
    dst = 0;
 } else {
    dst = (base << (32 - offset - bits)) >> (32 - bits); /* use sign-extending shift */
@@ -41389,7 +41389,7 @@ int base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (offset < 0 || bits < 0 || offset + bits > 32) {
+} else if (offset < 0 || bits < 0 || offset + bits > bit_size) {
    dst = 0;
 } else {
    dst = (base << (32 - offset - bits)) >> (32 - bits); /* use sign-extending shift */
@@ -41423,7 +41423,7 @@ int base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (offset < 0 || bits < 0 || offset + bits > 32) {
+} else if (offset < 0 || bits < 0 || offset + bits > bit_size) {
    dst = 0;
 } else {
    dst = (base << (32 - offset - bits)) >> (32 - bits); /* use sign-extending shift */
@@ -41457,7 +41457,7 @@ int base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (offset < 0 || bits < 0 || offset + bits > 32) {
+} else if (offset < 0 || bits < 0 || offset + bits > bit_size) {
    dst = 0;
 } else {
    dst = (base << (32 - offset - bits)) >> (32 - bits); /* use sign-extending shift */
@@ -41491,7 +41491,7 @@ int base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (offset < 0 || bits < 0 || offset + bits > 32) {
+} else if (offset < 0 || bits < 0 || offset + bits > bit_size) {
    dst = 0;
 } else {
    dst = (base << (32 - offset - bits)) >> (32 - bits); /* use sign-extending shift */
@@ -50904,7 +50904,7 @@ unsigned base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (bits < 0 || offset < 0 || offset + bits > 32) {
+} else if (bits < 0 || offset < 0 || offset + bits > bit_size) {
    dst = 0; /* undefined per the spec */
 } else {
    dst = (base >> offset) & ((1ull << bits) - 1);
@@ -50939,7 +50939,7 @@ unsigned base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (bits < 0 || offset < 0 || offset + bits > 32) {
+} else if (bits < 0 || offset < 0 || offset + bits > bit_size) {
    dst = 0; /* undefined per the spec */
 } else {
    dst = (base >> offset) & ((1ull << bits) - 1);
@@ -50973,7 +50973,7 @@ unsigned base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (bits < 0 || offset < 0 || offset + bits > 32) {
+} else if (bits < 0 || offset < 0 || offset + bits > bit_size) {
    dst = 0; /* undefined per the spec */
 } else {
    dst = (base >> offset) & ((1ull << bits) - 1);
@@ -51007,7 +51007,7 @@ unsigned base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (bits < 0 || offset < 0 || offset + bits > 32) {
+} else if (bits < 0 || offset < 0 || offset + bits > bit_size) {
    dst = 0; /* undefined per the spec */
 } else {
    dst = (base >> offset) & ((1ull << bits) - 1);
@@ -51041,7 +51041,7 @@ unsigned base = src0;
 int offset = src1, bits = src2;
 if (bits == 0) {
    dst = 0;
-} else if (bits < 0 || offset < 0 || offset + bits > 32) {
+} else if (bits < 0 || offset < 0 || offset + bits > bit_size) {
    dst = 0; /* undefined per the spec */
 } else {
    dst = (base >> offset) & ((1ull << bits) - 1);

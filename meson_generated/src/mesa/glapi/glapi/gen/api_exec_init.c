@@ -457,8 +457,6 @@ _mesa_init_dispatch(struct gl_context *ctx)
       SET_GetUniformuiv(table, _mesa_GetUniformuiv);
       SET_GetVertexAttribIiv(table, _mesa_GetVertexAttribIiv);
       SET_GetVertexAttribIuiv(table, _mesa_GetVertexAttribIuiv);
-      SET_InternalInvalidateFramebufferAncillaryMESA(table, _mesa_InternalInvalidateFramebufferAncillaryMESA);
-      SET_InternalReleaseBufferMESA(table, _mesa_InternalReleaseBufferMESA);
       SET_IsEnabledi(table, _mesa_IsEnabledi);
       SET_IsTransformFeedback(table, _mesa_IsTransformFeedback);
       SET_NamedRenderbufferStorageMultisampleAdvancedAMD(table, _mesa_NamedRenderbufferStorageMultisampleAdvancedAMD);
@@ -557,8 +555,6 @@ _mesa_init_dispatch(struct gl_context *ctx)
       SET_PointParameterfv(table, _mesa_PointParameterfv);
    }
    if (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || (_mesa_is_gles2(ctx) && ctx->Version >= 30)) {
-      SET_DrawArraysInstancedBaseInstance(table, _mesa_DrawArraysInstancedBaseInstance);
-      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_DrawElementsInstancedBaseVertexBaseInstance);
       SET_DrawRangeElementsBaseVertex(table, _mesa_DrawRangeElementsBaseVertex);
    }
    if (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || _mesa_is_gles2(ctx)) {
@@ -578,9 +574,11 @@ _mesa_init_dispatch(struct gl_context *ctx)
       SET_DepthRangef(table, _mesa_DepthRangef);
       SET_Disable(table, _mesa_Disable);
       SET_DrawArrays(table, _mesa_DrawArrays);
+      SET_DrawArraysInstancedBaseInstance(table, _mesa_DrawArraysInstancedBaseInstance);
       SET_DrawArraysInstancedBaseInstanceDrawID(table, _mesa_DrawArraysInstancedBaseInstanceDrawID);
       SET_DrawArraysUserBuf(table, _mesa_DrawArraysUserBuf);
       SET_DrawElements(table, _mesa_DrawElements);
+      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_DrawElementsInstancedBaseVertexBaseInstance);
       SET_DrawElementsInstancedBaseVertexBaseInstanceDrawID(table, _mesa_DrawElementsInstancedBaseVertexBaseInstanceDrawID);
       SET_DrawElementsPacked(table, _mesa_DrawElementsPacked);
       SET_DrawElementsUserBuf(table, _mesa_DrawElementsUserBuf);
@@ -611,6 +609,8 @@ _mesa_init_dispatch(struct gl_context *ctx)
       SET_GetTexParameteriv(table, _mesa_GetTexParameteriv);
       SET_Hint(table, _mesa_Hint);
       SET_InternalBufferSubDataCopyMESA(table, _mesa_InternalBufferSubDataCopyMESA);
+      SET_InternalInvalidateFramebufferAncillaryMESA(table, _mesa_InternalInvalidateFramebufferAncillaryMESA);
+      SET_InternalReleaseBufferMESA(table, _mesa_InternalReleaseBufferMESA);
       SET_InternalSetError(table, _mesa_InternalSetError);
       SET_IsBuffer(table, _mesa_IsBuffer);
       SET_IsEnabled(table, _mesa_IsEnabled);

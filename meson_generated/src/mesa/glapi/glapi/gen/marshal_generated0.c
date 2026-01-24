@@ -5075,13 +5075,13 @@ _mesa_glthread_init_dispatch0(struct gl_context *ctx, struct _glapi_table *table
       SET_DrawRangeElements(table, _mesa_marshal_DrawRangeElements);
    }
    if (!_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || (_mesa_is_gles2(ctx) && ctx->Version >= 30))) {
-      SET_DrawArraysInstancedBaseInstance(table, _mesa_marshal_DrawArraysInstancedBaseInstance);
-      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_marshal_DrawElementsInstancedBaseVertexBaseInstance);
       SET_DrawRangeElementsBaseVertex(table, _mesa_marshal_DrawRangeElementsBaseVertex);
    }
    if (!_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || _mesa_is_gles2(ctx))) {
       SET_DrawArrays(table, _mesa_marshal_DrawArrays);
+      SET_DrawArraysInstancedBaseInstance(table, _mesa_marshal_DrawArraysInstancedBaseInstance);
       SET_DrawElements(table, _mesa_marshal_DrawElements);
+      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_marshal_DrawElementsInstancedBaseVertexBaseInstance);
    }
    if (!_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles2(ctx))) {
       SET_DrawArraysInstanced(table, _mesa_marshal_DrawArraysInstanced);
@@ -5338,13 +5338,13 @@ _mesa_glthread_init_dispatch0(struct gl_context *ctx, struct _glapi_table *table
       SET_DrawRangeElements(table, _mesa_marshal_DrawRangeElements_no_error);
    }
    if (_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || (_mesa_is_gles2(ctx) && ctx->Version >= 30))) {
-      SET_DrawArraysInstancedBaseInstance(table, _mesa_marshal_DrawArraysInstancedBaseInstance_no_error);
-      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_marshal_DrawElementsInstancedBaseVertexBaseInstance_no_error);
       SET_DrawRangeElementsBaseVertex(table, _mesa_marshal_DrawRangeElementsBaseVertex_no_error);
    }
    if (_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles1(ctx) || _mesa_is_gles2(ctx))) {
       SET_DrawArrays(table, _mesa_marshal_DrawArrays_no_error);
+      SET_DrawArraysInstancedBaseInstance(table, _mesa_marshal_DrawArraysInstancedBaseInstance_no_error);
       SET_DrawElements(table, _mesa_marshal_DrawElements_no_error);
+      SET_DrawElementsInstancedBaseVertexBaseInstance(table, _mesa_marshal_DrawElementsInstancedBaseVertexBaseInstance_no_error);
    }
    if (_mesa_is_no_error_enabled(ctx) && (_mesa_is_desktop_gl(ctx) || _mesa_is_gles2(ctx))) {
       SET_DrawArraysInstanced(table, _mesa_marshal_DrawArraysInstanced_no_error);
