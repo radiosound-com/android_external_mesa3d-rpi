@@ -2182,6 +2182,13 @@ if get_option('android-libperfetto').enabled()
   pre_args += '-DANDROID_LIBPERFETTO'
 endif
 
+# Platforms where RenderDoc integration actually works
+renderdoc_integration_supported = [
+  'linux',
+  'android',
+].contains(host_machine.system())
+pre_args += '-DHAVE_RENDERDOC_INTEGRATION=@0@'.format(renderdoc_integration_supported)
+
 with_teflon = get_option('teflon')
 if with_teflon and with_tests
   dep_flatbuffers = dependency('flatbuffers')
@@ -2262,7 +2269,9 @@ elif host_machine.system() == 'windows' and cc.get_argument_syntax() != 'msvc'
 else
   prog_nm = find_program('nm')
   with_symbols_check = prog_nm.found() and with_tests
-  symbols_check_args = ['--nm', prog_nm.full_path()]
+  if with_symbols_check
+    symbols_check_args = ['--nm', prog_nm.full_path()]
+  endif
 endif
 
 # This quirk needs to be applied to sources with functions defined in assembly

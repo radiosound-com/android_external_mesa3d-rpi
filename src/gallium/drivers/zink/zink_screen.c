@@ -1543,8 +1543,10 @@ zink_destroy_screen(struct pipe_screen *pscreen)
       }
    }
 
+#if HAVE_RENDERDOC_INTEGRATION
    if (screen->renderdoc_capture_all && p_atomic_dec_zero(&num_screens))
       screen->renderdoc_api->EndFrameCapture(RENDERDOC_DEVICEPOINTER_FROM_VKINSTANCE(screen->instance), NULL);
+#endif
 
    hash_table_foreach(&screen->dts, entry)
       zink_kopper_deinit_displaytarget(screen, entry->data);
@@ -1652,6 +1654,12 @@ zink_destroy_screen(struct pipe_screen *pscreen)
    glsl_type_singleton_decref();
 }
 
+static bool
+zink_picks_device(int dev_major, uint64_t adapter_luid)
+{
+   return (dev_major > 0 && dev_major < 255) || adapter_luid;
+}
+
 static int
 zink_get_display_device(const struct zink_screen *screen, uint32_t pdev_count,
                         const VkPhysicalDevice *pdevs, int64_t dev_major,
@@ -1723,7 +1731,7 @@ choose_pdev(struct zink_screen *screen, int64_t dev_major, int64_t dev_minor, ui
    bool cpu = debug_get_bool_option("LIBGL_ALWAYS_SOFTWARE", false) ||
               debug_get_bool_option("D3D_ALWAYS_SOFTWARE", false);
 
-   if (cpu || (dev_major > 0 && dev_major < 255) || adapter_luid) {
+   if (cpu || zink_picks_device(dev_major, adapter_luid)) {
       uint32_t pdev_count;
       int idx;
       VkPhysicalDevice *pdevs;
@@ -2318,7 +2326,7 @@ populate_format_props(struct zink_screen *screen)
 static void
 setup_renderdoc(struct zink_screen *screen)
 {
-#ifndef _WIN32
+#if HAVE_RENDERDOC_INTEGRATION
    const char *capture_id = debug_get_option("ZINK_RENDERDOC", NULL);
    if (!capture_id)
       return;
@@ -3383,6 +3391,7 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
    simple_mtx_lock(&instance_lock);
    if (++instance_refcount == 1) {
       instance_info.loader_version = zink_get_loader_version(screen);
+      instance_info.no_device_select = zink_picks_device(dev_major, adapter_luid);
       instance = zink_create_instance(screen, &instance_info);
    }
    if (!instance) {

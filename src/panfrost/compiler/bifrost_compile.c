@@ -2452,14 +2452,11 @@ bi_emit_load_const(bi_builder *b, nir_load_const_instr *instr)
       bi_mov_i32_to(b, bi_get_index(instr->def.index), bi_imm_u32(acc));
    } else {
       uint32_t imm_2x32[2] = { acc & 0xffffffff, (acc >> 32) & 0xffffffff };
-      bi_index tempa = bi_temp(b->shader);
-      bi_index tempb = bi_temp(b->shader);
-      bi_mov_i32_to(b, tempa, bi_imm_u32(imm_2x32[0]));
-      bi_mov_i32_to(b, tempb, bi_imm_u32(imm_2x32[1]));
+      bi_index temp[2] = { bi_temp(b->shader), bi_temp(b->shader) };
+      bi_mov_i32_to(b, temp[0], bi_imm_u32(imm_2x32[0]));
+      bi_mov_i32_to(b, temp[1], bi_imm_u32(imm_2x32[1]));
 
-      bi_instr *collect = bi_collect_i32_to(b, bi_get_index(instr->def.index), 2);
-      collect->src[0] = tempa;
-      collect->src[1] = tempb;
+      bi_emit_collect_to(b, bi_get_index(instr->def.index), temp, 2);
    }
 }
 
@@ -5742,8 +5739,10 @@ bi_fp32_varying_mask(nir_shader *nir)
    assert(nir->info.stage == MESA_SHADER_FRAGMENT);
 
    nir_foreach_shader_in_variable(var, nir) {
-      if (var->data.interpolation == INTERP_MODE_FLAT)
-         mask |= BITFIELD64_BIT(var->data.location);
+      if (var->data.interpolation == INTERP_MODE_FLAT) {
+         unsigned slots = glsl_count_attribute_slots(var->type, false);
+         mask |= BITFIELD64_RANGE(var->data.location, slots);
+      }
    }
 
    nir_shader_instructions_pass(nir, bi_gather_texcoords, nir_metadata_all,

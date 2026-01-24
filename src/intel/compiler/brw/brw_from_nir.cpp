@@ -5067,7 +5067,7 @@ increment_a64_address(const brw_builder &_bld, brw_reg address, uint32_t v, bool
    const brw_builder bld = use_no_mask ? _bld.exec_all().group(8, 0) : _bld;
 
    if (bld.shader->devinfo->has_64bit_int) {
-      return bld.ADD(address, brw_imm_int(address.type, v));
+      return bld.ADD(retype(address, BRW_TYPE_UQ), brw_imm_ud(v));
    } else {
       brw_reg dst = bld.vgrf(BRW_TYPE_UQ);
       brw_reg dst_low = subscript(dst, BRW_TYPE_UD, 0);
@@ -5077,8 +5077,9 @@ increment_a64_address(const brw_builder &_bld, brw_reg address, uint32_t v, bool
 
       /* Add low and if that overflows, add carry to high. */
       bld.ADD(dst_low, src_low, brw_imm_ud(v))->conditional_mod = BRW_CONDITIONAL_O;
-      bld.ADD(dst_high, src_high, brw_imm_ud(0x1))->predicate = BRW_PREDICATE_NORMAL;
-      return dst_low;
+      bld.MOV(dst_high, src_high);
+      bld.ADD(dst_high, dst_high, brw_imm_ud(0x1))->predicate = BRW_PREDICATE_NORMAL;
+      return dst;
    }
 }
 
@@ -6531,24 +6532,32 @@ brw_from_nir_emit_intrinsic(nir_to_brw_state &ntb,
    case nir_intrinsic_load_subgroup_lt_mask:
       UNREACHABLE("not reached");
 
-   case nir_intrinsic_ddx_fine:
-      bld.emit(FS_OPCODE_DDX_FINE, retype(dest, BRW_TYPE_F),
-               retype(get_nir_src(ntb, instr->src[0], 0), BRW_TYPE_F));
+   case nir_intrinsic_ddx_fine: {
+      enum brw_reg_type type = brw_float_type_for_reg_type(dest.type);
+      bld.emit(FS_OPCODE_DDX_FINE, retype(dest, type),
+               retype(get_nir_src(ntb, instr->src[0], 0), type));
       break;
+   }
    case nir_intrinsic_ddx:
-   case nir_intrinsic_ddx_coarse:
-      bld.emit(FS_OPCODE_DDX_COARSE, retype(dest, BRW_TYPE_F),
-               retype(get_nir_src(ntb, instr->src[0], 0), BRW_TYPE_F));
+   case nir_intrinsic_ddx_coarse: {
+      enum brw_reg_type type = brw_float_type_for_reg_type(dest.type);
+      bld.emit(FS_OPCODE_DDX_COARSE, retype(dest, type),
+               retype(get_nir_src(ntb, instr->src[0], 0), type));
       break;
-   case nir_intrinsic_ddy_fine:
-      bld.emit(FS_OPCODE_DDY_FINE, retype(dest, BRW_TYPE_F),
-               retype(get_nir_src(ntb, instr->src[0], 0), BRW_TYPE_F));
+   }
+   case nir_intrinsic_ddy_fine: {
+      enum brw_reg_type type = brw_float_type_for_reg_type(dest.type);
+      bld.emit(FS_OPCODE_DDY_FINE, retype(dest, type),
+               retype(get_nir_src(ntb, instr->src[0], 0), type));
       break;
+   }
    case nir_intrinsic_ddy:
-   case nir_intrinsic_ddy_coarse:
-      bld.emit(FS_OPCODE_DDY_COARSE, retype(dest, BRW_TYPE_F),
-               retype(get_nir_src(ntb, instr->src[0], 0), BRW_TYPE_F));
+   case nir_intrinsic_ddy_coarse: {
+      enum brw_reg_type type = brw_float_type_for_reg_type(dest.type);
+      bld.emit(FS_OPCODE_DDY_COARSE, retype(dest, type),
+               retype(get_nir_src(ntb, instr->src[0], 0), type));
       break;
+   }
 
    case nir_intrinsic_vote_any:
    case nir_intrinsic_vote_all:
@@ -6817,8 +6826,6 @@ brw_from_nir_emit_intrinsic(nir_to_brw_state &ntb,
          }
          break;
       case BRW_TOPOLOGY_ID_EU_THREAD_SIMD: {
-         s.limit_dispatch_width(16, "Topology helper for Ray queries, "
-                              "not supported in SIMD32 mode.");
          brw_reg dst = retype(dest, BRW_TYPE_UD);
          brw_reg eu;
 
@@ -6876,8 +6883,14 @@ brw_from_nir_emit_intrinsic(nir_to_brw_state &ntb,
                        brw_imm_ud(4));
 
          /* LaneID[0:3] << 0 (Use subgroup invocation) */
-         assert(bld.dispatch_width() <= 16); /* Limit to 4 bits */
-         bld.ADD(dst, bld.OR(eu, tid), bld.LOAD_SUBGROUP_INVOCATION());
+
+         const brw_builder ubld = bld.group(MIN2(16, bld.dispatch_width()), 0).exec_all();
+         brw_reg uinvocation = ubld.LOAD_SUBGROUP_INVOCATION();
+         brw_reg invocation = bld.vgrf(BRW_TYPE_D);
+         ubld.MOV(invocation, uinvocation);
+         if (bld.dispatch_width() > 16)
+            ubld.MOV(byte_offset(invocation, 2 * REG_SIZE), uinvocation);
+         bld.ADD(dst, bld.OR(eu, tid), invocation);
          break;
       }
       default:
@@ -7334,8 +7347,9 @@ brw_from_nir_emit_memory_access(nir_to_brw_state &ntb,
          mem->flags = flags;
 
          if (brw_type_size_bits(srcs[MEMORY_LOGICAL_ADDRESS].type) == 64) {
-            increment_a64_address(ubld, srcs[MEMORY_LOGICAL_ADDRESS],
-                                  block_bytes, no_mask_handle);
+            srcs[MEMORY_LOGICAL_ADDRESS] =
+               increment_a64_address(ubld, srcs[MEMORY_LOGICAL_ADDRESS],
+                                     block_bytes, no_mask_handle);
          } else {
             srcs[MEMORY_LOGICAL_ADDRESS] =
                ubld.ADD(retype(srcs[MEMORY_LOGICAL_ADDRESS], BRW_TYPE_UD),
