@@ -417,6 +417,7 @@ typedef enum {
    nir_intrinsic_load_line_width,
    nir_intrinsic_load_local_invocation_id,
    nir_intrinsic_load_local_invocation_index,
+   nir_intrinsic_load_local_invocation_index_intel,
    nir_intrinsic_load_local_pixel_agx,
    nir_intrinsic_load_local_shared_r600,
    nir_intrinsic_load_lshs_vertex_stride_amd,

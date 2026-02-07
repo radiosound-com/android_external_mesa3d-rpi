@@ -9848,6 +9848,17 @@ _nir_build_load_local_invocation_index(nir_builder *build)
    return &intrin->def;
 }
 static inline nir_def *
+_nir_build_load_local_invocation_index_intel(nir_builder *build)
+{
+   nir_intrinsic_instr *intrin = nir_intrinsic_instr_create(
+      build->shader, nir_intrinsic_load_local_invocation_index_intel);
+
+      nir_def_init(&intrin->instr, &intrin->def, 1, 32);
+
+   nir_builder_instr_insert(build, &intrin->instr);
+   return &intrin->def;
+}
+static inline nir_def *
 _nir_build_load_local_pixel_agx(nir_builder *build, unsigned num_components, unsigned bit_size, nir_def *src0, struct _nir_load_local_pixel_agx_indices indices)
 {
    nir_intrinsic_instr *intrin = nir_intrinsic_instr_create(
@@ -16684,6 +16695,7 @@ _nir_build_load_kernel_input(build, num_components, bit_size, src0, (struct _nir
 #define nir_load_line_width _nir_build_load_line_width
 #define nir_load_local_invocation_id _nir_build_load_local_invocation_id
 #define nir_load_local_invocation_index _nir_build_load_local_invocation_index
+#define nir_load_local_invocation_index_intel _nir_build_load_local_invocation_index_intel
 #ifdef __cplusplus
 #define nir_load_local_pixel_agx(build, num_components, bit_size, src0, ...) \
 _nir_build_load_local_pixel_agx(build, num_components, bit_size, src0, _nir_load_local_pixel_agx_indices{0, __VA_ARGS__})
