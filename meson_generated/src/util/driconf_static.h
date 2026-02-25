@@ -2415,6 +2415,7 @@ static const struct driconf_engine device_494_engines[] = {
       .options = engine_596_options,
     },
     { .engine_name_match = "GTK",
+      .engine_versions = "16777216:16859138",
       .num_options = 1,
       .options = engine_598_options,
     },
