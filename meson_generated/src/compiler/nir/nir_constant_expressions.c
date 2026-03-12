@@ -45392,7 +45392,7 @@ evaluate_iadd_sat(nir_const_value *_dst_val,
          
             int1_t dst = 
       util_add_check_overflow(int1_t, src0, src1) ?
-         (src1 < 0 ? u_intN_max(bit_size) : u_uintN_max(bit_size)) : (src0 + src1)
+         (src1 < 0 ? u_intN_min(bit_size) : u_intN_max(bit_size)) : (src0 + src1)
 ;
 
             /* 1-bit integers get truncated */
@@ -45420,7 +45420,7 @@ evaluate_iadd_sat(nir_const_value *_dst_val,
          
             int8_t dst = 
       util_add_check_overflow(int8_t, src0, src1) ?
-         (src1 < 0 ? u_intN_max(bit_size) : u_uintN_max(bit_size)) : (src0 + src1)
+         (src1 < 0 ? u_intN_min(bit_size) : u_intN_max(bit_size)) : (src0 + src1)
 ;
 
             _dst_val[_i].i8 = dst;
@@ -45447,7 +45447,7 @@ evaluate_iadd_sat(nir_const_value *_dst_val,
          
             int16_t dst = 
       util_add_check_overflow(int16_t, src0, src1) ?
-         (src1 < 0 ? u_intN_max(bit_size) : u_uintN_max(bit_size)) : (src0 + src1)
+         (src1 < 0 ? u_intN_min(bit_size) : u_intN_max(bit_size)) : (src0 + src1)
 ;
 
             _dst_val[_i].i16 = dst;
@@ -45474,7 +45474,7 @@ evaluate_iadd_sat(nir_const_value *_dst_val,
          
             int32_t dst = 
       util_add_check_overflow(int32_t, src0, src1) ?
-         (src1 < 0 ? u_intN_max(bit_size) : u_uintN_max(bit_size)) : (src0 + src1)
+         (src1 < 0 ? u_intN_min(bit_size) : u_intN_max(bit_size)) : (src0 + src1)
 ;
 
             _dst_val[_i].i32 = dst;
@@ -45501,7 +45501,7 @@ evaluate_iadd_sat(nir_const_value *_dst_val,
          
             int64_t dst = 
       util_add_check_overflow(int64_t, src0, src1) ?
-         (src1 < 0 ? u_intN_max(bit_size) : u_uintN_max(bit_size)) : (src0 + src1)
+         (src1 < 0 ? u_intN_min(bit_size) : u_intN_max(bit_size)) : (src0 + src1)
 ;
 
             _dst_val[_i].i64 = dst;
