@@ -2493,7 +2493,6 @@ cc_defaults {
     name: "mesa3d-rpi-defaults",
     cflags: [
         "-DAMD_LLVM_AVAILABLE=0",
-        "-DANDROID_API_LEVEL=35",
         "-DANDROID_STRICT",
         "-DDRAW_LLVM_AVAILABLE=0",
         "-DENABLE_SHADER_CACHE",
@@ -2575,7 +2574,7 @@ cc_defaults {
         "-DMESA_SYSTEM_HAS_KMS_DRM=1",
         "-DNDEBUG",
         "-DPACKAGE_BUGREPORT=\"https://gitlab.freedesktop.org/mesa/mesa/-/issues\"",
-        "-DPACKAGE_VERSION=\"26.0.3\"",
+        "-DPACKAGE_VERSION=\"26.0.4\"",
         "-DTHREAD_SANITIZER=0",
         "-DUSE_GCC_ATOMIC_BUILTINS",
         "-DUSE_LIBGLVND=0",
@@ -2635,4 +2634,14 @@ cc_defaults {
         "-fvisibility=hidden",
         "-std=c11",
     ],
+    defaults: ["mesa3d-rpi-raw-defaults"],
+}
+
+cc_defaults {
+    name: "mesa3d-rpi-raw-defaults",
+    product_variables: {
+        platform_sdk_version: {
+            cflags: ["-DANDROID_API_LEVEL=%d"],
+        },
+    },
 }
