@@ -14462,7 +14462,7 @@ _nir_build_smp_coeffs_pco(nir_builder *build, nir_def *src0, nir_def *src1, nir_
    nir_intrinsic_instr *intrin = nir_intrinsic_instr_create(
       build->shader, nir_intrinsic_smp_coeffs_pco);
 
-      nir_def_init(&intrin->instr, &intrin->def, 8, 32);
+      nir_def_init(&intrin->instr, &intrin->def, 16, 32);
    intrin->src[0] = nir_src_for_ssa(src0);
    intrin->src[1] = nir_src_for_ssa(src1);
    intrin->src[2] = nir_src_for_ssa(src2);

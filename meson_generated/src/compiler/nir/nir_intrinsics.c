@@ -11275,7 +11275,7 @@ const nir_intrinsic_info nir_intrinsic_infos[nir_num_intrinsics] = {
       16, 4, 4
    },
    .has_dest = true,
-   .dest_components = 8,
+   .dest_components = 16,
    .dest_bit_sizes = 0x20,
    .bit_size_src = -1,
    .num_indices = 2,
