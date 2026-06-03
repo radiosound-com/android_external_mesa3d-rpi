@@ -3427,12 +3427,12 @@ static const struct driconf_device device_698 = {
     .applications = device_698_applications,
 };
     
-static const struct driconf_option engine_724_options[] = {
+static const struct driconf_option engine_726_options[] = {
     { .name = "tu_allow_oob_indirect_ubo_loads", .value = "true" },
 };
 
     
-static const struct driconf_option engine_726_options[] = {
+static const struct driconf_option engine_728_options[] = {
     { .name = "tu_disable_d24s8_border_color_workaround", .value = "true" },
     { .name = "tu_use_tex_coord_round_nearest_even_mode", .value = "true" },
     { .name = "tu_emulate_alpha_to_coverage", .value = "true" },
@@ -3440,7 +3440,7 @@ static const struct driconf_option engine_726_options[] = {
 };
 
     
-static const struct driconf_option engine_731_options[] = {
+static const struct driconf_option engine_733_options[] = {
     { .name = "tu_enable_softfloat32", .value = "true" },
 };
 
@@ -3449,15 +3449,15 @@ static const struct driconf_engine device_715_engines[] = {
     { .engine_name_match = "DXVK",
       .engine_versions = "0:8400896",
       .num_options = 1,
-      .options = engine_724_options,
+      .options = engine_726_options,
     },
     { .engine_name_match = "DXVK|vkd3d",
       .num_options = 4,
-      .options = engine_726_options,
+      .options = engine_728_options,
     },
     { .engine_name_match = "vkd3d",
       .num_options = 1,
-      .options = engine_731_options,
+      .options = engine_733_options,
     },
 };
 
@@ -3479,6 +3479,11 @@ static const struct driconf_option application_720_options[] = {
     
 static const struct driconf_option application_722_options[] = {
     { .name = "tu_emulate_alpha_to_coverage", .value = "true" },
+};
+
+    
+static const struct driconf_option application_724_options[] = {
+    { .name = "tu_restrict_subgroup_size_64", .value = "true" },
 };
 
 
@@ -3503,21 +3508,21 @@ static const struct driconf_application device_715_applications[] = {
       .num_options = 1,
       .options = application_722_options,
     },
+    { .name = "No Man's Sky",
+      .application_name_match = "No Man's Sky",
+      .num_options = 1,
+      .options = application_724_options,
+    },
 };
 
 static const struct driconf_device device_715 = {
     .driver = "turnip",
     .num_engines = 3,
     .engines = device_715_engines,
-    .num_applications = 4,
+    .num_applications = 5,
     .applications = device_715_applications,
 };
 
-
-    
-static const struct driconf_option application_734_options[] = {
-    { .name = "force_gl_renderer", .value = "AGX G13/G14" },
-};
 
     
 static const struct driconf_option application_736_options[] = {
@@ -3574,149 +3579,154 @@ static const struct driconf_option application_756_options[] = {
     { .name = "force_gl_renderer", .value = "AGX G13/G14" },
 };
 
+    
+static const struct driconf_option application_758_options[] = {
+    { .name = "force_gl_renderer", .value = "AGX G13/G14" },
+};
 
-static const struct driconf_application device_733_applications[] = {
+
+static const struct driconf_application device_735_applications[] = {
     { .name = "Firefox",
       .executable = "firefox",
       .num_options = 1,
-      .options = application_734_options,
+      .options = application_736_options,
     },
     { .name = "Firefox ESR",
       .executable = "firefox-esr",
       .num_options = 1,
-      .options = application_736_options,
+      .options = application_738_options,
     },
     { .name = "Chromium",
       .executable = "chromium",
       .num_options = 1,
-      .options = application_738_options,
+      .options = application_740_options,
     },
     { .name = "Chromium",
       .executable = "chromium-browser",
       .num_options = 1,
-      .options = application_740_options,
+      .options = application_742_options,
     },
     { .name = "Google Chrome",
       .executable = "chrome",
       .num_options = 1,
-      .options = application_742_options,
+      .options = application_744_options,
     },
     { .name = "vivaldi-bin",
       .executable = "vivaldi-bin",
       .num_options = 1,
-      .options = application_744_options,
+      .options = application_746_options,
     },
     { .name = "Iceweasel",
       .executable = "iceweasel",
       .num_options = 1,
-      .options = application_746_options,
+      .options = application_748_options,
     },
     { .name = "Epiphany",
       .executable = "epiphany",
       .num_options = 1,
-      .options = application_748_options,
+      .options = application_750_options,
     },
     { .name = "Konqueror",
       .executable = "konqueror",
       .num_options = 1,
-      .options = application_750_options,
+      .options = application_752_options,
     },
     { .name = "Falkon",
       .executable = "falkon",
       .num_options = 1,
-      .options = application_752_options,
+      .options = application_754_options,
     },
     { .name = "Seamonkey",
       .executable = "seamonkey",
       .num_options = 1,
-      .options = application_754_options,
+      .options = application_756_options,
     },
     { .name = "Waterfox",
       .executable = "waterfox",
       .num_options = 1,
-      .options = application_756_options,
+      .options = application_758_options,
     },
 };
 
-static const struct driconf_device device_733 = {
+static const struct driconf_device device_735 = {
     .driver = "asahi",
     .num_engines = 0,
     .num_applications = 12,
-    .applications = device_733_applications,
+    .applications = device_735_applications,
 };
     
-static const struct driconf_option engine_759_options[] = {
+static const struct driconf_option engine_761_options[] = {
     { .name = "hk_disable_border_emulation", .value = "true" },
     { .name = "hk_enable_vertex_pipeline_stores_atomics", .value = "true" },
 };
 
     
-static const struct driconf_option engine_762_options[] = {
+static const struct driconf_option engine_764_options[] = {
     { .name = "hk_fake_minmax", .value = "true" },
     { .name = "hk_image_view_min_lod", .value = "true" },
 };
 
 
-static const struct driconf_engine device_758_engines[] = {
+static const struct driconf_engine device_760_engines[] = {
     { .engine_name_match = "DXVK|vkd3d",
       .num_options = 2,
-      .options = engine_759_options,
+      .options = engine_761_options,
     },
     { .engine_name_match = "vkd3d",
       .num_options = 2,
-      .options = engine_762_options,
+      .options = engine_764_options,
     },
 };
 
 
 
-static const struct driconf_device device_758 = {
+static const struct driconf_device device_760 = {
     .driver = "hk",
     .num_engines = 2,
-    .engines = device_758_engines,
+    .engines = device_760_engines,
     .num_applications = 0,
 };
     
-static const struct driconf_option engine_766_options[] = {
+static const struct driconf_option engine_768_options[] = {
     { .name = "pan_enable_vertex_pipeline_stores_atomics", .value = "true" },
 };
 
 
-static const struct driconf_engine device_765_engines[] = {
+static const struct driconf_engine device_767_engines[] = {
     { .engine_name_match = "ANGLE",
       .num_options = 1,
-      .options = engine_766_options,
+      .options = engine_768_options,
     },
 };
 
 
 
-static const struct driconf_device device_765 = {
+static const struct driconf_device device_767 = {
     .driver = "panvk",
     .num_engines = 1,
-    .engines = device_765_engines,
+    .engines = device_767_engines,
     .num_applications = 0,
 };
 
 
     
-static const struct driconf_option application_769_options[] = {
+static const struct driconf_option application_771_options[] = {
     { .name = "allow_rgb16_configs", .value = "false" },
 };
 
 
-static const struct driconf_application device_768_applications[] = {
+static const struct driconf_application device_770_applications[] = {
     { .name = "all-default",
       .num_options = 1,
-      .options = application_769_options,
+      .options = application_771_options,
     },
 };
 
-static const struct driconf_device device_768 = {
+static const struct driconf_device device_770 = {
     .driver = "panfrost",
     .num_engines = 0,
     .num_applications = 1,
-    .applications = device_768_applications,
+    .applications = device_770_applications,
 };
 
 static const struct driconf_device *driconf[] = {
@@ -3736,8 +3746,8 @@ static const struct driconf_device *driconf[] = {
     &device_685,
     &device_698,
     &device_715,
-    &device_733,
-    &device_758,
-    &device_765,
-    &device_768,
+    &device_735,
+    &device_760,
+    &device_767,
+    &device_770,
 };
