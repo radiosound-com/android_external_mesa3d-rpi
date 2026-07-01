@@ -97,6 +97,19 @@
 
 
     const char *
+    vk_AccelerationStructureSerializedBlockTypeKHR_to_str(VkAccelerationStructureSerializedBlockTypeKHR input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_ACCELERATION_STRUCTURE_SERIALIZED_BLOCK_TYPE_OPACITY_MICROMAP_KHR";
+        case VK_ACCELERATION_STRUCTURE_SERIALIZED_BLOCK_TYPE_MAX_ENUM_KHR: return "VK_ACCELERATION_STRUCTURE_SERIALIZED_BLOCK_TYPE_MAX_ENUM_KHR";
+        default:
+            return "Unknown VkAccelerationStructureSerializedBlockTypeKHR value.";
+        }
+    }
+
+
+    const char *
     vk_AccelerationStructureTypeKHR_to_str(VkAccelerationStructureTypeKHR input)
     {
         switch((int64_t)input) {
@@ -106,6 +119,8 @@
             return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV";
         case 2:
             return "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
+        case 1000623000:
+            return "VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR";
         case VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_KHR: return "VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_KHR";
         default:
             return "Unknown VkAccelerationStructureTypeKHR value.";
@@ -815,6 +830,59 @@
 
 
     const char *
+    vk_DataGraphOpticalFlowPerformanceLevelARM_to_str(VkDataGraphOpticalFlowPerformanceLevelARM input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_ARM";
+        case 1:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_ARM";
+        case 3:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MAX_ENUM_ARM: return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MAX_ENUM_ARM";
+        default:
+            return "Unknown VkDataGraphOpticalFlowPerformanceLevelARM value.";
+        }
+    }
+
+
+    const char *
+    vk_DataGraphPipelineNodeConnectionTypeARM_to_str(VkDataGraphPipelineNodeConnectionTypeARM input)
+    {
+        switch((int64_t)input) {
+        case 1000631000:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_INPUT_ARM";
+        case 1000631001:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_REFERENCE_ARM";
+        case 1000631002:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_HINT_ARM";
+        case 1000631003:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_FLOW_VECTOR_ARM";
+        case 1000631004:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_COST_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_MAX_ENUM_ARM: return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_MAX_ENUM_ARM";
+        default:
+            return "Unknown VkDataGraphPipelineNodeConnectionTypeARM value.";
+        }
+    }
+
+
+    const char *
+    vk_DataGraphPipelineNodeTypeARM_to_str(VkDataGraphPipelineNodeTypeARM input)
+    {
+        switch((int64_t)input) {
+        case 1000631000:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_TYPE_OPTICAL_FLOW_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_TYPE_MAX_ENUM_ARM: return "VK_DATA_GRAPH_PIPELINE_NODE_TYPE_MAX_ENUM_ARM";
+        default:
+            return "Unknown VkDataGraphPipelineNodeTypeARM value.";
+        }
+    }
+
+
+    const char *
     vk_DataGraphPipelinePropertyARM_to_str(VkDataGraphPipelinePropertyARM input)
     {
         switch((int64_t)input) {
@@ -822,6 +890,10 @@
             return "VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM";
         case 1:
             return "VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM";
+        case 1000676000:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_DEBUG_DATABASE_ARM";
+        case 1000676001:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_STATISTICS_INFO_ARM";
         case VK_DATA_GRAPH_PIPELINE_PROPERTY_MAX_ENUM_ARM: return "VK_DATA_GRAPH_PIPELINE_PROPERTY_MAX_ENUM_ARM";
         default:
             return "Unknown VkDataGraphPipelinePropertyARM value.";
@@ -835,6 +907,10 @@
         switch((int64_t)input) {
         case 0:
             return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM";
+        case 1000631001:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM";
+        case 1000676000:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_NEURAL_ACCELERATOR_STATISTICS_ARM";
         case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_MAX_ENUM_ARM: return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_MAX_ENUM_ARM";
         default:
             return "Unknown VkDataGraphPipelineSessionBindPointARM value.";
@@ -1333,6 +1409,10 @@
             return "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
         case 28:
             return "VK_DRIVER_ID_MESA_KOSMICKRISP";
+        case 29:
+            return "VK_DRIVER_ID_MESA_GFXSTREAM";
+        case 30:
+            return "VK_DRIVER_ID_APE_SOFT";
         case VK_DRIVER_ID_MAX_ENUM: return "VK_DRIVER_ID_MAX_ENUM";
         default:
             return "Unknown VkDriverId value.";
@@ -2244,9 +2324,176 @@
             return "VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV";
         case 1000478000:
             return "VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX";
+        case 1000623000:
+            return "VK_GEOMETRY_TYPE_MICROMAP_KHR";
         case VK_GEOMETRY_TYPE_MAX_ENUM_KHR: return "VK_GEOMETRY_TYPE_MAX_ENUM_KHR";
         default:
             return "Unknown VkGeometryTypeKHR value.";
+        }
+    }
+
+
+    const char *
+    vk_GpaDeviceClockModeAMD_to_str(VkGpaDeviceClockModeAMD input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_GPA_DEVICE_CLOCK_MODE_DEFAULT_AMD";
+        case 1:
+            return "VK_GPA_DEVICE_CLOCK_MODE_QUERY_AMD";
+        case 2:
+            return "VK_GPA_DEVICE_CLOCK_MODE_PROFILING_AMD";
+        case 3:
+            return "VK_GPA_DEVICE_CLOCK_MODE_MIN_MEMORY_AMD";
+        case 4:
+            return "VK_GPA_DEVICE_CLOCK_MODE_MIN_ENGINE_AMD";
+        case 5:
+            return "VK_GPA_DEVICE_CLOCK_MODE_PEAK_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_MAX_ENUM_AMD: return "VK_GPA_DEVICE_CLOCK_MODE_MAX_ENUM_AMD";
+        default:
+            return "Unknown VkGpaDeviceClockModeAMD value.";
+        }
+    }
+
+
+    const char *
+    vk_GpaPerfBlockAMD_to_str(VkGpaPerfBlockAMD input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_GPA_PERF_BLOCK_CPF_AMD";
+        case 1:
+            return "VK_GPA_PERF_BLOCK_IA_AMD";
+        case 2:
+            return "VK_GPA_PERF_BLOCK_VGT_AMD";
+        case 3:
+            return "VK_GPA_PERF_BLOCK_PA_AMD";
+        case 4:
+            return "VK_GPA_PERF_BLOCK_SC_AMD";
+        case 5:
+            return "VK_GPA_PERF_BLOCK_SPI_AMD";
+        case 6:
+            return "VK_GPA_PERF_BLOCK_SQ_AMD";
+        case 7:
+            return "VK_GPA_PERF_BLOCK_SX_AMD";
+        case 8:
+            return "VK_GPA_PERF_BLOCK_TA_AMD";
+        case 9:
+            return "VK_GPA_PERF_BLOCK_TD_AMD";
+        case 10:
+            return "VK_GPA_PERF_BLOCK_TCP_AMD";
+        case 11:
+            return "VK_GPA_PERF_BLOCK_TCC_AMD";
+        case 12:
+            return "VK_GPA_PERF_BLOCK_TCA_AMD";
+        case 13:
+            return "VK_GPA_PERF_BLOCK_DB_AMD";
+        case 14:
+            return "VK_GPA_PERF_BLOCK_CB_AMD";
+        case 15:
+            return "VK_GPA_PERF_BLOCK_GDS_AMD";
+        case 16:
+            return "VK_GPA_PERF_BLOCK_SRBM_AMD";
+        case 17:
+            return "VK_GPA_PERF_BLOCK_GRBM_AMD";
+        case 18:
+            return "VK_GPA_PERF_BLOCK_GRBM_SE_AMD";
+        case 19:
+            return "VK_GPA_PERF_BLOCK_RLC_AMD";
+        case 20:
+            return "VK_GPA_PERF_BLOCK_DMA_AMD";
+        case 21:
+            return "VK_GPA_PERF_BLOCK_MC_AMD";
+        case 22:
+            return "VK_GPA_PERF_BLOCK_CPG_AMD";
+        case 23:
+            return "VK_GPA_PERF_BLOCK_CPC_AMD";
+        case 24:
+            return "VK_GPA_PERF_BLOCK_WD_AMD";
+        case 25:
+            return "VK_GPA_PERF_BLOCK_TCS_AMD";
+        case 26:
+            return "VK_GPA_PERF_BLOCK_ATC_AMD";
+        case 27:
+            return "VK_GPA_PERF_BLOCK_ATC_L2_AMD";
+        case 28:
+            return "VK_GPA_PERF_BLOCK_MC_VM_L2_AMD";
+        case 29:
+            return "VK_GPA_PERF_BLOCK_EA_AMD";
+        case 30:
+            return "VK_GPA_PERF_BLOCK_RPB_AMD";
+        case 31:
+            return "VK_GPA_PERF_BLOCK_RMI_AMD";
+        case 32:
+            return "VK_GPA_PERF_BLOCK_UMCCH_AMD";
+        case 33:
+            return "VK_GPA_PERF_BLOCK_GE_AMD";
+        case 34:
+            return "VK_GPA_PERF_BLOCK_GL1A_AMD";
+        case 35:
+            return "VK_GPA_PERF_BLOCK_GL1C_AMD";
+        case 36:
+            return "VK_GPA_PERF_BLOCK_GL1CG_AMD";
+        case 37:
+            return "VK_GPA_PERF_BLOCK_GL2A_AMD";
+        case 38:
+            return "VK_GPA_PERF_BLOCK_GL2C_AMD";
+        case 39:
+            return "VK_GPA_PERF_BLOCK_CHA_AMD";
+        case 40:
+            return "VK_GPA_PERF_BLOCK_CHC_AMD";
+        case 41:
+            return "VK_GPA_PERF_BLOCK_CHCG_AMD";
+        case 42:
+            return "VK_GPA_PERF_BLOCK_GUS_AMD";
+        case 43:
+            return "VK_GPA_PERF_BLOCK_GCR_AMD";
+        case 44:
+            return "VK_GPA_PERF_BLOCK_PH_AMD";
+        case 45:
+            return "VK_GPA_PERF_BLOCK_UTCL1_AMD";
+        case 46:
+            return "VK_GPA_PERF_BLOCK_GE_DIST_AMD";
+        case 47:
+            return "VK_GPA_PERF_BLOCK_GE_SE_AMD";
+        case 48:
+            return "VK_GPA_PERF_BLOCK_DF_MALL_AMD";
+        case 49:
+            return "VK_GPA_PERF_BLOCK_SQ_WGP_AMD";
+        case 50:
+            return "VK_GPA_PERF_BLOCK_PC_AMD";
+        case 51:
+            return "VK_GPA_PERF_BLOCK_GL1XA_AMD";
+        case 52:
+            return "VK_GPA_PERF_BLOCK_GL1XC_AMD";
+        case 53:
+            return "VK_GPA_PERF_BLOCK_WGS_AMD";
+        case 54:
+            return "VK_GPA_PERF_BLOCK_EACPWD_AMD";
+        case 55:
+            return "VK_GPA_PERF_BLOCK_EASE_AMD";
+        case 56:
+            return "VK_GPA_PERF_BLOCK_RLCUSER_AMD";
+        case VK_GPA_PERF_BLOCK_MAX_ENUM_AMD: return "VK_GPA_PERF_BLOCK_MAX_ENUM_AMD";
+        default:
+            return "Unknown VkGpaPerfBlockAMD value.";
+        }
+    }
+
+
+    const char *
+    vk_GpaSampleTypeAMD_to_str(VkGpaSampleTypeAMD input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_GPA_SAMPLE_TYPE_CUMULATIVE_AMD";
+        case 1:
+            return "VK_GPA_SAMPLE_TYPE_TRACE_AMD";
+        case 2:
+            return "VK_GPA_SAMPLE_TYPE_TIMING_AMD";
+        case VK_GPA_SAMPLE_TYPE_MAX_ENUM_AMD: return "VK_GPA_SAMPLE_TYPE_MAX_ENUM_AMD";
+        default:
+            return "Unknown VkGpaSampleTypeAMD value.";
         }
     }
 
@@ -2684,6 +2931,23 @@
 
 
     const char *
+    vk_NeuralAcceleratorStatisticsModeARM_to_str(VkNeuralAcceleratorStatisticsModeARM input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_DISABLED_ARM";
+        case 1:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS0_ARM";
+        case 2:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS1_ARM";
+        case VK_NEURAL_ACCELERATOR_STATISTICS_MODE_MAX_ENUM_ARM: return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_MAX_ENUM_ARM";
+        default:
+            return "Unknown VkNeuralAcceleratorStatisticsModeARM value.";
+        }
+    }
+
+
+    const char *
     vk_ObjectType_to_str(VkObjectType input)
     {
         switch((int64_t)input) {
@@ -2761,6 +3025,8 @@
             return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
         case 1000128000:
             return "VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT";
+        case 1000133000:
+            return "VK_OBJECT_TYPE_GPA_SESSION_AMD";
         case 1000150000:
             return "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR";
         case 1000156000:
@@ -2813,37 +3079,37 @@
 
 
     const char *
-    vk_OpacityMicromapFormatEXT_to_str(VkOpacityMicromapFormatEXT input)
+    vk_OpacityMicromapFormatKHR_to_str(VkOpacityMicromapFormatKHR input)
     {
         switch((int64_t)input) {
         case 1:
-            return "VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT";
+            return "VK_OPACITY_MICROMAP_FORMAT_2_STATE_KHR";
         case 2:
-            return "VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT";
-        case VK_OPACITY_MICROMAP_FORMAT_MAX_ENUM_EXT: return "VK_OPACITY_MICROMAP_FORMAT_MAX_ENUM_EXT";
+            return "VK_OPACITY_MICROMAP_FORMAT_4_STATE_KHR";
+        case VK_OPACITY_MICROMAP_FORMAT_MAX_ENUM_KHR: return "VK_OPACITY_MICROMAP_FORMAT_MAX_ENUM_KHR";
         default:
-            return "Unknown VkOpacityMicromapFormatEXT value.";
+            return "Unknown VkOpacityMicromapFormatKHR value.";
         }
     }
 
 
     const char *
-    vk_OpacityMicromapSpecialIndexEXT_to_str(VkOpacityMicromapSpecialIndexEXT input)
+    vk_OpacityMicromapSpecialIndexKHR_to_str(VkOpacityMicromapSpecialIndexKHR input)
     {
         switch((int64_t)input) {
         case -5:
             return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV";
         case -4:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT";
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_KHR";
         case -3:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT";
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_KHR";
         case -2:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT";
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_KHR";
         case -1:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT";
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_MAX_ENUM_EXT: return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_MAX_ENUM_EXT";
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_KHR";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_MAX_ENUM_KHR: return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_MAX_ENUM_KHR";
         default:
-            return "Unknown VkOpacityMicromapSpecialIndexEXT value.";
+            return "Unknown VkOpacityMicromapSpecialIndexKHR value.";
         }
     }
 
@@ -3094,6 +3360,8 @@
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM";
         case 1000629001:
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM";
+        case 1000631000:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_OPTICAL_FLOW_ARM";
         case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_MAX_ENUM_ARM: return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_MAX_ENUM_ARM";
         default:
             return "Unknown VkPhysicalDeviceDataGraphOperationTypeARM value.";
@@ -3416,6 +3684,8 @@
             return "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR";
         case 1000165000:
             return "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV";
+        case 1000173000:
+            return "VK_QUERY_TYPE_TIME_ELAPSED_QCOM";
         case 1000210000:
             return "VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL";
         case 1000299000:
@@ -4526,6 +4796,20 @@
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES";
         case 1000130001:
             return "VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO";
+        case 1000133000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD";
+        case 1000133001:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD";
+        case 1000133002:
+            return "VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD";
+        case 1000133003:
+            return "VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD";
+        case 1000133004:
+            return "VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD";
+        case 1000133005:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD";
+        case 1000133006:
+            return "VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD";
         case 1000134000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX";
         case 1000134001:
@@ -4746,6 +5030,8 @@
             return "VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT";
         case 1000172000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM";
+        case 1000173000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM";
         case 1000174000:
             return "VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO";
         case 1000175000:
@@ -5180,6 +5466,16 @@
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM";
         case 1000302002:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM";
+        case 1000303000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM";
+        case 1000304000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM";
+        case 1000304001:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM";
+        case 1000305000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT";
+        case 1000305001:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT";
         case 1000307000:
             return "VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV";
         case 1000307001:
@@ -6244,6 +6540,12 @@
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV";
         case 1000596000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM";
+        case 1000598000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_FEEDBACK_2_FEATURES_KHR";
+        case 1000598001:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_FEEDBACK_2_CAPABILITIES_KHR";
+        case 1000598002:
+            return "VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_CREATE_INFO_KHR";
         case 1000602000:
             return "VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT";
         case 1000602001:
@@ -6282,10 +6584,22 @@
             return "VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV";
         case 1000613001:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV";
+        case 1000616000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SWAPCHAIN_FEATURES_EXT";
+        case 1000616001:
+            return "VK_STRUCTURE_TYPE_SWAPCHAIN_FLAGS_SURFACE_CAPABILITIES_EXT";
         case 1000619003:
             return "VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR";
         case 1000620000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT";
+        case 1000623000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR";
+        case 1000623001:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR";
+        case 1000623002:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR";
+        case 1000623003:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR";
         case 1000627000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT";
         case 1000628000:
@@ -6306,6 +6620,24 @@
             return "VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR";
         case 1000630004:
             return "VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR";
+        case 1000631000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM";
+        case 1000631001:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM";
+        case 1000631002:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM";
+        case 1000631003:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM";
+        case 1000631004:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM";
+        case 1000631005:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM";
+        case 1000631006:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM";
+        case 1000631007:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM";
+        case 1000631008:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM";
         case 1000635000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT";
         case 1000635001:
@@ -6318,16 +6650,46 @@
             return "VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV";
         case 1000645001:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV";
+        case 1000657000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR";
+        case 1000657001:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR";
         case 1000662000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT";
         case 1000664000:
             return "VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC";
+        case 1000668000:
+            return "VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_4_KHR";
+        case 1000668001:
+            return "VK_STRUCTURE_TYPE_IMAGE_CREATE_FLAGS_2_CREATE_INFO_KHR";
+        case 1000668002:
+            return "VK_STRUCTURE_TYPE_IMAGE_USAGE_FLAGS_2_CREATE_INFO_KHR";
+        case 1000668003:
+            return "VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_2_CREATE_INFO_KHR";
+        case 1000668004:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_FLAGS_FEATURES_KHR";
+        case 1000668005:
+            return "VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR";
+        case 1000668006:
+            return "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR";
         case 1000673000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE";
+        case 1000674000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC";
+        case 1000674001:
+            return "VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC";
+        case 1000676000:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM";
+        case 1000676001:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM";
+        case 1000676002:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM";
         case 1000678000:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT";
         case 1000685000:
             return "VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS";
+        case 1000689000:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV";
         case VK_STRUCTURE_TYPE_MAX_ENUM: return "VK_STRUCTURE_TYPE_MAX_ENUM";
         default:
             return "Unknown VkStructureType value.";
@@ -6438,6 +6800,23 @@
         case VK_TESSELLATION_DOMAIN_ORIGIN_MAX_ENUM: return "VK_TESSELLATION_DOMAIN_ORIGIN_MAX_ENUM";
         default:
             return "Unknown VkTessellationDomainOrigin value.";
+        }
+    }
+
+
+    const char *
+    vk_ThrottleHintTypeSEC_to_str(VkThrottleHintTypeSEC input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_THROTTLE_HINT_TYPE_DEFAULT_SEC";
+        case 1:
+            return "VK_THROTTLE_HINT_TYPE_LOW_SEC";
+        case 2:
+            return "VK_THROTTLE_HINT_TYPE_HIGH_SEC";
+        case VK_THROTTLE_HINT_TYPE_MAX_ENUM_SEC: return "VK_THROTTLE_HINT_TYPE_MAX_ENUM_SEC";
+        default:
+            return "Unknown VkThrottleHintTypeSEC value.";
         }
     }
 
@@ -6561,6 +6940,8 @@
             return "VK_VENDOR_ID_POCL";
         case 65543:
             return "VK_VENDOR_ID_MOBILEYE";
+        case 65544:
+            return "VK_VENDOR_ID_APE";
         case VK_VENDOR_ID_MAX_ENUM: return "VK_VENDOR_ID_MAX_ENUM";
         default:
             return "Unknown VkVendorId value.";
@@ -7128,6 +7509,8 @@
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_EXT";
         case 512:
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_NV";
+        case 1024:
+            return "VK_BUILD_ACCELERATION_STRUCTURE_MICROMAP_LOSSY_BIT_KHR";
         case 2048:
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR";
         case 4096:
@@ -7345,6 +7728,82 @@
 
 
     const char *
+    vk_DataGraphOpticalFlowCreateFlagBitsARM_to_str(VkDataGraphOpticalFlowCreateFlagBitsARM input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_HINT_BIT_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_COST_BIT_ARM";
+        case 1073741824:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_RESERVED_30_BIT_ARM";
+        default:
+            return "Unknown VkDataGraphOpticalFlowCreateFlagBitsARM value.";
+        }
+    }
+
+
+    const char *
+    vk_DataGraphOpticalFlowExecuteFlagBitsARM_to_str(VkDataGraphOpticalFlowExecuteFlagBitsARM input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_UNCHANGED_BIT_ARM";
+        case 4:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_UNCHANGED_BIT_ARM";
+        case 8:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_IS_PREVIOUS_REFERENCE_BIT_ARM";
+        case 16:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_IS_PREVIOUS_INPUT_BIT_ARM";
+        default:
+            return "Unknown VkDataGraphOpticalFlowExecuteFlagBitsARM value.";
+        }
+    }
+
+
+    const char *
+    vk_DataGraphOpticalFlowGridSizeFlagBitsARM_to_str(VkDataGraphOpticalFlowGridSizeFlagBitsARM input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_ARM";
+        case 1:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_ARM";
+        case 4:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_ARM";
+        case 8:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_ARM";
+        default:
+            return "Unknown VkDataGraphOpticalFlowGridSizeFlagBitsARM value.";
+        }
+    }
+
+
+    const char *
+    vk_DataGraphOpticalFlowImageUsageFlagBitsARM_to_str(VkDataGraphOpticalFlowImageUsageFlagBitsARM input)
+    {
+        switch((int64_t)input) {
+        case 0:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM";
+        case 1:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM";
+        case 4:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM";
+        case 8:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM";
+        default:
+            return "Unknown VkDataGraphOpticalFlowImageUsageFlagBitsARM value.";
+        }
+    }
+
+
+    const char *
     vk_DataGraphPipelineDispatchFlagBitsARM_to_str(VkDataGraphPipelineDispatchFlagBitsARM input)
     {
         switch((int64_t)input) {
@@ -7360,6 +7819,8 @@
         switch((int64_t)input) {
         case 1:
             return "VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM";
+        case 2:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_OPTICAL_FLOW_CACHE_BIT_ARM";
         default:
             return "Unknown VkDataGraphPipelineSessionCreateFlagBitsARM value.";
         }
@@ -8014,6 +8475,10 @@
             return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV";
         case 8796093022208:
             return "VK_FORMAT_FEATURE_2_TENSOR_IMAGE_ALIASING_BIT_ARM";
+        case 17592186044416:
+            return "VK_FORMAT_FEATURE_2_BLOCK_MATCHING_SXD_BIT_QCOM";
+        case 35184372088832:
+            return "VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_2D_BIT_IMG";
         case 70368744177664:
             return "VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT";
         case 281474976710656:
@@ -8032,10 +8497,26 @@
             return "VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR";
         case 36028797018963968:
             return "VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR";
+        case 72057594037927936:
+            return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_IMAGE_BIT_ARM";
+        case 144115188075855872:
+            return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_VECTOR_BIT_ARM";
+        case 288230376151711744:
+            return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_COST_BIT_ARM";
         case 576460752303423488:
             return "VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR";
         default:
             return "Unknown VkFormatFeatureFlagBits2 value.";
+        }
+    }
+
+
+    const char *
+    vk_FormatFeatureFlagBits4KHR_to_str(VkFormatFeatureFlagBits4KHR input)
+    {
+        switch((int64_t)input) {
+        default:
+            return "Unknown VkFormatFeatureFlagBits4KHR value.";
         }
     }
 
@@ -8096,6 +8577,30 @@
             return "VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_EXT";
         default:
             return "Unknown VkGeometryInstanceFlagBitsKHR value.";
+        }
+    }
+
+
+    const char *
+    vk_GpaSqShaderStageFlagBitsAMD_to_str(VkGpaSqShaderStageFlagBitsAMD input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_GPA_SQ_SHADER_STAGE_PS_BIT_AMD";
+        case 2:
+            return "VK_GPA_SQ_SHADER_STAGE_VS_BIT_AMD";
+        case 4:
+            return "VK_GPA_SQ_SHADER_STAGE_GS_BIT_AMD";
+        case 8:
+            return "VK_GPA_SQ_SHADER_STAGE_ES_BIT_AMD";
+        case 16:
+            return "VK_GPA_SQ_SHADER_STAGE_HS_BIT_AMD";
+        case 32:
+            return "VK_GPA_SQ_SHADER_STAGE_LS_BIT_AMD";
+        case 64:
+            return "VK_GPA_SQ_SHADER_STAGE_CS_BIT_AMD";
+        default:
+            return "Unknown VkGpaSqShaderStageFlagBitsAMD value.";
         }
     }
 
@@ -8308,8 +8813,62 @@
             return "VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT";
         case 1048576:
             return "VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR";
+        case 4194304:
+            return "VK_IMAGE_CREATE_ALIAS_SINGLE_LAYER_DESCRIPTOR_BIT_KHR";
         default:
             return "Unknown VkImageCreateFlagBits value.";
+        }
+    }
+
+
+    const char *
+    vk_ImageCreateFlagBits2KHR_to_str(VkImageCreateFlagBits2KHR input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_IMAGE_CREATE_2_SPARSE_BINDING_BIT_KHR";
+        case 2:
+            return "VK_IMAGE_CREATE_2_SPARSE_RESIDENCY_BIT_KHR";
+        case 4:
+            return "VK_IMAGE_CREATE_2_SPARSE_ALIASED_BIT_KHR";
+        case 8:
+            return "VK_IMAGE_CREATE_2_MUTABLE_FORMAT_BIT_KHR";
+        case 16:
+            return "VK_IMAGE_CREATE_2_CUBE_COMPATIBLE_BIT_KHR";
+        case 32:
+            return "VK_IMAGE_CREATE_2_2D_ARRAY_COMPATIBLE_BIT_KHR";
+        case 64:
+            return "VK_IMAGE_CREATE_2_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR";
+        case 128:
+            return "VK_IMAGE_CREATE_2_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR";
+        case 256:
+            return "VK_IMAGE_CREATE_2_EXTENDED_USAGE_BIT_KHR";
+        case 512:
+            return "VK_IMAGE_CREATE_2_DISJOINT_BIT_KHR";
+        case 1024:
+            return "VK_IMAGE_CREATE_2_ALIAS_BIT_KHR";
+        case 2048:
+            return "VK_IMAGE_CREATE_2_PROTECTED_BIT_KHR";
+        case 4096:
+            return "VK_IMAGE_CREATE_2_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT";
+        case 8192:
+            return "VK_IMAGE_CREATE_2_CORNER_SAMPLED_BIT_NV";
+        case 16384:
+            return "VK_IMAGE_CREATE_2_SUBSAMPLED_BIT_EXT";
+        case 32768:
+            return "VK_IMAGE_CREATE_2_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT";
+        case 65536:
+            return "VK_IMAGE_CREATE_2_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT";
+        case 131072:
+            return "VK_IMAGE_CREATE_2_2D_VIEW_COMPATIBLE_BIT_EXT";
+        case 262144:
+            return "VK_IMAGE_CREATE_2_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT";
+        case 1048576:
+            return "VK_IMAGE_CREATE_2_VIDEO_PROFILE_INDEPENDENT_BIT_KHR";
+        case 4194304:
+            return "VK_IMAGE_CREATE_2_ALIAS_SINGLE_LAYER_DESCRIPTOR_BIT_KHR";
+        default:
+            return "Unknown VkImageCreateFlagBits2KHR value.";
         }
     }
 
@@ -8370,6 +8929,66 @@
             return "VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM";
         default:
             return "Unknown VkImageUsageFlagBits value.";
+        }
+    }
+
+
+    const char *
+    vk_ImageUsageFlagBits2KHR_to_str(VkImageUsageFlagBits2KHR input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_IMAGE_USAGE_2_TRANSFER_SRC_BIT_KHR";
+        case 2:
+            return "VK_IMAGE_USAGE_2_TRANSFER_DST_BIT_KHR";
+        case 4:
+            return "VK_IMAGE_USAGE_2_SAMPLED_BIT_KHR";
+        case 8:
+            return "VK_IMAGE_USAGE_2_STORAGE_BIT_KHR";
+        case 16:
+            return "VK_IMAGE_USAGE_2_COLOR_ATTACHMENT_BIT_KHR";
+        case 32:
+            return "VK_IMAGE_USAGE_2_DEPTH_STENCIL_ATTACHMENT_BIT_KHR";
+        case 64:
+            return "VK_IMAGE_USAGE_2_TRANSIENT_ATTACHMENT_BIT_KHR";
+        case 128:
+            return "VK_IMAGE_USAGE_2_INPUT_ATTACHMENT_BIT_KHR";
+        case 256:
+            return "VK_IMAGE_USAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR";
+        case 512:
+            return "VK_IMAGE_USAGE_2_FRAGMENT_DENSITY_MAP_BIT_EXT";
+        case 1024:
+            return "VK_IMAGE_USAGE_2_VIDEO_DECODE_DST_BIT_KHR";
+        case 2048:
+            return "VK_IMAGE_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR";
+        case 4096:
+            return "VK_IMAGE_USAGE_2_VIDEO_DECODE_DPB_BIT_KHR";
+        case 8192:
+            return "VK_IMAGE_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR";
+        case 16384:
+            return "VK_IMAGE_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR";
+        case 32768:
+            return "VK_IMAGE_USAGE_2_VIDEO_ENCODE_DPB_BIT_KHR";
+        case 262144:
+            return "VK_IMAGE_USAGE_2_INVOCATION_MASK_BIT_HUAWEI";
+        case 524288:
+            return "VK_IMAGE_USAGE_2_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
+        case 1048576:
+            return "VK_IMAGE_USAGE_2_SAMPLE_WEIGHT_BIT_QCOM";
+        case 2097152:
+            return "VK_IMAGE_USAGE_2_SAMPLE_BLOCK_MATCH_BIT_QCOM";
+        case 4194304:
+            return "VK_IMAGE_USAGE_2_HOST_TRANSFER_BIT_KHR";
+        case 8388608:
+            return "VK_IMAGE_USAGE_2_TENSOR_ALIASING_BIT_ARM";
+        case 33554432:
+            return "VK_IMAGE_USAGE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
+        case 67108864:
+            return "VK_IMAGE_USAGE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
+        case 134217728:
+            return "VK_IMAGE_USAGE_2_TILE_MEMORY_BIT_QCOM";
+        default:
+            return "Unknown VkImageUsageFlagBits2KHR value.";
         }
     }
 
@@ -8811,7 +9430,7 @@
         case 8388608:
             return "VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT";
         case 16777216:
-            return "VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT";
+            return "VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR";
         case 33554432:
             return "VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
         case 67108864:
@@ -8883,7 +9502,7 @@
         case 8388608:
             return "VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT";
         case 16777216:
-            return "VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT";
+            return "VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR";
         case 33554432:
             return "VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
         case 67108864:
@@ -8914,6 +9533,8 @@
             return "VK_PIPELINE_CREATE_2_INSTRUMENT_SHADERS_BIT_ARM";
         case 1099511627776:
             return "VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+        case 2199023255552:
+            return "VK_PIPELINE_CREATE_2_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_KHR";
         case 8796093022208:
             return "VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT";
         default:
@@ -8958,6 +9579,8 @@
         switch((int64_t)input) {
         case 2:
             return "VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT";
+        case 4:
+            return "VK_PIPELINE_LAYOUT_CREATE_NO_TASK_SHADER_BIT_KHR";
         default:
             return "Unknown VkPipelineLayoutCreateFlagBits value.";
         }
@@ -9516,8 +10139,12 @@
             return "VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT";
         case 2048:
             return "VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM";
+        case 4096:
+            return "VK_SHADER_CREATE_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_EXT";
         case 32768:
             return "VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT";
+        case 262144:
+            return "VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR";
         default:
             return "Unknown VkShaderCreateFlagBitsEXT value.";
         }
@@ -9774,6 +10401,8 @@
             return "VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR";
         case 128:
             return "VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR";
+        case 256:
+            return "VK_SWAPCHAIN_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT";
         case 512:
             return "VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT";
         default:
@@ -10144,6 +10773,20 @@
             return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR";
         case 4:
             return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR";
+        case 8:
+            return "VK_VIDEO_ENCODE_FEEDBACK_AVERAGE_QUANTIZATION_BIT_KHR";
+        case 16:
+            return "VK_VIDEO_ENCODE_FEEDBACK_MIN_QUANTIZATION_BIT_KHR";
+        case 32:
+            return "VK_VIDEO_ENCODE_FEEDBACK_MAX_QUANTIZATION_BIT_KHR";
+        case 64:
+            return "VK_VIDEO_ENCODE_FEEDBACK_INTRA_PIXELS_BIT_KHR";
+        case 128:
+            return "VK_VIDEO_ENCODE_FEEDBACK_INTER_PIXELS_BIT_KHR";
+        case 256:
+            return "VK_VIDEO_ENCODE_FEEDBACK_SKIPPED_PIXELS_BIT_KHR";
+        case 512:
+            return "VK_VIDEO_ENCODE_FEEDBACK_PICTURE_PARTITION_COUNT_BIT_KHR";
         default:
             return "Unknown VkVideoEncodeFeedbackFlagBitsKHR value.";
         }
@@ -10429,6 +11072,22 @@
 
 
     const char *
+    vk_VideoEncodePerPartitionFeedbackFlagBitsKHR_to_str(VkVideoEncodePerPartitionFeedbackFlagBitsKHR input)
+    {
+        switch((int64_t)input) {
+        case 1:
+            return "VK_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_STATUS_BIT_KHR";
+        case 2:
+            return "VK_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR";
+        case 4:
+            return "VK_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR";
+        default:
+            return "Unknown VkVideoEncodePerPartitionFeedbackFlagBitsKHR value.";
+        }
+    }
+
+
+    const char *
     vk_VideoEncodeRateControlModeFlagBitsKHR_to_str(VkVideoEncodeRateControlModeFlagBitsKHR input)
     {
         switch((int64_t)input) {
@@ -10562,6 +11221,7 @@
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR: return sizeof(VkAccelerationStructureGeometryInstancesDataKHR);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR: return sizeof(VkAccelerationStructureGeometryKHR);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV: return sizeof(VkAccelerationStructureGeometryLinearSweptSpheresDataNV);
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR: return sizeof(VkAccelerationStructureGeometryMicromapDataKHR);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV: return sizeof(VkAccelerationStructureGeometryMotionTrianglesDataNV);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV: return sizeof(VkAccelerationStructureGeometrySpheresDataNV);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR: return sizeof(VkAccelerationStructureGeometryTrianglesDataKHR);
@@ -10569,6 +11229,7 @@
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV: return sizeof(VkAccelerationStructureMemoryRequirementsInfoNV);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV: return sizeof(VkAccelerationStructureMotionInfoNV);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT: return sizeof(VkAccelerationStructureTrianglesOpacityMicromapEXT);
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR: return sizeof(VkAccelerationStructureTrianglesOpacityMicromapKHR);
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR: return sizeof(VkAccelerationStructureVersionInfoKHR);
         case VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR: return sizeof(VkAcquireNextImageInfoKHR);
         case VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR: return sizeof(VkAcquireProfilingLockInfoKHR);
@@ -10708,6 +11369,8 @@
     #ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR: return sizeof(VkD3D12FenceSubmitInfoKHR);
     #endif
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM: return sizeof(VkDataGraphOpticalFlowImageFormatInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM: return sizeof(VkDataGraphOpticalFlowImageFormatPropertiesARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM: return sizeof(VkDataGraphPipelineBuiltinModelCreateInfoQCOM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineCompilerControlCreateInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM: return sizeof(VkDataGraphPipelineConstantARM);
@@ -10716,13 +11379,20 @@
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM: return sizeof(VkDataGraphPipelineDispatchInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineIdentifierCreateInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM: return sizeof(VkDataGraphPipelineInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineNeuralStatisticsCreateInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineOpticalFlowCreateInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM: return sizeof(VkDataGraphPipelineOpticalFlowDispatchInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM: return sizeof(VkDataGraphPipelinePropertyQueryResultARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM: return sizeof(VkDataGraphPipelineResourceInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM: return sizeof(VkDataGraphPipelineResourceInfoImageLayoutARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM: return sizeof(VkDataGraphPipelineSessionBindPointRequirementARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM: return sizeof(VkDataGraphPipelineSessionBindPointRequirementsInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineSessionCreateInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM: return sizeof(VkDataGraphPipelineSessionMemoryRequirementsInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineShaderModuleCreateInfoARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM: return sizeof(VkDataGraphPipelineSingleNodeConnectionARM);
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM: return sizeof(VkDataGraphPipelineSingleNodeCreateInfoARM);
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM: return sizeof(VkDataGraphProcessingEngineCreateInfoARM);
         case VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT: return sizeof(VkDebugMarkerMarkerInfoEXT);
         case VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT: return sizeof(VkDebugMarkerObjectNameInfoEXT);
@@ -10886,6 +11556,7 @@
         case VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT: return sizeof(VkFilterCubicImageViewImageFormatPropertiesEXT);
         case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2: return sizeof(VkFormatProperties2);
         case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3: return sizeof(VkFormatProperties3);
+        case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_4_KHR: return sizeof(VkFormatProperties4KHR);
         case VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR: return sizeof(VkFragmentShadingRateAttachmentInfoKHR);
         case VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT: return sizeof(VkFrameBoundaryEXT);
         case VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM: return sizeof(VkFrameBoundaryTensorsARM);
@@ -10903,6 +11574,10 @@
         case VK_STRUCTURE_TYPE_GEOMETRY_NV: return sizeof(VkGeometryNV);
         case VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV: return sizeof(VkGeometryTrianglesNV);
         case VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV: return sizeof(VkGetLatencyMarkerInfoNV);
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD: return sizeof(VkGpaDeviceClockModeInfoAMD);
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD: return sizeof(VkGpaDeviceGetClockInfoAMD);
+        case VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD: return sizeof(VkGpaSampleBeginInfoAMD);
+        case VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD: return sizeof(VkGpaSessionCreateInfoAMD);
         case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO: return sizeof(VkGraphicsPipelineCreateInfo);
         case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT: return sizeof(VkGraphicsPipelineLibraryCreateInfoEXT);
         case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV: return sizeof(VkGraphicsPipelineShaderGroupsCreateInfoNV);
@@ -10924,6 +11599,7 @@
         case VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA: return sizeof(VkImageConstraintsInfoFUCHSIA);
     #endif
         case VK_STRUCTURE_TYPE_IMAGE_COPY_2: return sizeof(VkImageCopy2);
+        case VK_STRUCTURE_TYPE_IMAGE_CREATE_FLAGS_2_CREATE_INFO_KHR: return sizeof(VkImageCreateFlags2CreateInfoKHR);
         case VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO: return sizeof(VkImageCreateInfo);
         case VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT: return sizeof(VkImageDescriptorInfoEXT);
         case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT: return sizeof(VkImageDrmFormatModifierExplicitCreateInfoEXT);
@@ -10943,10 +11619,12 @@
         case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO: return sizeof(VkImagePlaneMemoryRequirementsInfo);
         case VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2: return sizeof(VkImageResolve2);
         case VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2: return sizeof(VkImageSparseMemoryRequirementsInfo2);
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR: return sizeof(VkImageStencilUsage2CreateInfoKHR);
         case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO: return sizeof(VkImageStencilUsageCreateInfo);
         case VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2: return sizeof(VkImageSubresource2);
         case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR: return sizeof(VkImageSwapchainCreateInfoKHR);
         case VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY: return sizeof(VkImageToMemoryCopy);
+        case VK_STRUCTURE_TYPE_IMAGE_USAGE_FLAGS_2_CREATE_INFO_KHR: return sizeof(VkImageUsageFlags2CreateInfoKHR);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT: return sizeof(VkImageViewASTCDecodeModeEXT);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX: return sizeof(VkImageViewAddressPropertiesNVX);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT: return sizeof(VkImageViewCaptureDescriptorDataInfoEXT);
@@ -10955,6 +11633,7 @@
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT: return sizeof(VkImageViewMinLodCreateInfoEXT);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM: return sizeof(VkImageViewSampleWeightCreateInfoQCOM);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT: return sizeof(VkImageViewSlicedCreateInfoEXT);
+        case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_2_CREATE_INFO_KHR: return sizeof(VkImageViewUsage2CreateInfoKHR);
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO: return sizeof(VkImageViewUsageCreateInfo);
     #ifdef VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID: return sizeof(VkImportAndroidHardwareBufferInfoANDROID);
@@ -11153,6 +11832,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV: return sizeof(VkPhysicalDeviceCooperativeMatrix2FeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV: return sizeof(VkPhysicalDeviceCooperativeMatrix2PropertiesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM: return sizeof(VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV: return sizeof(VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR: return sizeof(VkPhysicalDeviceCooperativeMatrixFeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV: return sizeof(VkPhysicalDeviceCooperativeMatrixFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR: return sizeof(VkPhysicalDeviceCooperativeMatrixPropertiesKHR);
@@ -11171,6 +11851,8 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT: return sizeof(VkPhysicalDeviceCustomResolveFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM: return sizeof(VkPhysicalDeviceDataGraphFeaturesARM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM: return sizeof(VkPhysicalDeviceDataGraphModelFeaturesQCOM);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM: return sizeof(VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM: return sizeof(VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV: return sizeof(VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT: return sizeof(VkPhysicalDeviceDepthBiasControlFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT: return sizeof(VkPhysicalDeviceDepthClampControlFeaturesEXT);
@@ -11204,11 +11886,13 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES: return sizeof(VkPhysicalDeviceDynamicRenderingFeatures);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES: return sizeof(VkPhysicalDeviceDynamicRenderingLocalReadFeatures);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT: return sizeof(VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM: return sizeof(VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV: return sizeof(VkPhysicalDeviceExclusiveScissorFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT: return sizeof(VkPhysicalDeviceExtendedDynamicState2FeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT: return sizeof(VkPhysicalDeviceExtendedDynamicState3FeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceExtendedDynamicState3PropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT: return sizeof(VkPhysicalDeviceExtendedDynamicStateFeaturesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_FLAGS_FEATURES_KHR: return sizeof(VkPhysicalDeviceExtendedFlagsFeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV: return sizeof(VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV: return sizeof(VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO: return sizeof(VkPhysicalDeviceExternalBufferInfo);
@@ -11252,6 +11936,9 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR: return sizeof(VkPhysicalDeviceFragmentShadingRatePropertiesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT: return sizeof(VkPhysicalDeviceFrameBoundaryFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES: return sizeof(VkPhysicalDeviceGlobalPriorityQueryFeatures);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD: return sizeof(VkPhysicalDeviceGpaFeaturesAMD);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD: return sizeof(VkPhysicalDeviceGpaProperties2AMD);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD: return sizeof(VkPhysicalDeviceGpaPropertiesAMD);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT: return sizeof(VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES: return sizeof(VkPhysicalDeviceGroupProperties);
@@ -11269,6 +11956,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2: return sizeof(VkPhysicalDeviceImageFormatInfo2);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM: return sizeof(VkPhysicalDeviceImageProcessing2FeaturesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM: return sizeof(VkPhysicalDeviceImageProcessing2PropertiesQCOM);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM: return sizeof(VkPhysicalDeviceImageProcessing3FeaturesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM: return sizeof(VkPhysicalDeviceImageProcessingFeaturesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM: return sizeof(VkPhysicalDeviceImageProcessingPropertiesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES: return sizeof(VkPhysicalDeviceImageRobustnessFeatures);
@@ -11294,6 +11982,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV: return sizeof(VkPhysicalDeviceLinearColorAttachmentFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR: return sizeof(VkPhysicalDeviceMaintenance10FeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR: return sizeof(VkPhysicalDeviceMaintenance10PropertiesKHR);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR: return sizeof(VkPhysicalDeviceMaintenance11FeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES: return sizeof(VkPhysicalDeviceMaintenance3Properties);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES: return sizeof(VkPhysicalDeviceMaintenance4Features);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES: return sizeof(VkPhysicalDeviceMaintenance4Properties);
@@ -11320,6 +12009,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT: return sizeof(VkPhysicalDeviceMultiDrawFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceMultiDrawPropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT: return sizeof(VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SWAPCHAIN_FEATURES_EXT: return sizeof(VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES: return sizeof(VkPhysicalDeviceMultiviewFeatures);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX: return sizeof(VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM: return sizeof(VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM);
@@ -11330,7 +12020,9 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceNestedCommandBufferPropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT: return sizeof(VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_EXT: return sizeof(VkPhysicalDeviceOpacityMicromapFeaturesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR: return sizeof(VkPhysicalDeviceOpacityMicromapFeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceOpacityMicromapPropertiesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR: return sizeof(VkPhysicalDeviceOpacityMicromapPropertiesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_FEATURES_NV: return sizeof(VkPhysicalDeviceOpticalFlowFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV: return sizeof(VkPhysicalDeviceOpticalFlowPropertiesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT: return sizeof(VkPhysicalDevicePCIBusInfoPropertiesEXT);
@@ -11446,6 +12138,8 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE: return sizeof(VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT: return sizeof(VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM: return sizeof(VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM: return sizeof(VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT: return sizeof(VkPhysicalDeviceShaderObjectFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceShaderObjectPropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR: return sizeof(VkPhysicalDeviceShaderQuadControlFeaturesKHR);
@@ -11453,6 +12147,8 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT: return sizeof(VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV: return sizeof(VkPhysicalDeviceShaderSMBuiltinsFeaturesNV);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV: return sizeof(VkPhysicalDeviceShaderSMBuiltinsPropertiesNV);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT: return sizeof(VkPhysicalDeviceShaderSplitBarrierFeaturesEXT);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT: return sizeof(VkPhysicalDeviceShaderSplitBarrierPropertiesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES: return sizeof(VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT: return sizeof(VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES: return sizeof(VkPhysicalDeviceShaderSubgroupRotateFeatures);
@@ -11480,6 +12176,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES: return sizeof(VkPhysicalDeviceTexelBufferAlignmentProperties);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT: return sizeof(VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES: return sizeof(VkPhysicalDeviceTextureCompressionASTCHDRFeatures);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC: return sizeof(VkPhysicalDeviceThrottleHintFeaturesSEC);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM: return sizeof(VkPhysicalDeviceTileMemoryHeapFeaturesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM: return sizeof(VkPhysicalDeviceTileMemoryHeapPropertiesQCOM);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM: return sizeof(VkPhysicalDeviceTilePropertiesFeaturesQCOM);
@@ -11500,6 +12197,7 @@
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_INPUT_DYNAMIC_STATE_FEATURES_EXT: return sizeof(VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_DECODE_VP9_FEATURES_KHR: return sizeof(VkPhysicalDeviceVideoDecodeVP9FeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR: return sizeof(VkPhysicalDeviceVideoEncodeAV1FeaturesKHR);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_FEEDBACK_2_FEATURES_KHR: return sizeof(VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_INTRA_REFRESH_FEATURES_KHR: return sizeof(VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR: return sizeof(VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR);
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR: return sizeof(VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR);
@@ -11605,12 +12303,15 @@
         case VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR: return sizeof(VkQueryPoolPerformanceCreateInfoKHR);
         case VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL: return sizeof(VkQueryPoolPerformanceQueryCreateInfoINTEL);
         case VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR: return sizeof(VkQueryPoolVideoEncodeFeedbackCreateInfoKHR);
+        case VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_CREATE_INFO_KHR: return sizeof(VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV: return sizeof(VkQueueFamilyCheckpointProperties2NV);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV: return sizeof(VkQueueFamilyCheckpointPropertiesNV);
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM: return sizeof(VkQueueFamilyDataGraphOpticalFlowPropertiesARM);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM: return sizeof(VkQueueFamilyDataGraphProcessingEnginePropertiesARM);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM: return sizeof(VkQueueFamilyDataGraphPropertiesARM);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM: return sizeof(VkQueueFamilyDataGraphTOSAPropertiesARM);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES: return sizeof(VkQueueFamilyGlobalPriorityProperties);
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR: return sizeof(VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR: return sizeof(VkQueueFamilyOwnershipTransferPropertiesKHR);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2: return sizeof(VkQueueFamilyProperties2);
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR: return sizeof(VkQueueFamilyQueryResultStatusPropertiesKHR);
@@ -11697,6 +12398,7 @@
         case VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO: return sizeof(VkShaderModuleCreateInfo);
         case VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT: return sizeof(VkShaderModuleIdentifierEXT);
         case VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT: return sizeof(VkShaderModuleValidationCacheCreateInfoEXT);
+        case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR: return sizeof(VkSharedPresentSurfaceCapabilities2KHR);
         case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR: return sizeof(VkSharedPresentSurfaceCapabilitiesKHR);
         case VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2: return sizeof(VkSparseImageFormatProperties2);
         case VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2: return sizeof(VkSparseImageMemoryRequirements2);
@@ -11741,6 +12443,7 @@
         case VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT: return sizeof(VkSwapchainCounterCreateInfoEXT);
         case VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR: return sizeof(VkSwapchainCreateInfoKHR);
         case VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD: return sizeof(VkSwapchainDisplayNativeHdrCreateInfoAMD);
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_FLAGS_SURFACE_CAPABILITIES_EXT: return sizeof(VkSwapchainFlagsSurfaceCapabilitiesEXT);
     #ifdef VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_ANDROID: return sizeof(VkSwapchainImageCreateInfoANDROID);
     #endif
@@ -11767,6 +12470,7 @@
         case VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM: return sizeof(VkTensorViewCreateInfoARM);
         case VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT: return sizeof(VkTexelBufferDescriptorInfoEXT);
         case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD: return sizeof(VkTextureLODGatherFormatPropertiesAMD);
+        case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC: return sizeof(VkThrottleHintSubmitInfoSEC);
         case VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM: return sizeof(VkTileMemoryBindInfoQCOM);
         case VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM: return sizeof(VkTileMemoryRequirementsQCOM);
         case VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM: return sizeof(VkTileMemorySizeInfoQCOM);
@@ -11824,6 +12528,7 @@
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR: return sizeof(VkVideoEncodeAV1SessionCreateInfoKHR);
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR: return sizeof(VkVideoEncodeAV1SessionParametersCreateInfoKHR);
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR: return sizeof(VkVideoEncodeCapabilitiesKHR);
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_FEEDBACK_2_CAPABILITIES_KHR: return sizeof(VkVideoEncodeFeedback2CapabilitiesKHR);
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR: return sizeof(VkVideoEncodeH264CapabilitiesKHR);
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR: return sizeof(VkVideoEncodeH264DpbSlotInfoKHR);
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR: return sizeof(VkVideoEncodeH264GopRemainingFrameInfoKHR);
@@ -11995,6 +12700,8 @@
             return "VkDescriptorUpdateTemplate";
         case 1000128000:
             return "VkDebugUtilsMessengerEXT";
+        case 1000133000:
+            return "VkGpaSessionAMD";
         case 1000150000:
             return "VkAccelerationStructureKHR";
         case 1000156000:

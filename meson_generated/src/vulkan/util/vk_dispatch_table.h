@@ -317,6 +317,7 @@ struct vk_physical_device_dispatch_table {
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
     PFN_vkGetPhysicalDeviceDescriptorSizeEXT GetPhysicalDeviceDescriptorSizeEXT;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
 
 };
 
@@ -1192,6 +1193,18 @@ struct vk_device_dispatch_table {
 #else
     PFN_vkVoidFunction GetScreenBufferPropertiesQNX;
 #endif
+    PFN_vkCreateGpaSessionAMD CreateGpaSessionAMD;
+    PFN_vkDestroyGpaSessionAMD DestroyGpaSessionAMD;
+    PFN_vkSetGpaDeviceClockModeAMD SetGpaDeviceClockModeAMD;
+    PFN_vkGetGpaDeviceClockInfoAMD GetGpaDeviceClockInfoAMD;
+    PFN_vkCmdBeginGpaSessionAMD CmdBeginGpaSessionAMD;
+    PFN_vkCmdEndGpaSessionAMD CmdEndGpaSessionAMD;
+    PFN_vkCmdBeginGpaSampleAMD CmdBeginGpaSampleAMD;
+    PFN_vkCmdEndGpaSampleAMD CmdEndGpaSampleAMD;
+    PFN_vkGetGpaSessionStatusAMD GetGpaSessionStatusAMD;
+    PFN_vkGetGpaSessionResultsAMD GetGpaSessionResultsAMD;
+    PFN_vkResetGpaSessionAMD ResetGpaSessionAMD;
+    PFN_vkCmdCopyGpaSessionResultsAMD CmdCopyGpaSessionResultsAMD;
     union {
         PFN_vkCmdBindDescriptorSets2 CmdBindDescriptorSets2;
         PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
@@ -1581,6 +1594,7 @@ struct vk_dispatch_table {
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
     PFN_vkGetPhysicalDeviceDescriptorSizeEXT GetPhysicalDeviceDescriptorSizeEXT;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
 
             
     PFN_vkGetDeviceProcAddr GetDeviceProcAddr;
@@ -2453,6 +2467,18 @@ struct vk_dispatch_table {
 #else
     PFN_vkVoidFunction GetScreenBufferPropertiesQNX;
 #endif
+    PFN_vkCreateGpaSessionAMD CreateGpaSessionAMD;
+    PFN_vkDestroyGpaSessionAMD DestroyGpaSessionAMD;
+    PFN_vkSetGpaDeviceClockModeAMD SetGpaDeviceClockModeAMD;
+    PFN_vkGetGpaDeviceClockInfoAMD GetGpaDeviceClockInfoAMD;
+    PFN_vkCmdBeginGpaSessionAMD CmdBeginGpaSessionAMD;
+    PFN_vkCmdEndGpaSessionAMD CmdEndGpaSessionAMD;
+    PFN_vkCmdBeginGpaSampleAMD CmdBeginGpaSampleAMD;
+    PFN_vkCmdEndGpaSampleAMD CmdEndGpaSampleAMD;
+    PFN_vkGetGpaSessionStatusAMD GetGpaSessionStatusAMD;
+    PFN_vkGetGpaSessionResultsAMD GetGpaSessionResultsAMD;
+    PFN_vkResetGpaSessionAMD ResetGpaSessionAMD;
+    PFN_vkCmdCopyGpaSessionResultsAMD CmdCopyGpaSessionResultsAMD;
     union {
         PFN_vkCmdBindDescriptorSets2 CmdBindDescriptorSets2;
         PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
@@ -2812,6 +2838,7 @@ struct vk_physical_device_entrypoint_table {
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
     PFN_vkGetPhysicalDeviceDescriptorSizeEXT GetPhysicalDeviceDescriptorSizeEXT;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
 };
 
 
@@ -3524,6 +3551,18 @@ struct vk_device_entrypoint_table {
 #else
     PFN_vkVoidFunction GetScreenBufferPropertiesQNX;
 # endif
+    PFN_vkCreateGpaSessionAMD CreateGpaSessionAMD;
+    PFN_vkDestroyGpaSessionAMD DestroyGpaSessionAMD;
+    PFN_vkSetGpaDeviceClockModeAMD SetGpaDeviceClockModeAMD;
+    PFN_vkGetGpaDeviceClockInfoAMD GetGpaDeviceClockInfoAMD;
+    PFN_vkCmdBeginGpaSessionAMD CmdBeginGpaSessionAMD;
+    PFN_vkCmdEndGpaSessionAMD CmdEndGpaSessionAMD;
+    PFN_vkCmdBeginGpaSampleAMD CmdBeginGpaSampleAMD;
+    PFN_vkCmdEndGpaSampleAMD CmdEndGpaSampleAMD;
+    PFN_vkGetGpaSessionStatusAMD GetGpaSessionStatusAMD;
+    PFN_vkGetGpaSessionResultsAMD GetGpaSessionResultsAMD;
+    PFN_vkResetGpaSessionAMD ResetGpaSessionAMD;
+    PFN_vkCmdCopyGpaSessionResultsAMD CmdCopyGpaSessionResultsAMD;
     PFN_vkCmdBindDescriptorSets2 CmdBindDescriptorSets2;
     PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
     PFN_vkCmdPushConstants2 CmdPushConstants2;
@@ -3873,6 +3912,7 @@ struct vk_physical_device_uncompacted_dispatch_table {
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
     PFN_vkGetPhysicalDeviceDescriptorSizeEXT GetPhysicalDeviceDescriptorSizeEXT;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
 
 };
 
@@ -4586,6 +4626,18 @@ struct vk_device_uncompacted_dispatch_table {
 #else
     PFN_vkVoidFunction GetScreenBufferPropertiesQNX;
 #endif
+    PFN_vkCreateGpaSessionAMD CreateGpaSessionAMD;
+    PFN_vkDestroyGpaSessionAMD DestroyGpaSessionAMD;
+    PFN_vkSetGpaDeviceClockModeAMD SetGpaDeviceClockModeAMD;
+    PFN_vkGetGpaDeviceClockInfoAMD GetGpaDeviceClockInfoAMD;
+    PFN_vkCmdBeginGpaSessionAMD CmdBeginGpaSessionAMD;
+    PFN_vkCmdEndGpaSessionAMD CmdEndGpaSessionAMD;
+    PFN_vkCmdBeginGpaSampleAMD CmdBeginGpaSampleAMD;
+    PFN_vkCmdEndGpaSampleAMD CmdEndGpaSampleAMD;
+    PFN_vkGetGpaSessionStatusAMD GetGpaSessionStatusAMD;
+    PFN_vkGetGpaSessionResultsAMD GetGpaSessionResultsAMD;
+    PFN_vkResetGpaSessionAMD ResetGpaSessionAMD;
+    PFN_vkCmdCopyGpaSessionResultsAMD CmdCopyGpaSessionResultsAMD;
     PFN_vkCmdBindDescriptorSets2 CmdBindDescriptorSets2;
     PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
         PFN_vkCmdPushConstants2 CmdPushConstants2;
@@ -4937,6 +4989,7 @@ struct vk_uncompacted_dispatch_table {
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
     PFN_vkGetPhysicalDeviceDescriptorSizeEXT GetPhysicalDeviceDescriptorSizeEXT;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
 
             
     PFN_vkGetDeviceProcAddr GetDeviceProcAddr;
@@ -5647,6 +5700,18 @@ struct vk_uncompacted_dispatch_table {
 #else
     PFN_vkVoidFunction GetScreenBufferPropertiesQNX;
 #endif
+    PFN_vkCreateGpaSessionAMD CreateGpaSessionAMD;
+    PFN_vkDestroyGpaSessionAMD DestroyGpaSessionAMD;
+    PFN_vkSetGpaDeviceClockModeAMD SetGpaDeviceClockModeAMD;
+    PFN_vkGetGpaDeviceClockInfoAMD GetGpaDeviceClockInfoAMD;
+    PFN_vkCmdBeginGpaSessionAMD CmdBeginGpaSessionAMD;
+    PFN_vkCmdEndGpaSessionAMD CmdEndGpaSessionAMD;
+    PFN_vkCmdBeginGpaSampleAMD CmdBeginGpaSampleAMD;
+    PFN_vkCmdEndGpaSampleAMD CmdEndGpaSampleAMD;
+    PFN_vkGetGpaSessionStatusAMD GetGpaSessionStatusAMD;
+    PFN_vkGetGpaSessionResultsAMD GetGpaSessionResultsAMD;
+    PFN_vkResetGpaSessionAMD ResetGpaSessionAMD;
+    PFN_vkCmdCopyGpaSessionResultsAMD CmdCopyGpaSessionResultsAMD;
     PFN_vkCmdBindDescriptorSets2 CmdBindDescriptorSets2;
     PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
         PFN_vkCmdPushConstants2 CmdPushConstants2;

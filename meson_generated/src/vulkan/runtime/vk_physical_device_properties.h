@@ -455,6 +455,11 @@ struct vk_properties {
    VkImageLayout* pCopyDstLayouts;
    uint8_t optimalTilingLayoutUUID[VK_UUID_SIZE];
    VkBool32 identicalMemoryTypeRequirements;
+   VkPhysicalDeviceGpaPropertiesFlagsAMD flags;
+   VkDeviceSize maxSqttSeBufferSize;
+   uint32_t perfBlockCount;
+   VkGpaPerfBlockPropertiesAMD* pPerfBlocks;
+   uint32_t revisionId;
    uint32_t maxCustomBorderColorSamplers;
    VkBool32 dynamicPrimitiveTopologyUnrestricted;
    uint32_t maxPartitionCount;
@@ -542,6 +547,9 @@ struct vk_properties {
    uint8_t shaderModuleIdentifierAlgorithmUUID[VK_UUID_SIZE];
    uint32_t maxOpacity2StateSubdivisionLevel;
    uint32_t maxOpacity4StateSubdivisionLevel;
+   uint32_t maxOpacityLossy4StateSubdivisionLevel;
+   uint64_t maxMicromapTriangles;
+   uint32_t maxShaderWaitQueues;
    uint32_t maxWeightFilterPhases;
    VkExtent2D maxWeightFilterDimension;
    VkExtent2D maxBlockMatchRegion;
@@ -625,6 +633,7 @@ struct vk_properties {
    uint32_t regionAlignment;
    VkBool32 identityTransformOrder;
    uint32_t maxVectorComponents;
+   uint32_t splitBarrierReservedSharedMemory;
    VkDeviceSize samplerHeapAlignment;
    VkDeviceSize resourceHeapAlignment;
    VkDeviceSize maxSamplerHeapSize;

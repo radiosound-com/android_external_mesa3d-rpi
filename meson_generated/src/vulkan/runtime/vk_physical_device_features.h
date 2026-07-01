@@ -121,11 +121,13 @@ struct vk_features {
    bool maintenance7;
    bool maintenance8;
    bool maintenance9;
+   bool maintenance11;
    bool maintenance10;
    bool shaderDrawParameters;
    bool shaderFloat16;
    bool shaderInt8;
    bool hostQueryReset;
+   bool elapsedTimerQuery;
    bool globalPriorityQuery;
    bool deviceMemoryReport;
    bool shaderInputAttachmentArrayDynamicIndexing;
@@ -291,6 +293,10 @@ struct vk_features {
    bool hostImageCopy;
    bool pushDescriptor;
    bool deviceCoherentMemory;
+   bool perfCounters;
+   bool streamingPerfCounters;
+   bool sqThreadTracing;
+   bool clockModes;
    bool customBorderColors;
    bool customBorderColorWithoutFormat;
    bool borderColorSwizzle;
@@ -330,6 +336,7 @@ struct vk_features {
    bool extendedDynamicState3CoverageReductionMode;
    bool extendedDynamicState3RepresentativeFragmentTestEnable;
    bool extendedDynamicState3ShadingRateImageEnable;
+   bool extendedFlags;
    bool partitionedAccelerationStructure;
    bool diagnosticsConfig;
    bool shaderSubgroupUniformControlFlow;
@@ -376,10 +383,12 @@ struct vk_features {
    bool primitivesGeneratedQueryWithNonZeroStreams;
    bool legacyDithering;
    bool multisampledRenderToSingleSampled;
+   bool multisampledRenderToSwapchain;
    bool videoMaintenance1;
    bool videoMaintenance2;
    bool videoDecodeVP9;
    bool videoEncodeQuantizationMap;
+   bool videoEncodeFeedback2;
    bool videoEncodeAV1;
    bool inheritedViewportScissor2D;
    bool ycbcr2plane444Formats;
@@ -407,6 +416,7 @@ struct vk_features {
    bool linearColorAttachment;
    bool graphicsPipelineLibrary;
    bool pipelineBinaries;
+   bool dataGraphNeuralAcceleratorStatistics;
    bool descriptorSetHostMapping;
    bool nestedCommandBuffer;
    bool nestedCommandBufferRendering;
@@ -416,11 +426,13 @@ struct vk_features {
    bool imageCompressionControlSwapchain;
    bool subpassMergeFeedback;
    bool micromap;
+   bool micromapEXT;
    bool micromapCaptureReplay;
    bool micromapHostCommands;
    bool pipelinePropertiesIdentifier;
    bool shaderEarlyAndLateFragmentTests;
    bool nonSeamlessCubeMap;
+   bool shaderMultipleWaitQueues;
    bool textureSampleWeighted;
    bool textureBoxFilter;
    bool textureBlockMatch;
@@ -465,6 +477,9 @@ struct vk_features {
    bool ycbcrDegamma;
    bool selectableCubicWeights;
    bool textureBlockMatch2;
+   bool imageGatherLinear;
+   bool imageGatherExtendedModes;
+   bool blockMatchExtendedClampToEdge;
    bool descriptorPoolOverallocation;
    bool perStageDescriptorSet;
    bool dynamicPipelineLayout;
@@ -494,6 +509,7 @@ struct vk_features {
    bool cooperativeMatrixPerElementOperations;
    bool cooperativeMatrixTensorAddressing;
    bool cooperativeMatrixBlockLoads;
+   bool cooperativeMatrixDecodeVector;
    bool hdrVivid;
    bool vertexAttributeRobustness;
    bool depthClampZeroOne;
@@ -522,6 +538,7 @@ struct vk_features {
    bool shaderMixedFloatDotProductFloat8AccFloat32;
    bool primitiveRestartIndex;
    bool formatPack;
+   bool throttleHint;
    bool tensorNonPacked;
    bool shaderTensorAccess;
    bool shaderStorageTensorArrayDynamicIndexing;
@@ -547,12 +564,14 @@ struct vk_features {
    bool longVector;
    bool textureCompressionASTC_3D;
    bool shaderSubgroupPartitioned;
+   bool shaderSplitBarrier;
    bool descriptorHeap;
    bool descriptorHeapCaptureReplay;
    bool shaderInstrumentation;
    bool deviceAddressCommands;
    bool shaderConstantData;
    bool shaderAbort;
+   bool dataGraphOpticalFlow;
 };
 
 void

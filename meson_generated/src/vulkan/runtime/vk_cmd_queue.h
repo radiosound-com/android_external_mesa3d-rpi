@@ -266,6 +266,11 @@ enum vk_cmd_type {
    VK_CMD_OPTICAL_FLOW_EXECUTE_NV,
    VK_CMD_SET_DEPTH_BIAS2_EXT,
    VK_CMD_BIND_SHADERS_EXT,
+   VK_CMD_BEGIN_GPA_SESSION_AMD,
+   VK_CMD_END_GPA_SESSION_AMD,
+   VK_CMD_BEGIN_GPA_SAMPLE_AMD,
+   VK_CMD_END_GPA_SAMPLE_AMD,
+   VK_CMD_COPY_GPA_SESSION_RESULTS_AMD,
    VK_CMD_BIND_DESCRIPTOR_SETS2,
    VK_CMD_PUSH_CONSTANTS2,
    VK_CMD_PUSH_DESCRIPTOR_SET2,
@@ -1241,11 +1246,11 @@ struct vk_cmd_end_rendering2_khr {
    VkRenderingEndInfoKHR*        rendering_end_info;
 };
 struct vk_cmd_build_micromaps_ext {
-   uint32_t info_count;
+   uint32_t                                      info_count;
    VkMicromapBuildInfoEXT* infos;
 };
 struct vk_cmd_copy_micromap_ext {
-   VkCopyMicromapInfoEXT* info;
+   VkCopyMicromapInfoEXT*      info;
 };
 struct vk_cmd_copy_micromap_to_memory_ext {
    VkCopyMicromapToMemoryInfoEXT* info;
@@ -1254,11 +1259,11 @@ struct vk_cmd_copy_memory_to_micromap_ext {
    VkCopyMemoryToMicromapInfoEXT* info;
 };
 struct vk_cmd_write_micromaps_properties_ext {
-   uint32_t micromap_count;
+   uint32_t                                 micromap_count;
    VkMicromapEXT* micromaps;
-   VkQueryType query_type;
-   VkQueryPool query_pool;
-   uint32_t first_query;
+   VkQueryType        query_type;
+   VkQueryPool                              query_pool;
+   uint32_t                                 first_query;
 };
 struct vk_cmd_bind_tile_memory_qcom {
    VkTileMemoryBindInfoQCOM* tile_memory_bind_info;
@@ -1274,6 +1279,24 @@ struct vk_cmd_bind_shaders_ext {
    uint32_t stage_count;
    VkShaderStageFlagBits* stages;
    VkShaderEXT* shaders;
+};
+struct vk_cmd_begin_gpa_session_amd {
+   VkGpaSessionAMD                   gpa_session;
+};
+struct vk_cmd_end_gpa_session_amd {
+   VkGpaSessionAMD                   gpa_session;
+};
+struct vk_cmd_begin_gpa_sample_amd {
+   VkGpaSessionAMD                   gpa_session;
+   VkGpaSampleBeginInfoAMD*    gpa_sample_begin_info;
+   uint32_t*                         sample_id;
+};
+struct vk_cmd_end_gpa_sample_amd {
+   VkGpaSessionAMD                   gpa_session;
+   uint32_t                          sample_id;
+};
+struct vk_cmd_copy_gpa_session_results_amd {
+   VkGpaSessionAMD                   gpa_session;
 };
 struct vk_cmd_bind_descriptor_sets2 {
    VkBindDescriptorSetsInfo*   bind_descriptor_sets_info;
@@ -1648,6 +1671,11 @@ struct vk_cmd_queue_entry {
       struct vk_cmd_optical_flow_execute_nv optical_flow_execute_nv;
       struct vk_cmd_set_depth_bias2_ext set_depth_bias2_ext;
       struct vk_cmd_bind_shaders_ext bind_shaders_ext;
+      struct vk_cmd_begin_gpa_session_amd begin_gpa_session_amd;
+      struct vk_cmd_end_gpa_session_amd end_gpa_session_amd;
+      struct vk_cmd_begin_gpa_sample_amd begin_gpa_sample_amd;
+      struct vk_cmd_end_gpa_sample_amd end_gpa_sample_amd;
+      struct vk_cmd_copy_gpa_session_results_amd copy_gpa_session_results_amd;
       struct vk_cmd_bind_descriptor_sets2 bind_descriptor_sets2;
       struct vk_cmd_push_constants2 push_constants2;
       struct vk_cmd_push_descriptor_set2 push_descriptor_set2;
@@ -2793,12 +2821,12 @@ struct vk_cmd_queue_entry {
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_build_micromaps_ext(struct vk_cmd_queue *queue
-   , uint32_t infoCount
+   , uint32_t                                      infoCount
    , const VkMicromapBuildInfoEXT* pInfos
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_micromap_ext(struct vk_cmd_queue *queue
-   , const VkCopyMicromapInfoEXT* pInfo
+   , const VkCopyMicromapInfoEXT*      pInfo
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_micromap_to_memory_ext(struct vk_cmd_queue *queue
@@ -2810,11 +2838,11 @@ struct vk_cmd_queue_entry {
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_write_micromaps_properties_ext(struct vk_cmd_queue *queue
-   , uint32_t micromapCount
+   , uint32_t                                 micromapCount
    , const VkMicromapEXT* pMicromaps
-   , VkQueryType queryType
-   , VkQueryPool queryPool
-   , uint32_t firstQuery
+   , VkQueryType        queryType
+   , VkQueryPool                              queryPool
+   , uint32_t                                 firstQuery
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_bind_tile_memory_qcom(struct vk_cmd_queue *queue
@@ -2834,6 +2862,15 @@ struct vk_cmd_queue_entry {
    , uint32_t stageCount
    , const VkShaderStageFlagBits* pStages
    , const VkShaderEXT* pShaders
+  );
+
+  struct vk_cmd_queue_entry *vk_enqueue_cmd_end_gpa_sample_amd(struct vk_cmd_queue *queue
+   , VkGpaSessionAMD                   gpaSession
+   , uint32_t                          sampleID
+  );
+
+  struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_gpa_session_results_amd(struct vk_cmd_queue *queue
+   , VkGpaSessionAMD                   gpaSession
   );
 
   struct vk_cmd_queue_entry *vk_enqueue_cmd_bind_descriptor_sets2(struct vk_cmd_queue *queue

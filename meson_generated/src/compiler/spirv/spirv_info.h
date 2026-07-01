@@ -154,6 +154,7 @@ struct spirv_capabilities {
    bool DescriptorHeapEXT;
    bool ConstantDataKHR;
    bool PoisonFreezeKHR;
+   bool WeakLinkageAMD;
    bool SampleMaskOverrideCoverageNV;
    bool GeometryShaderPassthroughNV;
    union {
@@ -261,7 +262,10 @@ struct spirv_capabilities {
       bool DemoteToHelperInvocationEXT;
    };
    bool DisplacementMicromapNV;
-   bool RayTracingOpacityMicromapEXT;
+   union {
+      bool RayTracingOpacityMicromapKHR;
+      bool RayTracingOpacityMicromapEXT;
+   };
    bool ShaderInvocationReorderNV;
    bool ShaderInvocationReorderEXT;
    bool BindlessTextureNV;
@@ -283,6 +287,7 @@ struct spirv_capabilities {
    bool CooperativeVectorTrainingNV;
    bool RayTracingClusterAccelerationStructureNV;
    bool TensorAddressingNV;
+   bool CooperativeMatrixDecodeVectorNV;
    bool SubgroupShuffleINTEL;
    bool SubgroupBufferBlockIOINTEL;
    bool SubgroupImageBlockIOINTEL;
@@ -396,6 +401,7 @@ struct spirv_capabilities {
    bool GroupNonUniformRotateKHR;
    bool FloatControls2;
    bool FMAKHR;
+   bool RayTracingOpacityMicromapExecutionModeKHR;
    bool AtomicFloat32AddEXT;
    bool AtomicFloat64AddEXT;
    bool LongCompositesINTEL;
@@ -406,7 +412,10 @@ struct spirv_capabilities {
    bool AtomicFloat16AddEXT;
    bool DebugInfoModuleINTEL;
    bool BFloat16ConversionINTEL;
-   bool SplitBarrierINTEL;
+   union {
+      bool SplitBarrierEXT;
+      bool SplitBarrierINTEL;
+   };
    bool ArithmeticFenceEXT;
    union {
       bool FPGAClusterAttributesV2ALTERA;
@@ -440,6 +449,8 @@ struct spirv_capabilities {
    bool UntypedVariableLengthArrayINTEL;
    bool SpecConditionalINTEL;
    bool FunctionVariantsINTEL;
+   bool PredicatedIOINTEL;
+   bool RoundedDivideSqrtINTEL;
    bool GroupUniformArithmeticKHR;
    bool TensorFloat32RoundingINTEL;
    bool MaskedGatherScatterINTEL;

@@ -521,7 +521,7 @@ vk_tramp_GetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physic
     VK_FROM_HANDLE(vk_physical_device, vk_physical_device, physicalDevice);
     return vk_physical_device->dispatch_table.GetPhysicalDeviceCooperativeMatrixPropertiesKHR(physicalDevice, pPropertyCount, pProperties);
 }
-                                                                                static VKAPI_ATTR VkResult VKAPI_CALL
+                                                                                                                                static VKAPI_ATTR VkResult VKAPI_CALL
 vk_tramp_GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties)
 {
     
@@ -584,7 +584,14 @@ vk_tramp_GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM(VkPhy
     VK_FROM_HANDLE(vk_physical_device, vk_physical_device, physicalDevice);
     return vk_physical_device->dispatch_table.GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM(physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphProperties, pProperties);
 }
+    static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM(VkPhysicalDevice                                physicalDevice, uint32_t                                        queueFamilyIndex, const VkQueueFamilyDataGraphPropertiesARM*      pQueueFamilyDataGraphProperties, const VkDataGraphOpticalFlowImageFormatInfoARM* pOpticalFlowImageFormatInfo, uint32_t*                 pFormatCount, VkDataGraphOpticalFlowImageFormatPropertiesARM* pImageFormatProperties)
+{
     
+    VK_FROM_HANDLE(vk_physical_device, vk_physical_device, physicalDevice);
+    return vk_physical_device->dispatch_table.GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM(physicalDevice, queueFamilyIndex, pQueueFamilyDataGraphProperties, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties);
+}
+
 struct vk_physical_device_dispatch_table vk_physical_device_trampolines = {
                         .GetPhysicalDeviceProperties = vk_tramp_GetPhysicalDeviceProperties,
     .GetPhysicalDeviceQueueFamilyProperties = vk_tramp_GetPhysicalDeviceQueueFamilyProperties,
@@ -677,7 +684,7 @@ struct vk_physical_device_dispatch_table vk_physical_device_trampolines = {
     .GetDrmDisplayEXT = vk_tramp_GetDrmDisplayEXT,
                                                                                                                                                                 .GetPhysicalDeviceOpticalFlowImageFormatsNV = vk_tramp_GetPhysicalDeviceOpticalFlowImageFormatsNV,
                                                                                                         .GetPhysicalDeviceCooperativeMatrixPropertiesKHR = vk_tramp_GetPhysicalDeviceCooperativeMatrixPropertiesKHR,
-                                                                                    .GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = vk_tramp_GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV,
+                                                                                                                                    .GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = vk_tramp_GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV,
             .GetPhysicalDeviceCooperativeVectorPropertiesNV = vk_tramp_GetPhysicalDeviceCooperativeVectorPropertiesNV,
                                     .EnumeratePhysicalDeviceShaderInstrumentationMetricsARM = vk_tramp_EnumeratePhysicalDeviceShaderInstrumentationMetricsARM,
                                                                     .GetPhysicalDeviceExternalTensorPropertiesARM = vk_tramp_GetPhysicalDeviceExternalTensorPropertiesARM,
@@ -686,7 +693,8 @@ struct vk_physical_device_dispatch_table vk_physical_device_trampolines = {
                 .EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = vk_tramp_EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM,
                                         .GetPhysicalDeviceDescriptorSizeEXT = vk_tramp_GetPhysicalDeviceDescriptorSizeEXT,
                                                                                                 .GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM = vk_tramp_GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM,
-    };
+        .GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM = vk_tramp_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM,
+};
 
             static VKAPI_ATTR PFN_vkVoidFunction VKAPI_CALL
 vk_tramp_GetDeviceProcAddr(VkDevice device, const char* pName)
@@ -3565,85 +3573,85 @@ vk_tramp_GetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descr
     vk_device->dispatch_table.GetDescriptorSetHostMappingVALVE(device, descriptorSet, ppData);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_CreateMicromapEXT(VkDevice                                           device, const VkMicromapCreateInfoEXT*        pCreateInfo, const VkAllocationCallbacks*       pAllocator, VkMicromapEXT*                        pMicromap)
+vk_tramp_CreateMicromapEXT(VkDevice                                           device, const VkMicromapCreateInfoEXT*                     pCreateInfo, const VkAllocationCallbacks*       pAllocator, VkMicromapEXT*                                     pMicromap)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.CreateMicromapEXT(device, pCreateInfo, pAllocator, pMicromap);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_CmdBuildMicromapsEXT(VkCommandBuffer                                    commandBuffer, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos)
+vk_tramp_CmdBuildMicromapsEXT(VkCommandBuffer             commandBuffer, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdBuildMicromapsEXT(commandBuffer, infoCount, pInfos);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_BuildMicromapsEXT(VkDevice                                           device, VkDeferredOperationKHR deferredOperation, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos)
+vk_tramp_BuildMicromapsEXT(VkDevice                                      device, VkDeferredOperationKHR        deferredOperation, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.BuildMicromapsEXT(device, deferredOperation, infoCount, pInfos);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_DestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, const VkAllocationCallbacks* pAllocator)
+vk_tramp_DestroyMicromapEXT(VkDevice                                        device, VkMicromapEXT micromap, const VkAllocationCallbacks*    pAllocator)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     vk_device->dispatch_table.DestroyMicromapEXT(device, micromap, pAllocator);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT* pInfo)
+vk_tramp_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT*      pInfo)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdCopyMicromapEXT(commandBuffer, pInfo);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_CopyMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapInfoEXT* pInfo)
+vk_tramp_CopyMicromapEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapInfoEXT*           pInfo)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.CopyMicromapEXT(device, deferredOperation, pInfo);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_CmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
+vk_tramp_CmdCopyMicromapToMemoryEXT(VkCommandBuffer    commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdCopyMicromapToMemoryEXT(commandBuffer, pInfo);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_CopyMicromapToMemoryEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapToMemoryInfoEXT* pInfo)
+vk_tramp_CopyMicromapToMemoryEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapToMemoryInfoEXT*   pInfo)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.CopyMicromapToMemoryEXT(device, deferredOperation, pInfo);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_CmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
+vk_tramp_CmdCopyMemoryToMicromapEXT(VkCommandBuffer    commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdCopyMemoryToMicromapEXT(commandBuffer, pInfo);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_CopyMemoryToMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMemoryToMicromapInfoEXT* pInfo)
+vk_tramp_CopyMemoryToMicromapEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMemoryToMicromapInfoEXT*   pInfo)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.CopyMemoryToMicromapEXT(device, deferredOperation, pInfo);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType queryType, VkQueryPool queryPool, uint32_t firstQuery)
+vk_tramp_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType        queryType, VkQueryPool                              queryPool, uint32_t                                 firstQuery)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdWriteMicromapsPropertiesEXT(commandBuffer, micromapCount, pMicromaps, queryType, queryPool, firstQuery);
 }
 static VKAPI_ATTR VkResult VKAPI_CALL
-vk_tramp_WriteMicromapsPropertiesEXT(VkDevice device, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType  queryType, size_t       dataSize, void* pData, size_t stride)
+vk_tramp_WriteMicromapsPropertiesEXT(VkDevice                                 device, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType                              queryType, size_t                                   dataSize, void*                     pData, size_t                                   stride)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     return vk_device->dispatch_table.WriteMicromapsPropertiesEXT(device, micromapCount, pMicromaps, queryType, dataSize, pData, stride);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_GetDeviceMicromapCompatibilityEXT(VkDevice device, const VkMicromapVersionInfoEXT* pVersionInfo, VkAccelerationStructureCompatibilityKHR* pCompatibility)
+vk_tramp_GetDeviceMicromapCompatibilityEXT(VkDevice                                 device, const VkMicromapVersionInfoEXT*          pVersionInfo, VkAccelerationStructureCompatibilityKHR* pCompatibility)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     vk_device->dispatch_table.GetDeviceMicromapCompatibilityEXT(device, pVersionInfo, pCompatibility);
 }
 static VKAPI_ATTR void VKAPI_CALL
-vk_tramp_GetMicromapBuildSizesEXT(VkDevice                                            device, VkAccelerationStructureBuildTypeKHR                 buildType, const VkMicromapBuildInfoEXT*  pBuildInfo, VkMicromapBuildSizesInfoEXT*           pSizeInfo)
+vk_tramp_GetMicromapBuildSizesEXT(VkDevice                            device, VkAccelerationStructureBuildTypeKHR buildType, const VkMicromapBuildInfoEXT*       pBuildInfo, VkMicromapBuildSizesInfoEXT*        pSizeInfo)
 {
     VK_FROM_HANDLE(vk_device, vk_device, device);
     vk_device->dispatch_table.GetMicromapBuildSizesEXT(device, buildType, pBuildInfo, pSizeInfo);
@@ -3826,7 +3834,79 @@ vk_tramp_GetScreenBufferPropertiesQNX(VkDevice device, const struct _screen_buff
     return vk_device->dispatch_table.GetScreenBufferPropertiesQNX(device, buffer, pProperties);
 }
 #endif
-    static VKAPI_ATTR void VKAPI_CALL
+    static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_CreateGpaSessionAMD(VkDevice                                     device, const VkGpaSessionCreateInfoAMD*             pCreateInfo, const VkAllocationCallbacks* pAllocator, VkGpaSessionAMD*                             pGpaSession)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.CreateGpaSessionAMD(device, pCreateInfo, pAllocator, pGpaSession);
+}
+static VKAPI_ATTR void VKAPI_CALL
+vk_tramp_DestroyGpaSessionAMD(VkDevice                                          device, VkGpaSessionAMD gpaSession, const VkAllocationCallbacks*      pAllocator)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    vk_device->dispatch_table.DestroyGpaSessionAMD(device, gpaSession, pAllocator);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_SetGpaDeviceClockModeAMD(VkDevice                     device, VkGpaDeviceClockModeInfoAMD* pInfo)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.SetGpaDeviceClockModeAMD(device, pInfo);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_GetGpaDeviceClockInfoAMD(VkDevice                    device, VkGpaDeviceGetClockInfoAMD* pInfo)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.GetGpaDeviceClockInfoAMD(device, pInfo);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_CmdBeginGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession)
+{
+    struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
+    return vk_object->device->dispatch_table.CmdBeginGpaSessionAMD(commandBuffer, gpaSession);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_CmdEndGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession)
+{
+    struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
+    return vk_object->device->dispatch_table.CmdEndGpaSessionAMD(commandBuffer, gpaSession);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_CmdBeginGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, const VkGpaSampleBeginInfoAMD*    pGpaSampleBeginInfo, uint32_t*                         pSampleID)
+{
+    struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
+    return vk_object->device->dispatch_table.CmdBeginGpaSampleAMD(commandBuffer, gpaSession, pGpaSampleBeginInfo, pSampleID);
+}
+static VKAPI_ATTR void VKAPI_CALL
+vk_tramp_CmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, uint32_t                          sampleID)
+{
+    struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
+    vk_object->device->dispatch_table.CmdEndGpaSampleAMD(commandBuffer, gpaSession, sampleID);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_GetGpaSessionStatusAMD(VkDevice        device, VkGpaSessionAMD gpaSession)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.GetGpaSessionStatusAMD(device, gpaSession);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_GetGpaSessionResultsAMD(VkDevice                                 device, VkGpaSessionAMD                          gpaSession, uint32_t                                 sampleID, size_t*            pSizeInBytes, void* pData)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.GetGpaSessionResultsAMD(device, gpaSession, sampleID, pSizeInBytes, pData);
+}
+static VKAPI_ATTR VkResult VKAPI_CALL
+vk_tramp_ResetGpaSessionAMD(VkDevice        device, VkGpaSessionAMD gpaSession)
+{
+    VK_FROM_HANDLE(vk_device, vk_device, device);
+    return vk_device->dispatch_table.ResetGpaSessionAMD(device, gpaSession);
+}
+static VKAPI_ATTR void VKAPI_CALL
+vk_tramp_CmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession)
+{
+    struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
+    vk_object->device->dispatch_table.CmdCopyGpaSessionResultsAMD(commandBuffer, gpaSession);
+}
+static VKAPI_ATTR void VKAPI_CALL
 vk_tramp_CmdBindDescriptorSets2(VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo*   pBindDescriptorSetsInfo)
 {
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
@@ -4338,7 +4418,7 @@ vk_tramp_CmdSetDispatchParametersARM(VkCommandBuffer commandBuffer, const VkDisp
     struct vk_object_base *vk_object = (struct vk_object_base *)commandBuffer;
     vk_object->device->dispatch_table.CmdSetDispatchParametersARM(commandBuffer, pDispatchParameters);
 }
-
+    
 struct vk_device_dispatch_table vk_device_trampolines = {
                 .GetDeviceProcAddr = vk_tramp_GetDeviceProcAddr,
                                     .DestroyDevice = vk_tramp_DestroyDevice,
@@ -4908,7 +4988,19 @@ struct vk_device_dispatch_table vk_device_trampolines = {
 #ifdef VK_USE_PLATFORM_SCREEN_QNX
     .GetScreenBufferPropertiesQNX = vk_tramp_GetScreenBufferPropertiesQNX,
 #endif
-        .CmdBindDescriptorSets2 = vk_tramp_CmdBindDescriptorSets2,
+        .CreateGpaSessionAMD = vk_tramp_CreateGpaSessionAMD,
+    .DestroyGpaSessionAMD = vk_tramp_DestroyGpaSessionAMD,
+    .SetGpaDeviceClockModeAMD = vk_tramp_SetGpaDeviceClockModeAMD,
+    .GetGpaDeviceClockInfoAMD = vk_tramp_GetGpaDeviceClockInfoAMD,
+    .CmdBeginGpaSessionAMD = vk_tramp_CmdBeginGpaSessionAMD,
+    .CmdEndGpaSessionAMD = vk_tramp_CmdEndGpaSessionAMD,
+    .CmdBeginGpaSampleAMD = vk_tramp_CmdBeginGpaSampleAMD,
+    .CmdEndGpaSampleAMD = vk_tramp_CmdEndGpaSampleAMD,
+    .GetGpaSessionStatusAMD = vk_tramp_GetGpaSessionStatusAMD,
+    .GetGpaSessionResultsAMD = vk_tramp_GetGpaSessionResultsAMD,
+    .ResetGpaSessionAMD = vk_tramp_ResetGpaSessionAMD,
+    .CmdCopyGpaSessionResultsAMD = vk_tramp_CmdCopyGpaSessionResultsAMD,
+    .CmdBindDescriptorSets2 = vk_tramp_CmdBindDescriptorSets2,
         .CmdPushConstants2 = vk_tramp_CmdPushConstants2,
         .CmdPushDescriptorSet2 = vk_tramp_CmdPushDescriptorSet2,
         .CmdPushDescriptorSetWithTemplate2 = vk_tramp_CmdPushDescriptorSetWithTemplate2,
@@ -5000,4 +5092,4 @@ struct vk_device_dispatch_table vk_device_trampolines = {
     .CmdDispatchIndirect2KHR = vk_tramp_CmdDispatchIndirect2KHR,
     .CreateAccelerationStructure2KHR = vk_tramp_CreateAccelerationStructure2KHR,
         .CmdSetDispatchParametersARM = vk_tramp_CmdSetDispatchParametersARM,
-};
+    };

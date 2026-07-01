@@ -3246,6 +3246,31 @@ const struct vk_instance_entrypoint_table wsi_instance_entrypoints = {
 #else
 #endif
 
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
 
 const struct vk_physical_device_entrypoint_table wsi_physical_device_entrypoints = {
     .GetPhysicalDeviceProperties = wsi_GetPhysicalDeviceProperties,
@@ -3384,6 +3409,7 @@ const struct vk_physical_device_entrypoint_table wsi_physical_device_entrypoints
     .EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = wsi_EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM,
     .GetPhysicalDeviceDescriptorSizeEXT = wsi_GetPhysicalDeviceDescriptorSizeEXT,
     .GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM = wsi_GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM,
+    .GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM = wsi_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM,
 };
 
 
@@ -18444,6 +18470,306 @@ const struct vk_physical_device_entrypoint_table wsi_physical_device_entrypoints
 #endif // VK_USE_PLATFORM_SCREEN_QNX
 #ifdef _MSC_VER
 #ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CreateGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CreateGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CreateGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_DestroyGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_DestroyGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_DestroyGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_SetGpaDeviceClockModeAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_SetGpaDeviceClockModeAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_SetGpaDeviceClockModeAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaDeviceClockInfoAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_GetGpaDeviceClockInfoAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_GetGpaDeviceClockInfoAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CmdBeginGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CmdBeginGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CmdEndGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CmdEndGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdBeginGpaSampleAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CmdBeginGpaSampleAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CmdBeginGpaSampleAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdEndGpaSampleAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CmdEndGpaSampleAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CmdEndGpaSampleAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionStatusAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_GetGpaSessionStatusAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_GetGpaSessionStatusAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_GetGpaSessionResultsAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_GetGpaSessionResultsAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_GetGpaSessionResultsAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_ResetGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_ResetGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_ResetGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_wsi_CmdCopyGpaSessionResultsAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:wsi_CmdCopyGpaSessionResultsAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#wsi_CmdCopyGpaSessionResultsAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
     #pragma comment(linker, "/alternatename:_wsi_CmdBindDescriptorSets2@4=_vk_entrypoint_stub@0")
     #pragma comment(linker, "/alternatename:_wsi_CmdBindDescriptorSets2@8=_vk_entrypoint_stub@0")
     #pragma comment(linker, "/alternatename:_wsi_CmdBindDescriptorSets2@12=_vk_entrypoint_stub@0")
@@ -21410,6 +21736,18 @@ const struct vk_device_entrypoint_table wsi_device_entrypoints = {
 #elif defined(_MSC_VER)
     .GetScreenBufferPropertiesQNX = (PFN_vkVoidFunction)vk_entrypoint_stub,
 #endif // VK_USE_PLATFORM_SCREEN_QNX
+    .CreateGpaSessionAMD = wsi_CreateGpaSessionAMD,
+    .DestroyGpaSessionAMD = wsi_DestroyGpaSessionAMD,
+    .SetGpaDeviceClockModeAMD = wsi_SetGpaDeviceClockModeAMD,
+    .GetGpaDeviceClockInfoAMD = wsi_GetGpaDeviceClockInfoAMD,
+    .CmdBeginGpaSessionAMD = wsi_CmdBeginGpaSessionAMD,
+    .CmdEndGpaSessionAMD = wsi_CmdEndGpaSessionAMD,
+    .CmdBeginGpaSampleAMD = wsi_CmdBeginGpaSampleAMD,
+    .CmdEndGpaSampleAMD = wsi_CmdEndGpaSampleAMD,
+    .GetGpaSessionStatusAMD = wsi_GetGpaSessionStatusAMD,
+    .GetGpaSessionResultsAMD = wsi_GetGpaSessionResultsAMD,
+    .ResetGpaSessionAMD = wsi_ResetGpaSessionAMD,
+    .CmdCopyGpaSessionResultsAMD = wsi_CmdCopyGpaSessionResultsAMD,
     .CmdBindDescriptorSets2 = wsi_CmdBindDescriptorSets2,
     .CmdBindDescriptorSets2KHR = wsi_CmdBindDescriptorSets2KHR,
     .CmdPushConstants2 = wsi_CmdPushConstants2,

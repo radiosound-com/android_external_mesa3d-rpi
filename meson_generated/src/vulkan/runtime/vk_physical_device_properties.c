@@ -844,6 +844,29 @@ vk_common_GetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice,
          properties->identicalMemoryTypeRequirements = pdevice->properties.identicalMemoryTypeRequirements;
          break;
       }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD: {
+         VkPhysicalDeviceGpaPropertiesAMD *properties = (void *)ext;
+         properties->flags = pdevice->properties.flags;
+         properties->maxSqttSeBufferSize = pdevice->properties.maxSqttSeBufferSize;
+         properties->shaderEngineCount = pdevice->properties.shaderEngineCount;
+         
+         
+         if (properties->pPerfBlocks != NULL) {
+            uint32_t count = MIN2(properties->perfBlockCount, pdevice->properties.perfBlockCount);
+            for (uint32_t i = 0; i < count; i++)
+               properties->pPerfBlocks[i] = pdevice->properties.pPerfBlocks[i];
+            properties->perfBlockCount = count;
+         } else {
+            properties->perfBlockCount = pdevice->properties.perfBlockCount;
+         }
+
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD: {
+         VkPhysicalDeviceGpaProperties2AMD *properties = (void *)ext;
+         properties->revisionId = pdevice->properties.revisionId;
+         break;
+      }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT: {
          VkPhysicalDeviceCustomBorderColorPropertiesEXT *properties = (void *)ext;
          properties->maxCustomBorderColorSamplers = pdevice->properties.maxCustomBorderColorSamplers;
@@ -1062,6 +1085,14 @@ vk_common_GetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice,
          memcpy(properties->shaderModuleIdentifierAlgorithmUUID, pdevice->properties.shaderModuleIdentifierAlgorithmUUID, sizeof(properties->shaderModuleIdentifierAlgorithmUUID));
          break;
       }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR: {
+         VkPhysicalDeviceOpacityMicromapPropertiesKHR *properties = (void *)ext;
+         properties->maxOpacity2StateSubdivisionLevel = pdevice->properties.maxOpacity2StateSubdivisionLevel;
+         properties->maxOpacity4StateSubdivisionLevel = pdevice->properties.maxOpacity4StateSubdivisionLevel;
+         properties->maxOpacityLossy4StateSubdivisionLevel = pdevice->properties.maxOpacityLossy4StateSubdivisionLevel;
+         properties->maxMicromapTriangles = pdevice->properties.maxMicromapTriangles;
+         break;
+      }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT: {
          VkPhysicalDeviceOpacityMicromapPropertiesEXT *properties = (void *)ext;
          properties->maxOpacity2StateSubdivisionLevel = pdevice->properties.maxOpacity2StateSubdivisionLevel;
@@ -1074,6 +1105,11 @@ vk_common_GetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice,
          properties->defaultRobustnessUniformBuffers = pdevice->properties.defaultRobustnessUniformBuffers;
          properties->defaultRobustnessVertexInputs = pdevice->properties.defaultRobustnessVertexInputs;
          properties->defaultRobustnessImages = pdevice->properties.defaultRobustnessImages;
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM: {
+         VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM *properties = (void *)ext;
+         properties->maxShaderWaitQueues = pdevice->properties.maxShaderWaitQueues;
          break;
       }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM: {
@@ -1282,6 +1318,11 @@ vk_common_GetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice,
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT: {
          VkPhysicalDeviceShaderLongVectorPropertiesEXT *properties = (void *)ext;
          properties->maxVectorComponents = pdevice->properties.maxVectorComponents;
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT: {
+         VkPhysicalDeviceShaderSplitBarrierPropertiesEXT *properties = (void *)ext;
+         properties->splitBarrierReservedSharedMemory = pdevice->properties.splitBarrierReservedSharedMemory;
          break;
       }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT: {
@@ -2123,6 +2164,20 @@ vk_set_physical_device_properties_struct(struct vk_properties *all_properties,
          all_properties->identicalMemoryTypeRequirements = properties->identicalMemoryTypeRequirements;
          break;
       }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD: {
+         const VkPhysicalDeviceGpaPropertiesAMD *properties = (const VkPhysicalDeviceGpaPropertiesAMD *)pProperties;
+         all_properties->flags = properties->flags;
+         all_properties->maxSqttSeBufferSize = properties->maxSqttSeBufferSize;
+         all_properties->shaderEngineCount = properties->shaderEngineCount;
+         all_properties->perfBlockCount = properties->perfBlockCount;
+         all_properties->pPerfBlocks = properties->pPerfBlocks;
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD: {
+         const VkPhysicalDeviceGpaProperties2AMD *properties = (const VkPhysicalDeviceGpaProperties2AMD *)pProperties;
+         all_properties->revisionId = properties->revisionId;
+         break;
+      }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT: {
          const VkPhysicalDeviceCustomBorderColorPropertiesEXT *properties = (const VkPhysicalDeviceCustomBorderColorPropertiesEXT *)pProperties;
          all_properties->maxCustomBorderColorSamplers = properties->maxCustomBorderColorSamplers;
@@ -2323,6 +2378,14 @@ vk_set_physical_device_properties_struct(struct vk_properties *all_properties,
          memcpy(all_properties->shaderModuleIdentifierAlgorithmUUID, properties->shaderModuleIdentifierAlgorithmUUID, sizeof(all_properties->shaderModuleIdentifierAlgorithmUUID));
          break;
       }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR: {
+         const VkPhysicalDeviceOpacityMicromapPropertiesKHR *properties = (const VkPhysicalDeviceOpacityMicromapPropertiesKHR *)pProperties;
+         all_properties->maxOpacity2StateSubdivisionLevel = properties->maxOpacity2StateSubdivisionLevel;
+         all_properties->maxOpacity4StateSubdivisionLevel = properties->maxOpacity4StateSubdivisionLevel;
+         all_properties->maxOpacityLossy4StateSubdivisionLevel = properties->maxOpacityLossy4StateSubdivisionLevel;
+         all_properties->maxMicromapTriangles = properties->maxMicromapTriangles;
+         break;
+      }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT: {
          const VkPhysicalDeviceOpacityMicromapPropertiesEXT *properties = (const VkPhysicalDeviceOpacityMicromapPropertiesEXT *)pProperties;
          all_properties->maxOpacity2StateSubdivisionLevel = properties->maxOpacity2StateSubdivisionLevel;
@@ -2335,6 +2398,11 @@ vk_set_physical_device_properties_struct(struct vk_properties *all_properties,
          all_properties->defaultRobustnessUniformBuffers = properties->defaultRobustnessUniformBuffers;
          all_properties->defaultRobustnessVertexInputs = properties->defaultRobustnessVertexInputs;
          all_properties->defaultRobustnessImages = properties->defaultRobustnessImages;
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM: {
+         const VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM *properties = (const VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM *)pProperties;
+         all_properties->maxShaderWaitQueues = properties->maxShaderWaitQueues;
          break;
       }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM: {
@@ -2543,6 +2611,11 @@ vk_set_physical_device_properties_struct(struct vk_properties *all_properties,
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT: {
          const VkPhysicalDeviceShaderLongVectorPropertiesEXT *properties = (const VkPhysicalDeviceShaderLongVectorPropertiesEXT *)pProperties;
          all_properties->maxVectorComponents = properties->maxVectorComponents;
+         break;
+      }
+      case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT: {
+         const VkPhysicalDeviceShaderSplitBarrierPropertiesEXT *properties = (const VkPhysicalDeviceShaderSplitBarrierPropertiesEXT *)pProperties;
+         all_properties->splitBarrierReservedSharedMemory = properties->splitBarrierReservedSharedMemory;
          break;
       }
       case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT: {

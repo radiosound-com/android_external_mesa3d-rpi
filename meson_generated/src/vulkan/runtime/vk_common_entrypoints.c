@@ -3246,6 +3246,31 @@ const struct vk_instance_entrypoint_table vk_common_instance_entrypoints = {
 #else
 #endif
 
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
 
 const struct vk_physical_device_entrypoint_table vk_common_physical_device_entrypoints = {
     .GetPhysicalDeviceProperties = vk_common_GetPhysicalDeviceProperties,
@@ -3384,6 +3409,7 @@ const struct vk_physical_device_entrypoint_table vk_common_physical_device_entry
     .EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = vk_common_EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM,
     .GetPhysicalDeviceDescriptorSizeEXT = vk_common_GetPhysicalDeviceDescriptorSizeEXT,
     .GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM = vk_common_GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM,
+    .GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM = vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM,
 };
 
 
@@ -18444,6 +18470,306 @@ const struct vk_physical_device_entrypoint_table vk_common_physical_device_entry
 #endif // VK_USE_PLATFORM_SCREEN_QNX
 #ifdef _MSC_VER
 #ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CreateGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CreateGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CreateGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_DestroyGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_DestroyGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_DestroyGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_SetGpaDeviceClockModeAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_SetGpaDeviceClockModeAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_SetGpaDeviceClockModeAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaDeviceClockInfoAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_GetGpaDeviceClockInfoAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_GetGpaDeviceClockInfoAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CmdBeginGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CmdBeginGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CmdEndGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CmdEndGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdBeginGpaSampleAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CmdBeginGpaSampleAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CmdBeginGpaSampleAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdEndGpaSampleAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CmdEndGpaSampleAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CmdEndGpaSampleAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionStatusAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_GetGpaSessionStatusAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_GetGpaSessionStatusAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_GetGpaSessionResultsAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_GetGpaSessionResultsAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_GetGpaSessionResultsAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_ResetGpaSessionAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_ResetGpaSessionAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_ResetGpaSessionAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@4=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@8=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@12=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@16=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@20=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@24=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@28=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@32=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@36=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@40=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@44=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@48=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@60=_vk_entrypoint_stub@0")
+    #pragma comment(linker, "/alternatename:_vk_common_CmdCopyGpaSessionResultsAMD@104=_vk_entrypoint_stub@0")
+#else
+    #pragma comment(linker, "/alternatename:vk_common_CmdCopyGpaSessionResultsAMD=vk_entrypoint_stub")
+#if defined(_M_ARM64EC)
+    #pragma comment(linker, "/alternatename:#vk_common_CmdCopyGpaSessionResultsAMD=#vk_entrypoint_stub")
+#endif
+#endif
+#else
+#endif
+
+#ifdef _MSC_VER
+#ifdef _M_IX86
     #pragma comment(linker, "/alternatename:_vk_common_CmdBindDescriptorSets2@4=_vk_entrypoint_stub@0")
     #pragma comment(linker, "/alternatename:_vk_common_CmdBindDescriptorSets2@8=_vk_entrypoint_stub@0")
     #pragma comment(linker, "/alternatename:_vk_common_CmdBindDescriptorSets2@12=_vk_entrypoint_stub@0")
@@ -21410,6 +21736,18 @@ const struct vk_device_entrypoint_table vk_common_device_entrypoints = {
 #elif defined(_MSC_VER)
     .GetScreenBufferPropertiesQNX = (PFN_vkVoidFunction)vk_entrypoint_stub,
 #endif // VK_USE_PLATFORM_SCREEN_QNX
+    .CreateGpaSessionAMD = vk_common_CreateGpaSessionAMD,
+    .DestroyGpaSessionAMD = vk_common_DestroyGpaSessionAMD,
+    .SetGpaDeviceClockModeAMD = vk_common_SetGpaDeviceClockModeAMD,
+    .GetGpaDeviceClockInfoAMD = vk_common_GetGpaDeviceClockInfoAMD,
+    .CmdBeginGpaSessionAMD = vk_common_CmdBeginGpaSessionAMD,
+    .CmdEndGpaSessionAMD = vk_common_CmdEndGpaSessionAMD,
+    .CmdBeginGpaSampleAMD = vk_common_CmdBeginGpaSampleAMD,
+    .CmdEndGpaSampleAMD = vk_common_CmdEndGpaSampleAMD,
+    .GetGpaSessionStatusAMD = vk_common_GetGpaSessionStatusAMD,
+    .GetGpaSessionResultsAMD = vk_common_GetGpaSessionResultsAMD,
+    .ResetGpaSessionAMD = vk_common_ResetGpaSessionAMD,
+    .CmdCopyGpaSessionResultsAMD = vk_common_CmdCopyGpaSessionResultsAMD,
     .CmdBindDescriptorSets2 = vk_common_CmdBindDescriptorSets2,
     .CmdBindDescriptorSets2KHR = vk_common_CmdBindDescriptorSets2KHR,
     .CmdPushConstants2 = vk_common_CmdPushConstants2,

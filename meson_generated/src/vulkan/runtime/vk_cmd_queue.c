@@ -255,6 +255,11 @@ const char *vk_cmd_queue_type_names[] = {
    "VK_CMD_OPTICAL_FLOW_EXECUTE_NV",
    "VK_CMD_SET_DEPTH_BIAS2_EXT",
    "VK_CMD_BIND_SHADERS_EXT",
+   "VK_CMD_BEGIN_GPA_SESSION_AMD",
+   "VK_CMD_END_GPA_SESSION_AMD",
+   "VK_CMD_BEGIN_GPA_SAMPLE_AMD",
+   "VK_CMD_END_GPA_SAMPLE_AMD",
+   "VK_CMD_COPY_GPA_SESSION_RESULTS_AMD",
    "VK_CMD_BIND_DESCRIPTOR_SETS2",
    "VK_CMD_PUSH_CONSTANTS2",
    "VK_CMD_PUSH_DESCRIPTOR_SET2",
@@ -722,6 +727,16 @@ size_t vk_cmd_queue_type_sizes[] = {
    sizeof(struct vk_cmd_set_depth_bias2_ext) +
    sizeof(struct vk_cmd_queue_entry_base),
    sizeof(struct vk_cmd_bind_shaders_ext) +
+   sizeof(struct vk_cmd_queue_entry_base),
+   sizeof(struct vk_cmd_begin_gpa_session_amd) +
+   sizeof(struct vk_cmd_queue_entry_base),
+   sizeof(struct vk_cmd_end_gpa_session_amd) +
+   sizeof(struct vk_cmd_queue_entry_base),
+   sizeof(struct vk_cmd_begin_gpa_sample_amd) +
+   sizeof(struct vk_cmd_queue_entry_base),
+   sizeof(struct vk_cmd_end_gpa_sample_amd) +
+   sizeof(struct vk_cmd_queue_entry_base),
+   sizeof(struct vk_cmd_copy_gpa_session_results_amd) +
    sizeof(struct vk_cmd_queue_entry_base),
    sizeof(struct vk_cmd_bind_descriptor_sets2) +
    sizeof(struct vk_cmd_queue_entry_base),
@@ -7259,7 +7274,7 @@ struct vk_cmd_queue_entry *vk_enqueue_cmd_end_rendering2_khr(struct vk_cmd_queue
 }
 
 struct vk_cmd_queue_entry *vk_enqueue_cmd_build_micromaps_ext(struct vk_cmd_queue *queue
-, uint32_t infoCount
+, uint32_t                                      infoCount
 , const VkMicromapBuildInfoEXT* pInfos
 )
 {
@@ -7297,7 +7312,7 @@ struct vk_cmd_queue_entry *vk_enqueue_cmd_build_micromaps_ext(struct vk_cmd_queu
 }
 
 struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_micromap_ext(struct vk_cmd_queue *queue
-, const VkCopyMicromapInfoEXT* pInfo
+, const VkCopyMicromapInfoEXT*      pInfo
 )
 {
    struct vk_cmd_queue_entry *cmd = linear_alloc_child(queue->ctx, vk_cmd_queue_type_sizes[VK_CMD_COPY_MICROMAP_EXT]);
@@ -7357,11 +7372,11 @@ struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_memory_to_micromap_ext(struct vk_
 }
 
 struct vk_cmd_queue_entry *vk_enqueue_cmd_write_micromaps_properties_ext(struct vk_cmd_queue *queue
-, uint32_t micromapCount
+, uint32_t                                 micromapCount
 , const VkMicromapEXT* pMicromaps
-, VkQueryType queryType
-, VkQueryPool queryPool
-, uint32_t firstQuery
+, VkQueryType        queryType
+, VkQueryPool                              queryPool
+, uint32_t                                 firstQuery
 )
 {
    struct vk_cmd_queue_entry *cmd = linear_alloc_child(queue->ctx, vk_cmd_queue_type_sizes[VK_CMD_WRITE_MICROMAPS_PROPERTIES_EXT]);
@@ -7493,6 +7508,39 @@ struct vk_cmd_queue_entry *vk_enqueue_cmd_bind_shaders_ext(struct vk_cmd_queue *
    } else {
       cmd->u.bind_shaders_ext.shaders = NULL;
    }
+
+   list_addtail(&cmd->cmd_link, &queue->cmds);
+   return cmd;
+}
+
+
+
+
+struct vk_cmd_queue_entry *vk_enqueue_cmd_end_gpa_sample_amd(struct vk_cmd_queue *queue
+, VkGpaSessionAMD                   gpaSession
+, uint32_t                          sampleID
+)
+{
+   struct vk_cmd_queue_entry *cmd = linear_alloc_child(queue->ctx, vk_cmd_queue_type_sizes[VK_CMD_END_GPA_SAMPLE_AMD]);
+   if (!cmd) return NULL;
+
+   cmd->type = VK_CMD_END_GPA_SAMPLE_AMD;
+   cmd->u.end_gpa_sample_amd.gpa_session = gpaSession;
+   cmd->u.end_gpa_sample_amd.sample_id = sampleID;
+
+   list_addtail(&cmd->cmd_link, &queue->cmds);
+   return cmd;
+}
+
+struct vk_cmd_queue_entry *vk_enqueue_cmd_copy_gpa_session_results_amd(struct vk_cmd_queue *queue
+, VkGpaSessionAMD                   gpaSession
+)
+{
+   struct vk_cmd_queue_entry *cmd = linear_alloc_child(queue->ctx, vk_cmd_queue_type_sizes[VK_CMD_COPY_GPA_SESSION_RESULTS_AMD]);
+   if (!cmd) return NULL;
+
+   cmd->type = VK_CMD_COPY_GPA_SESSION_RESULTS_AMD;
+   cmd->u.copy_gpa_session_results_amd.gpa_session = gpaSession;
 
    list_addtail(&cmd->cmd_link, &queue->cmds);
    return cmd;
@@ -8183,6 +8231,21 @@ struct vk_cmd_queue_entry *vk_enqueue_cmd_dispatch_data_graph_arm(struct vk_cmd_
       cmd->u.dispatch_data_graph_arm.info = linear_alloc_child(queue->ctx, sizeof(VkDataGraphPipelineDispatchInfoARM));
       if (cmd->u.dispatch_data_graph_arm.info == NULL) return NULL;
       memcpy((void *)cmd->u.dispatch_data_graph_arm.info, pInfo, sizeof(VkDataGraphPipelineDispatchInfoARM));
+      VkDataGraphPipelineDispatchInfoARM *tmp_dst1 = (void *)cmd->u.dispatch_data_graph_arm.info;
+      VkDataGraphPipelineDispatchInfoARM *tmp_src2 = (void *)pInfo;
+      const VkBaseInStructure *pnext = tmp_src2->pNext;
+      void **dst_pnext_link = (void **)&tmp_dst1->pNext;
+      while (pnext) {
+         switch ((int32_t)pnext->sType) {
+         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM:
+            (*dst_pnext_link) = linear_alloc_child(queue->ctx, sizeof(VkDataGraphPipelineOpticalFlowDispatchInfoARM));
+            if ((*dst_pnext_link) == NULL) return NULL;
+            memcpy((void *)(*dst_pnext_link), pnext, sizeof(VkDataGraphPipelineOpticalFlowDispatchInfoARM));
+            break;
+         }
+         pnext = pnext->pNext;
+         dst_pnext_link = (void **)&((VkBaseOutStructure *)*dst_pnext_link)->pNext;
+      }
    } else {
       cmd->u.dispatch_data_graph_arm.info = NULL;
    }
@@ -9716,6 +9779,26 @@ vk_cmd_queue_execute(struct vk_cmd_queue *queue,
       case VK_CMD_BIND_SHADERS_EXT:
           disp->CmdBindShadersEXT(commandBuffer
              , cmd->u.bind_shaders_ext.stage_count             , cmd->u.bind_shaders_ext.stages             , cmd->u.bind_shaders_ext.shaders          );
+          break;
+      case VK_CMD_BEGIN_GPA_SESSION_AMD:
+          disp->CmdBeginGpaSessionAMD(commandBuffer
+             , cmd->u.begin_gpa_session_amd.gpa_session          );
+          break;
+      case VK_CMD_END_GPA_SESSION_AMD:
+          disp->CmdEndGpaSessionAMD(commandBuffer
+             , cmd->u.end_gpa_session_amd.gpa_session          );
+          break;
+      case VK_CMD_BEGIN_GPA_SAMPLE_AMD:
+          disp->CmdBeginGpaSampleAMD(commandBuffer
+             , cmd->u.begin_gpa_sample_amd.gpa_session             , cmd->u.begin_gpa_sample_amd.gpa_sample_begin_info             , cmd->u.begin_gpa_sample_amd.sample_id          );
+          break;
+      case VK_CMD_END_GPA_SAMPLE_AMD:
+          disp->CmdEndGpaSampleAMD(commandBuffer
+             , cmd->u.end_gpa_sample_amd.gpa_session             , cmd->u.end_gpa_sample_amd.sample_id          );
+          break;
+      case VK_CMD_COPY_GPA_SESSION_RESULTS_AMD:
+          disp->CmdCopyGpaSessionResultsAMD(commandBuffer
+             , cmd->u.copy_gpa_session_results_amd.gpa_session          );
           break;
       case VK_CMD_BIND_DESCRIPTOR_SETS2:
           disp->CmdBindDescriptorSets2(commandBuffer
@@ -15893,7 +15976,7 @@ vk_cmd_enqueue_unless_primary_CmdEndRendering2KHR(VkCommandBuffer               
 
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_CmdBuildMicromapsEXT(VkCommandBuffer                                    commandBuffer, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos)
+vk_cmd_enqueue_CmdBuildMicromapsEXT(VkCommandBuffer             commandBuffer, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos)
 {
    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15906,7 +15989,7 @@ vk_cmd_enqueue_CmdBuildMicromapsEXT(VkCommandBuffer                             
 }
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_unless_primary_CmdBuildMicromapsEXT(VkCommandBuffer                                    commandBuffer, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos)
+vk_cmd_enqueue_unless_primary_CmdBuildMicromapsEXT(VkCommandBuffer             commandBuffer, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos)
 {
     VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15923,7 +16006,7 @@ vk_cmd_enqueue_unless_primary_CmdBuildMicromapsEXT(VkCommandBuffer              
 
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT* pInfo)
+vk_cmd_enqueue_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT*      pInfo)
 {
    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15936,7 +16019,7 @@ vk_cmd_enqueue_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMic
 }
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_unless_primary_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT* pInfo)
+vk_cmd_enqueue_unless_primary_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT*      pInfo)
 {
     VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15953,7 +16036,7 @@ vk_cmd_enqueue_unless_primary_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, 
 
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_CmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
+vk_cmd_enqueue_CmdCopyMicromapToMemoryEXT(VkCommandBuffer    commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
 {
    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15966,7 +16049,7 @@ vk_cmd_enqueue_CmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, const V
 }
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_unless_primary_CmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
+vk_cmd_enqueue_unless_primary_CmdCopyMicromapToMemoryEXT(VkCommandBuffer    commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo)
 {
     VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15983,7 +16066,7 @@ vk_cmd_enqueue_unless_primary_CmdCopyMicromapToMemoryEXT(VkCommandBuffer command
 
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_CmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
+vk_cmd_enqueue_CmdCopyMemoryToMicromapEXT(VkCommandBuffer    commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
 {
    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -15996,7 +16079,7 @@ vk_cmd_enqueue_CmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, const V
 }
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_unless_primary_CmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
+vk_cmd_enqueue_unless_primary_CmdCopyMemoryToMicromapEXT(VkCommandBuffer    commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo)
 {
     VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -16013,7 +16096,7 @@ vk_cmd_enqueue_unless_primary_CmdCopyMemoryToMicromapEXT(VkCommandBuffer command
 
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType queryType, VkQueryPool queryPool, uint32_t firstQuery)
+vk_cmd_enqueue_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType        queryType, VkQueryPool                              queryPool, uint32_t                                 firstQuery)
 {
    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -16026,7 +16109,7 @@ vk_cmd_enqueue_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uin
 }
 
 VKAPI_ATTR void VKAPI_CALL
-vk_cmd_enqueue_unless_primary_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType queryType, VkQueryPool queryPool, uint32_t firstQuery)
+vk_cmd_enqueue_unless_primary_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType        queryType, VkQueryPool                              queryPool, uint32_t                                 firstQuery)
 {
     VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
 
@@ -16157,6 +16240,69 @@ vk_cmd_enqueue_unless_primary_CmdBindShadersEXT(VkCommandBuffer commandBuffer, u
       disp->CmdBindShadersEXT(commandBuffer, stageCount, pStages, pShaders);
    } else {
       vk_cmd_enqueue_CmdBindShadersEXT(commandBuffer, stageCount, pStages, pShaders);
+   }
+}
+/* TODO: Generate vk_cmd_enqueue_CmdBeginGpaSessionAMD() */
+/* TODO: Generate vk_cmd_enqueue_CmdEndGpaSessionAMD() */
+/* TODO: Generate vk_cmd_enqueue_CmdBeginGpaSampleAMD() */
+
+
+
+VKAPI_ATTR void VKAPI_CALL
+vk_cmd_enqueue_CmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, uint32_t                          sampleID)
+{
+   VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
+
+   if (vk_command_buffer_has_error(cmd_buffer))
+      return;
+   struct vk_cmd_queue_entry *cmd = vk_enqueue_cmd_end_gpa_sample_amd(&cmd_buffer->cmd_queue,
+                                       gpaSession, sampleID);
+   if (unlikely(!cmd))
+      vk_command_buffer_set_error(cmd_buffer, VK_ERROR_OUT_OF_HOST_MEMORY);
+}
+
+VKAPI_ATTR void VKAPI_CALL
+vk_cmd_enqueue_unless_primary_CmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, uint32_t                          sampleID)
+{
+    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
+
+   if (cmd_buffer->level == VK_COMMAND_BUFFER_LEVEL_PRIMARY) {
+      const struct vk_device_dispatch_table *disp =
+         cmd_buffer->base.device->command_dispatch_table;
+
+      disp->CmdEndGpaSampleAMD(commandBuffer, gpaSession, sampleID);
+   } else {
+      vk_cmd_enqueue_CmdEndGpaSampleAMD(commandBuffer, gpaSession, sampleID);
+   }
+}
+
+
+
+VKAPI_ATTR void VKAPI_CALL
+vk_cmd_enqueue_CmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession)
+{
+   VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
+
+   if (vk_command_buffer_has_error(cmd_buffer))
+      return;
+   struct vk_cmd_queue_entry *cmd = vk_enqueue_cmd_copy_gpa_session_results_amd(&cmd_buffer->cmd_queue,
+                                       gpaSession);
+   if (unlikely(!cmd))
+      vk_command_buffer_set_error(cmd_buffer, VK_ERROR_OUT_OF_HOST_MEMORY);
+}
+
+VKAPI_ATTR void VKAPI_CALL
+vk_cmd_enqueue_unless_primary_CmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession)
+{
+    VK_FROM_HANDLE(vk_command_buffer, cmd_buffer, commandBuffer);
+
+   if (cmd_buffer->level == VK_COMMAND_BUFFER_LEVEL_PRIMARY) {
+      const struct vk_device_dispatch_table *disp =
+         cmd_buffer->base.device->command_dispatch_table;
+
+      disp->CmdCopyGpaSessionResultsAMD(commandBuffer, gpaSession);
+   } else {
+      vk_cmd_enqueue_CmdCopyGpaSessionResultsAMD(commandBuffer, gpaSession);
    }
 }
 

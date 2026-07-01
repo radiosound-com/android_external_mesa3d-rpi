@@ -36,6 +36,7 @@
     const char * vk_AccelerationStructureCompatibilityKHR_to_str(VkAccelerationStructureCompatibilityKHR input);
     const char * vk_AccelerationStructureMemoryRequirementsTypeNV_to_str(VkAccelerationStructureMemoryRequirementsTypeNV input);
     const char * vk_AccelerationStructureMotionInstanceTypeNV_to_str(VkAccelerationStructureMotionInstanceTypeNV input);
+    const char * vk_AccelerationStructureSerializedBlockTypeKHR_to_str(VkAccelerationStructureSerializedBlockTypeKHR input);
     const char * vk_AccelerationStructureTypeKHR_to_str(VkAccelerationStructureTypeKHR input);
     const char * vk_AntiLagModeAMD_to_str(VkAntiLagModeAMD input);
     const char * vk_AntiLagStageAMD_to_str(VkAntiLagStageAMD input);
@@ -66,6 +67,9 @@
     const char * vk_CoverageReductionModeNV_to_str(VkCoverageReductionModeNV input);
     const char * vk_CubicFilterWeightsQCOM_to_str(VkCubicFilterWeightsQCOM input);
     const char * vk_DataGraphModelCacheTypeQCOM_to_str(VkDataGraphModelCacheTypeQCOM input);
+    const char * vk_DataGraphOpticalFlowPerformanceLevelARM_to_str(VkDataGraphOpticalFlowPerformanceLevelARM input);
+    const char * vk_DataGraphPipelineNodeConnectionTypeARM_to_str(VkDataGraphPipelineNodeConnectionTypeARM input);
+    const char * vk_DataGraphPipelineNodeTypeARM_to_str(VkDataGraphPipelineNodeTypeARM input);
     const char * vk_DataGraphPipelinePropertyARM_to_str(VkDataGraphPipelinePropertyARM input);
     const char * vk_DataGraphPipelineSessionBindPointARM_to_str(VkDataGraphPipelineSessionBindPointARM input);
     const char * vk_DataGraphPipelineSessionBindPointTypeARM_to_str(VkDataGraphPipelineSessionBindPointTypeARM input);
@@ -99,6 +103,9 @@
     const char * vk_FullScreenExclusiveEXT_to_str(VkFullScreenExclusiveEXT input);
 #endif
     const char * vk_GeometryTypeKHR_to_str(VkGeometryTypeKHR input);
+    const char * vk_GpaDeviceClockModeAMD_to_str(VkGpaDeviceClockModeAMD input);
+    const char * vk_GpaPerfBlockAMD_to_str(VkGpaPerfBlockAMD input);
+    const char * vk_GpaSampleTypeAMD_to_str(VkGpaSampleTypeAMD input);
     const char * vk_ImageLayout_to_str(VkImageLayout input);
     const char * vk_ImageTiling_to_str(VkImageTiling input);
     const char * vk_ImageType_to_str(VkImageType input);
@@ -115,9 +122,10 @@
     const char * vk_LogicOp_to_str(VkLogicOp input);
     const char * vk_MemoryOverallocationBehaviorAMD_to_str(VkMemoryOverallocationBehaviorAMD input);
     const char * vk_MicromapTypeEXT_to_str(VkMicromapTypeEXT input);
+    const char * vk_NeuralAcceleratorStatisticsModeARM_to_str(VkNeuralAcceleratorStatisticsModeARM input);
     const char * vk_ObjectType_to_str(VkObjectType input);
-    const char * vk_OpacityMicromapFormatEXT_to_str(VkOpacityMicromapFormatEXT input);
-    const char * vk_OpacityMicromapSpecialIndexEXT_to_str(VkOpacityMicromapSpecialIndexEXT input);
+    const char * vk_OpacityMicromapFormatKHR_to_str(VkOpacityMicromapFormatKHR input);
+    const char * vk_OpacityMicromapSpecialIndexKHR_to_str(VkOpacityMicromapSpecialIndexKHR input);
     const char * vk_OpticalFlowPerformanceLevelNV_to_str(VkOpticalFlowPerformanceLevelNV input);
     const char * vk_OpticalFlowSessionBindingPointNV_to_str(VkOpticalFlowSessionBindingPointNV input);
     const char * vk_OutOfBandQueueTypeNV_to_str(VkOutOfBandQueueTypeNV input);
@@ -174,6 +182,7 @@
     const char * vk_SystemAllocationScope_to_str(VkSystemAllocationScope input);
     const char * vk_TensorTilingARM_to_str(VkTensorTilingARM input);
     const char * vk_TessellationDomainOrigin_to_str(VkTessellationDomainOrigin input);
+    const char * vk_ThrottleHintTypeSEC_to_str(VkThrottleHintTypeSEC input);
     const char * vk_TimeDomainKHR_to_str(VkTimeDomainKHR input);
     const char * vk_ValidationCacheHeaderVersionEXT_to_str(VkValidationCacheHeaderVersionEXT input);
     const char * vk_ValidationCheckEXT_to_str(VkValidationCheckEXT input);
@@ -211,6 +220,10 @@
     const char * vk_CompositeAlphaFlagBitsKHR_to_str(VkCompositeAlphaFlagBitsKHR input);
     const char * vk_ConditionalRenderingFlagBitsEXT_to_str(VkConditionalRenderingFlagBitsEXT input);
     const char * vk_CullModeFlagBits_to_str(VkCullModeFlagBits input);
+    const char * vk_DataGraphOpticalFlowCreateFlagBitsARM_to_str(VkDataGraphOpticalFlowCreateFlagBitsARM input);
+    const char * vk_DataGraphOpticalFlowExecuteFlagBitsARM_to_str(VkDataGraphOpticalFlowExecuteFlagBitsARM input);
+    const char * vk_DataGraphOpticalFlowGridSizeFlagBitsARM_to_str(VkDataGraphOpticalFlowGridSizeFlagBitsARM input);
+    const char * vk_DataGraphOpticalFlowImageUsageFlagBitsARM_to_str(VkDataGraphOpticalFlowImageUsageFlagBitsARM input);
     const char * vk_DataGraphPipelineDispatchFlagBitsARM_to_str(VkDataGraphPipelineDispatchFlagBitsARM input);
     const char * vk_DataGraphPipelineSessionCreateFlagBitsARM_to_str(VkDataGraphPipelineSessionCreateFlagBitsARM input);
     const char * vk_DataGraphTOSAQualityFlagBitsARM_to_str(VkDataGraphTOSAQualityFlagBitsARM input);
@@ -243,10 +256,12 @@
     const char * vk_FenceImportFlagBits_to_str(VkFenceImportFlagBits input);
     const char * vk_FormatFeatureFlagBits_to_str(VkFormatFeatureFlagBits input);
     const char * vk_FormatFeatureFlagBits2_to_str(VkFormatFeatureFlagBits2 input);
+    const char * vk_FormatFeatureFlagBits4KHR_to_str(VkFormatFeatureFlagBits4KHR input);
     const char * vk_FrameBoundaryFlagBitsEXT_to_str(VkFrameBoundaryFlagBitsEXT input);
     const char * vk_FramebufferCreateFlagBits_to_str(VkFramebufferCreateFlagBits input);
     const char * vk_GeometryFlagBitsKHR_to_str(VkGeometryFlagBitsKHR input);
     const char * vk_GeometryInstanceFlagBitsKHR_to_str(VkGeometryInstanceFlagBitsKHR input);
+    const char * vk_GpaSqShaderStageFlagBitsAMD_to_str(VkGpaSqShaderStageFlagBitsAMD input);
     const char * vk_GraphicsPipelineLibraryFlagBitsEXT_to_str(VkGraphicsPipelineLibraryFlagBitsEXT input);
     const char * vk_HostImageCopyFlagBits_to_str(VkHostImageCopyFlagBits input);
     const char * vk_ImageAspectFlagBits_to_str(VkImageAspectFlagBits input);
@@ -256,7 +271,9 @@
     const char * vk_ImageConstraintsInfoFlagBitsFUCHSIA_to_str(VkImageConstraintsInfoFlagBitsFUCHSIA input);
 #endif
     const char * vk_ImageCreateFlagBits_to_str(VkImageCreateFlagBits input);
+    const char * vk_ImageCreateFlagBits2KHR_to_str(VkImageCreateFlagBits2KHR input);
     const char * vk_ImageUsageFlagBits_to_str(VkImageUsageFlagBits input);
+    const char * vk_ImageUsageFlagBits2KHR_to_str(VkImageUsageFlagBits2KHR input);
     const char * vk_ImageViewCreateFlagBits_to_str(VkImageViewCreateFlagBits input);
     const char * vk_IndirectCommandsInputModeFlagBitsEXT_to_str(VkIndirectCommandsInputModeFlagBitsEXT input);
     const char * vk_IndirectCommandsLayoutUsageFlagBitsEXT_to_str(VkIndirectCommandsLayoutUsageFlagBitsEXT input);
@@ -354,6 +371,7 @@
     const char * vk_VideoEncodeH265StdFlagBitsKHR_to_str(VkVideoEncodeH265StdFlagBitsKHR input);
     const char * vk_VideoEncodeH265TransformBlockSizeFlagBitsKHR_to_str(VkVideoEncodeH265TransformBlockSizeFlagBitsKHR input);
     const char * vk_VideoEncodeIntraRefreshModeFlagBitsKHR_to_str(VkVideoEncodeIntraRefreshModeFlagBitsKHR input);
+    const char * vk_VideoEncodePerPartitionFeedbackFlagBitsKHR_to_str(VkVideoEncodePerPartitionFeedbackFlagBitsKHR input);
     const char * vk_VideoEncodeRateControlModeFlagBitsKHR_to_str(VkVideoEncodeRateControlModeFlagBitsKHR input);
     const char * vk_VideoEncodeRgbChromaOffsetFlagBitsVALVE_to_str(VkVideoEncodeRgbChromaOffsetFlagBitsVALVE input);
     const char * vk_VideoEncodeRgbModelConversionFlagBitsVALVE_to_str(VkVideoEncodeRgbModelConversionFlagBitsVALVE input);

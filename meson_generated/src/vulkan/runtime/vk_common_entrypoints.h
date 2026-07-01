@@ -243,6 +243,7 @@ extern const struct vk_device_entrypoint_table vk_common_device_entrypoints;
   VKAPI_ATTR VkResult VKAPI_CALL vk_common_EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, uint32_t* pCounterCount, VkPerformanceCounterARM* pCounters, VkPerformanceCounterDescriptionARM* pCounterDescriptions) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
   VKAPI_ATTR VkDeviceSize VKAPI_CALL vk_common_GetPhysicalDeviceDescriptorSizeEXT(VkPhysicalDevice                                    physicalDevice, VkDescriptorType                                    descriptorType) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
   VKAPI_ATTR VkResult VKAPI_CALL vk_common_GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM(VkPhysicalDevice                                 physicalDevice, uint32_t                                         queueFamilyIndex, const VkQueueFamilyDataGraphPropertiesARM*       pQueueFamilyDataGraphProperties, VkBaseOutStructure*        pProperties) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_GetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM(VkPhysicalDevice                                physicalDevice, uint32_t                                        queueFamilyIndex, const VkQueueFamilyDataGraphPropertiesARM*      pQueueFamilyDataGraphProperties, const VkDataGraphOpticalFlowImageFormatInfoARM* pOpticalFlowImageFormatInfo, uint32_t*                 pFormatCount, VkDataGraphOpticalFlowImageFormatPropertiesARM* pImageFormatProperties) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
   VKAPI_ATTR PFN_vkVoidFunction VKAPI_CALL vk_common_GetDeviceProcAddr(VkDevice device, const char* pName) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
@@ -1947,46 +1948,46 @@ extern const struct vk_device_entrypoint_table vk_common_device_entrypoints;
   VKAPI_ATTR void VKAPI_CALL vk_common_GetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CreateMicromapEXT(VkDevice                                           device, const VkMicromapCreateInfoEXT*        pCreateInfo, const VkAllocationCallbacks*       pAllocator, VkMicromapEXT*                        pMicromap) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CreateMicromapEXT(VkDevice                                           device, const VkMicromapCreateInfoEXT*                     pCreateInfo, const VkAllocationCallbacks*       pAllocator, VkMicromapEXT*                                     pMicromap) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_CmdBuildMicromapsEXT(VkCommandBuffer                                    commandBuffer, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdBuildMicromapsEXT(VkCommandBuffer             commandBuffer, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_BuildMicromapsEXT(VkDevice                                           device, VkDeferredOperationKHR deferredOperation, uint32_t infoCount, const VkMicromapBuildInfoEXT* pInfos) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_BuildMicromapsEXT(VkDevice                                      device, VkDeferredOperationKHR        deferredOperation, uint32_t                                      infoCount, const VkMicromapBuildInfoEXT* pInfos) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_DestroyMicromapEXT(VkDevice device, VkMicromapEXT micromap, const VkAllocationCallbacks* pAllocator) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_DestroyMicromapEXT(VkDevice                                        device, VkMicromapEXT micromap, const VkAllocationCallbacks*    pAllocator) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapInfoEXT*      pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMicromapEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapInfoEXT*           pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMicromapToMemoryEXT(VkCommandBuffer commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMicromapToMemoryEXT(VkCommandBuffer    commandBuffer, const VkCopyMicromapToMemoryInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMicromapToMemoryEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapToMemoryInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMicromapToMemoryEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMicromapToMemoryInfoEXT*   pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMemoryToMicromapEXT(VkCommandBuffer commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyMemoryToMicromapEXT(VkCommandBuffer    commandBuffer, const VkCopyMemoryToMicromapInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMemoryToMicromapEXT(VkDevice device, VkDeferredOperationKHR deferredOperation, const VkCopyMemoryToMicromapInfoEXT* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CopyMemoryToMicromapEXT(VkDevice                               device, VkDeferredOperationKHR deferredOperation, const VkCopyMemoryToMicromapInfoEXT*   pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType queryType, VkQueryPool queryPool, uint32_t firstQuery) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdWriteMicromapsPropertiesEXT(VkCommandBuffer commandBuffer, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType        queryType, VkQueryPool                              queryPool, uint32_t                                 firstQuery) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR VkResult VKAPI_CALL vk_common_WriteMicromapsPropertiesEXT(VkDevice device, uint32_t micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType  queryType, size_t       dataSize, void* pData, size_t stride) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_WriteMicromapsPropertiesEXT(VkDevice                                 device, uint32_t                                 micromapCount, const VkMicromapEXT* pMicromaps, VkQueryType                              queryType, size_t                                   dataSize, void*                     pData, size_t                                   stride) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_GetDeviceMicromapCompatibilityEXT(VkDevice device, const VkMicromapVersionInfoEXT* pVersionInfo, VkAccelerationStructureCompatibilityKHR* pCompatibility) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_GetDeviceMicromapCompatibilityEXT(VkDevice                                 device, const VkMicromapVersionInfoEXT*          pVersionInfo, VkAccelerationStructureCompatibilityKHR* pCompatibility) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
-  VKAPI_ATTR void VKAPI_CALL vk_common_GetMicromapBuildSizesEXT(VkDevice                                            device, VkAccelerationStructureBuildTypeKHR                 buildType, const VkMicromapBuildInfoEXT*  pBuildInfo, VkMicromapBuildSizesInfoEXT*           pSizeInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+  VKAPI_ATTR void VKAPI_CALL vk_common_GetMicromapBuildSizesEXT(VkDevice                            device, VkAccelerationStructureBuildTypeKHR buildType, const VkMicromapBuildInfoEXT*       pBuildInfo, VkMicromapBuildSizesInfoEXT*        pSizeInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 
   VKAPI_ATTR void VKAPI_CALL vk_common_GetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
@@ -2098,6 +2099,42 @@ extern const struct vk_device_entrypoint_table vk_common_device_entrypoints;
 
 
 #endif // VK_USE_PLATFORM_SCREEN_QNX
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CreateGpaSessionAMD(VkDevice                                     device, const VkGpaSessionCreateInfoAMD*             pCreateInfo, const VkAllocationCallbacks* pAllocator, VkGpaSessionAMD*                             pGpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR void VKAPI_CALL vk_common_DestroyGpaSessionAMD(VkDevice                                          device, VkGpaSessionAMD gpaSession, const VkAllocationCallbacks*      pAllocator) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_SetGpaDeviceClockModeAMD(VkDevice                     device, VkGpaDeviceClockModeInfoAMD* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_GetGpaDeviceClockInfoAMD(VkDevice                    device, VkGpaDeviceGetClockInfoAMD* pInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CmdBeginGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CmdEndGpaSessionAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_CmdBeginGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, const VkGpaSampleBeginInfoAMD*    pGpaSampleBeginInfo, uint32_t*                         pSampleID) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdEndGpaSampleAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession, uint32_t                          sampleID) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_GetGpaSessionStatusAMD(VkDevice        device, VkGpaSessionAMD gpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_GetGpaSessionResultsAMD(VkDevice                                 device, VkGpaSessionAMD                          gpaSession, uint32_t                                 sampleID, size_t*            pSizeInBytes, void* pData) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR VkResult VKAPI_CALL vk_common_ResetGpaSessionAMD(VkDevice        device, VkGpaSessionAMD gpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
+  VKAPI_ATTR void VKAPI_CALL vk_common_CmdCopyGpaSessionResultsAMD(VkCommandBuffer commandBuffer, VkGpaSessionAMD                   gpaSession) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
+
+
   VKAPI_ATTR void VKAPI_CALL vk_common_CmdBindDescriptorSets2(VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo*   pBindDescriptorSetsInfo) VK_ENTRY_WEAK VK_ENTRY_HIDDEN;
 
 

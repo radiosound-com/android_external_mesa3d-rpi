@@ -134,7 +134,7 @@ struct vk_instance_extension_table {
 };
 
 
-#define VK_DEVICE_EXTENSION_COUNT 412
+#define VK_DEVICE_EXTENSION_COUNT 427
 
 extern const VkExtensionProperties vk_device_extensions[];
 
@@ -166,6 +166,7 @@ struct vk_device_extension_table {
          bool KHR_driver_properties;
          bool KHR_dynamic_rendering;
          bool KHR_dynamic_rendering_local_read;
+         bool KHR_extended_flags;
          bool KHR_external_fence;
          bool KHR_external_fence_fd;
          bool KHR_external_fence_win32;
@@ -197,8 +198,10 @@ struct vk_device_extension_table {
          bool KHR_maintenance8;
          bool KHR_maintenance9;
          bool KHR_maintenance10;
+         bool KHR_maintenance11;
          bool KHR_map_memory2;
          bool KHR_multiview;
+         bool KHR_opacity_micromap;
          bool KHR_performance_query;
          bool KHR_pipeline_binary;
          bool KHR_pipeline_executable_properties;
@@ -258,6 +261,7 @@ struct vk_device_extension_table {
          bool KHR_video_decode_queue;
          bool KHR_video_decode_vp9;
          bool KHR_video_encode_av1;
+         bool KHR_video_encode_feedback2;
          bool KHR_video_encode_h264;
          bool KHR_video_encode_h265;
          bool KHR_video_encode_intra_refresh;
@@ -341,6 +345,7 @@ struct vk_device_extension_table {
          bool EXT_metal_objects;
          bool EXT_multi_draw;
          bool EXT_multisampled_render_to_single_sampled;
+         bool EXT_multisampled_render_to_swapchain;
          bool EXT_mutable_descriptor_type;
          bool EXT_nested_command_buffer;
          bool EXT_non_seamless_cube_map;
@@ -381,6 +386,7 @@ struct vk_device_extension_table {
          bool EXT_shader_module_identifier;
          bool EXT_shader_object;
          bool EXT_shader_replicated_composites;
+         bool EXT_shader_split_barrier;
          bool EXT_shader_stencil_export;
          bool EXT_shader_subgroup_ballot;
          bool EXT_shader_subgroup_partitioned;
@@ -411,6 +417,7 @@ struct vk_device_extension_table {
          bool AMD_display_native_hdr;
          bool AMD_draw_indirect_count;
          bool AMD_gcn_shader;
+         bool AMD_gpa_interface;
          bool AMD_gpu_shader_half_float;
          bool AMD_gpu_shader_int16;
          bool AMD_memory_overallocation_behavior;
@@ -433,6 +440,8 @@ struct vk_device_extension_table {
          bool ANDROID_native_buffer;
          bool ARM_data_graph;
          bool ARM_data_graph_instruction_set_tosa;
+         bool ARM_data_graph_neural_accelerator_statistics;
+         bool ARM_data_graph_optical_flow;
          bool ARM_format_pack;
          bool ARM_performance_counters_by_region;
          bool ARM_pipeline_opacity_micromap;
@@ -456,6 +465,7 @@ struct vk_device_extension_table {
          bool HUAWEI_invocation_mask;
          bool HUAWEI_subpass_shading;
          bool IMG_filter_cubic;
+         bool IMG_filter_linear_2d;
          bool IMG_format_pvrtc;
          bool IMG_relaxed_line_rasterization;
          bool INTEL_performance_query;
@@ -473,6 +483,7 @@ struct vk_device_extension_table {
          bool NV_compute_shader_derivatives;
          bool NV_cooperative_matrix;
          bool NV_cooperative_matrix2;
+         bool NV_cooperative_matrix_decode_vector;
          bool NV_cooperative_vector;
          bool NV_copy_memory_indirect;
          bool NV_corner_sampled_image;
@@ -530,11 +541,13 @@ struct vk_device_extension_table {
          bool OHOS_external_memory;
          bool QCOM_cooperative_matrix_conversion;
          bool QCOM_data_graph_model;
+         bool QCOM_elapsed_timer_query;
          bool QCOM_filter_cubic_clamp;
          bool QCOM_filter_cubic_weights;
          bool QCOM_fragment_density_map_offset;
          bool QCOM_image_processing;
          bool QCOM_image_processing2;
+         bool QCOM_image_processing3;
          bool QCOM_multiview_per_view_render_areas;
          bool QCOM_multiview_per_view_viewports;
          bool QCOM_queue_perf_hint;
@@ -542,6 +555,7 @@ struct vk_device_extension_table {
          bool QCOM_render_pass_store_ops;
          bool QCOM_render_pass_transform;
          bool QCOM_rotated_copy_commands;
+         bool QCOM_shader_multiple_wait_queues;
          bool QCOM_tile_memory_heap;
          bool QCOM_tile_properties;
          bool QCOM_tile_shading;
@@ -549,6 +563,7 @@ struct vk_device_extension_table {
          bool QNX_external_memory_screen_buffer;
          bool SEC_amigo_profiling;
          bool SEC_pipeline_cache_incremental_mode;
+         bool SEC_throttle_hint;
          bool VALVE_descriptor_set_host_mapping;
          bool VALVE_fragment_density_map_layered;
          bool VALVE_mutable_descriptor_type;
@@ -582,6 +597,7 @@ struct vk_device_extension_table {
          bool KHR_driver_properties;
          bool KHR_dynamic_rendering;
          bool KHR_dynamic_rendering_local_read;
+         bool KHR_extended_flags;
          bool KHR_external_fence;
          bool KHR_external_fence_fd;
          bool KHR_external_fence_win32;
@@ -613,8 +629,10 @@ struct vk_device_extension_table {
          bool KHR_maintenance8;
          bool KHR_maintenance9;
          bool KHR_maintenance10;
+         bool KHR_maintenance11;
          bool KHR_map_memory2;
          bool KHR_multiview;
+         bool KHR_opacity_micromap;
          bool KHR_performance_query;
          bool KHR_pipeline_binary;
          bool KHR_pipeline_executable_properties;
@@ -674,6 +692,7 @@ struct vk_device_extension_table {
          bool KHR_video_decode_queue;
          bool KHR_video_decode_vp9;
          bool KHR_video_encode_av1;
+         bool KHR_video_encode_feedback2;
          bool KHR_video_encode_h264;
          bool KHR_video_encode_h265;
          bool KHR_video_encode_intra_refresh;
@@ -757,6 +776,7 @@ struct vk_device_extension_table {
          bool EXT_metal_objects;
          bool EXT_multi_draw;
          bool EXT_multisampled_render_to_single_sampled;
+         bool EXT_multisampled_render_to_swapchain;
          bool EXT_mutable_descriptor_type;
          bool EXT_nested_command_buffer;
          bool EXT_non_seamless_cube_map;
@@ -797,6 +817,7 @@ struct vk_device_extension_table {
          bool EXT_shader_module_identifier;
          bool EXT_shader_object;
          bool EXT_shader_replicated_composites;
+         bool EXT_shader_split_barrier;
          bool EXT_shader_stencil_export;
          bool EXT_shader_subgroup_ballot;
          bool EXT_shader_subgroup_partitioned;
@@ -827,6 +848,7 @@ struct vk_device_extension_table {
          bool AMD_display_native_hdr;
          bool AMD_draw_indirect_count;
          bool AMD_gcn_shader;
+         bool AMD_gpa_interface;
          bool AMD_gpu_shader_half_float;
          bool AMD_gpu_shader_int16;
          bool AMD_memory_overallocation_behavior;
@@ -849,6 +871,8 @@ struct vk_device_extension_table {
          bool ANDROID_native_buffer;
          bool ARM_data_graph;
          bool ARM_data_graph_instruction_set_tosa;
+         bool ARM_data_graph_neural_accelerator_statistics;
+         bool ARM_data_graph_optical_flow;
          bool ARM_format_pack;
          bool ARM_performance_counters_by_region;
          bool ARM_pipeline_opacity_micromap;
@@ -872,6 +896,7 @@ struct vk_device_extension_table {
          bool HUAWEI_invocation_mask;
          bool HUAWEI_subpass_shading;
          bool IMG_filter_cubic;
+         bool IMG_filter_linear_2d;
          bool IMG_format_pvrtc;
          bool IMG_relaxed_line_rasterization;
          bool INTEL_performance_query;
@@ -889,6 +914,7 @@ struct vk_device_extension_table {
          bool NV_compute_shader_derivatives;
          bool NV_cooperative_matrix;
          bool NV_cooperative_matrix2;
+         bool NV_cooperative_matrix_decode_vector;
          bool NV_cooperative_vector;
          bool NV_copy_memory_indirect;
          bool NV_corner_sampled_image;
@@ -946,11 +972,13 @@ struct vk_device_extension_table {
          bool OHOS_external_memory;
          bool QCOM_cooperative_matrix_conversion;
          bool QCOM_data_graph_model;
+         bool QCOM_elapsed_timer_query;
          bool QCOM_filter_cubic_clamp;
          bool QCOM_filter_cubic_weights;
          bool QCOM_fragment_density_map_offset;
          bool QCOM_image_processing;
          bool QCOM_image_processing2;
+         bool QCOM_image_processing3;
          bool QCOM_multiview_per_view_render_areas;
          bool QCOM_multiview_per_view_viewports;
          bool QCOM_queue_perf_hint;
@@ -958,6 +986,7 @@ struct vk_device_extension_table {
          bool QCOM_render_pass_store_ops;
          bool QCOM_render_pass_transform;
          bool QCOM_rotated_copy_commands;
+         bool QCOM_shader_multiple_wait_queues;
          bool QCOM_tile_memory_heap;
          bool QCOM_tile_properties;
          bool QCOM_tile_shading;
@@ -965,6 +994,7 @@ struct vk_device_extension_table {
          bool QNX_external_memory_screen_buffer;
          bool SEC_amigo_profiling;
          bool SEC_pipeline_cache_incremental_mode;
+         bool SEC_throttle_hint;
          bool VALVE_descriptor_set_host_mapping;
          bool VALVE_fragment_density_map_layered;
          bool VALVE_mutable_descriptor_type;

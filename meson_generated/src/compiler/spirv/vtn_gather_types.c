@@ -694,8 +694,6 @@ result_type_args_for_opcode(SpvOp opcode)
    case SpvOpFixedExpALTERA: return (struct type_args){ 1, 0 };
    case SpvOpPtrCastToCrossWorkgroupALTERA: return (struct type_args){ 1, 0 };
    case SpvOpCrossWorkgroupCastToPtrALTERA: return (struct type_args){ 1, 0 };
-   case SpvOpReadPipeBlockingALTERA: return (struct type_args){ 1, 0 };
-   case SpvOpWritePipeBlockingALTERA: return (struct type_args){ 1, 0 };
    case SpvOpFPGARegALTERA: return (struct type_args){ 1, 0 };
    case SpvOpRayQueryGetRayTMinKHR: return (struct type_args){ 1, 0 };
    case SpvOpRayQueryGetRayFlagsKHR: return (struct type_args){ 1, 0 };
@@ -716,7 +714,6 @@ result_type_args_for_opcode(SpvOp opcode)
    case SpvOpRayQueryGetIntersectionWorldToObjectKHR: return (struct type_args){ 1, 0 };
    case SpvOpAtomicFAddEXT: return (struct type_args){ 1, 0 };
    case SpvOpTypeBufferSurfaceINTEL: return (struct type_args){ 0, -1 };
-   case SpvOpCompositeConstructContinuedINTEL: return (struct type_args){ 1, 0 };
    case SpvOpConvertFToBF16INTEL: return (struct type_args){ 1, 0 };
    case SpvOpConvertBF16ToFINTEL: return (struct type_args){ 1, 0 };
    case SpvOpArithmeticFenceEXT: return (struct type_args){ 1, 0 };
@@ -730,6 +727,7 @@ result_type_args_for_opcode(SpvOp opcode)
    case SpvOpSpecConstantArchitectureINTEL: return (struct type_args){ 1, 0 };
    case SpvOpSpecConstantCapabilitiesINTEL: return (struct type_args){ 1, 0 };
    case SpvOpConditionalCopyObjectINTEL: return (struct type_args){ 1, 0 };
+   case SpvOpPredicatedLoadINTEL: return (struct type_args){ 1, 0 };
    case SpvOpGroupIMulKHR: return (struct type_args){ 1, 0 };
    case SpvOpGroupFMulKHR: return (struct type_args){ 1, 0 };
    case SpvOpGroupBitwiseAndKHR: return (struct type_args){ 1, 0 };

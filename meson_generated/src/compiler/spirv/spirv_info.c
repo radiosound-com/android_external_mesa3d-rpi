@@ -148,6 +148,7 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityDescriptorHeapEXT: return caps->DescriptorHeapEXT;
    case SpvCapabilityConstantDataKHR: return caps->ConstantDataKHR;
    case SpvCapabilityPoisonFreezeKHR: return caps->PoisonFreezeKHR;
+   case SpvCapabilityWeakLinkageAMD: return caps->WeakLinkageAMD;
    case SpvCapabilitySampleMaskOverrideCoverageNV: return caps->SampleMaskOverrideCoverageNV;
    case SpvCapabilityGeometryShaderPassthroughNV: return caps->GeometryShaderPassthroughNV;
    case SpvCapabilityShaderViewportIndexLayerEXT: return caps->ShaderViewportIndexLayerEXT;
@@ -189,7 +190,7 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityFragmentShaderPixelInterlockEXT: return caps->FragmentShaderPixelInterlockEXT;
    case SpvCapabilityDemoteToHelperInvocation: return caps->DemoteToHelperInvocation;
    case SpvCapabilityDisplacementMicromapNV: return caps->DisplacementMicromapNV;
-   case SpvCapabilityRayTracingOpacityMicromapEXT: return caps->RayTracingOpacityMicromapEXT;
+   case SpvCapabilityRayTracingOpacityMicromapKHR: return caps->RayTracingOpacityMicromapKHR;
    case SpvCapabilityShaderInvocationReorderNV: return caps->ShaderInvocationReorderNV;
    case SpvCapabilityShaderInvocationReorderEXT: return caps->ShaderInvocationReorderEXT;
    case SpvCapabilityBindlessTextureNV: return caps->BindlessTextureNV;
@@ -211,6 +212,7 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityCooperativeVectorTrainingNV: return caps->CooperativeVectorTrainingNV;
    case SpvCapabilityRayTracingClusterAccelerationStructureNV: return caps->RayTracingClusterAccelerationStructureNV;
    case SpvCapabilityTensorAddressingNV: return caps->TensorAddressingNV;
+   case SpvCapabilityCooperativeMatrixDecodeVectorNV: return caps->CooperativeMatrixDecodeVectorNV;
    case SpvCapabilitySubgroupShuffleINTEL: return caps->SubgroupShuffleINTEL;
    case SpvCapabilitySubgroupBufferBlockIOINTEL: return caps->SubgroupBufferBlockIOINTEL;
    case SpvCapabilitySubgroupImageBlockIOINTEL: return caps->SubgroupImageBlockIOINTEL;
@@ -264,6 +266,7 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityGroupNonUniformRotateKHR: return caps->GroupNonUniformRotateKHR;
    case SpvCapabilityFloatControls2: return caps->FloatControls2;
    case SpvCapabilityFMAKHR: return caps->FMAKHR;
+   case SpvCapabilityRayTracingOpacityMicromapExecutionModeKHR: return caps->RayTracingOpacityMicromapExecutionModeKHR;
    case SpvCapabilityAtomicFloat32AddEXT: return caps->AtomicFloat32AddEXT;
    case SpvCapabilityAtomicFloat64AddEXT: return caps->AtomicFloat64AddEXT;
    case SpvCapabilityLongCompositesINTEL: return caps->LongCompositesINTEL;
@@ -271,7 +274,7 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityAtomicFloat16AddEXT: return caps->AtomicFloat16AddEXT;
    case SpvCapabilityDebugInfoModuleINTEL: return caps->DebugInfoModuleINTEL;
    case SpvCapabilityBFloat16ConversionINTEL: return caps->BFloat16ConversionINTEL;
-   case SpvCapabilitySplitBarrierINTEL: return caps->SplitBarrierINTEL;
+   case SpvCapabilitySplitBarrierEXT: return caps->SplitBarrierEXT;
    case SpvCapabilityArithmeticFenceEXT: return caps->ArithmeticFenceEXT;
    case SpvCapabilityFPGAClusterAttributesV2ALTERA: return caps->FPGAClusterAttributesV2ALTERA;
    case SpvCapabilityFPGAKernelAttributesv2INTEL: return caps->FPGAKernelAttributesv2INTEL;
@@ -290,6 +293,8 @@ spirv_capabilities_get(const struct spirv_capabilities *caps,
    case SpvCapabilityUntypedVariableLengthArrayINTEL: return caps->UntypedVariableLengthArrayINTEL;
    case SpvCapabilitySpecConditionalINTEL: return caps->SpecConditionalINTEL;
    case SpvCapabilityFunctionVariantsINTEL: return caps->FunctionVariantsINTEL;
+   case SpvCapabilityPredicatedIOINTEL: return caps->PredicatedIOINTEL;
+   case SpvCapabilityRoundedDivideSqrtINTEL: return caps->RoundedDivideSqrtINTEL;
    case SpvCapabilityGroupUniformArithmeticKHR: return caps->GroupUniformArithmeticKHR;
    case SpvCapabilityTensorFloat32RoundingINTEL: return caps->TensorFloat32RoundingINTEL;
    case SpvCapabilityMaskedGatherScatterINTEL: return caps->MaskedGatherScatterINTEL;
@@ -445,6 +450,7 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityDescriptorHeapEXT: caps->DescriptorHeapEXT = enabled; break;
    case SpvCapabilityConstantDataKHR: caps->ConstantDataKHR = enabled; break;
    case SpvCapabilityPoisonFreezeKHR: caps->PoisonFreezeKHR = enabled; break;
+   case SpvCapabilityWeakLinkageAMD: caps->WeakLinkageAMD = enabled; break;
    case SpvCapabilitySampleMaskOverrideCoverageNV: caps->SampleMaskOverrideCoverageNV = enabled; break;
    case SpvCapabilityGeometryShaderPassthroughNV: caps->GeometryShaderPassthroughNV = enabled; break;
    case SpvCapabilityShaderViewportIndexLayerEXT: caps->ShaderViewportIndexLayerEXT = enabled; break;
@@ -486,7 +492,7 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityFragmentShaderPixelInterlockEXT: caps->FragmentShaderPixelInterlockEXT = enabled; break;
    case SpvCapabilityDemoteToHelperInvocation: caps->DemoteToHelperInvocation = enabled; break;
    case SpvCapabilityDisplacementMicromapNV: caps->DisplacementMicromapNV = enabled; break;
-   case SpvCapabilityRayTracingOpacityMicromapEXT: caps->RayTracingOpacityMicromapEXT = enabled; break;
+   case SpvCapabilityRayTracingOpacityMicromapKHR: caps->RayTracingOpacityMicromapKHR = enabled; break;
    case SpvCapabilityShaderInvocationReorderNV: caps->ShaderInvocationReorderNV = enabled; break;
    case SpvCapabilityShaderInvocationReorderEXT: caps->ShaderInvocationReorderEXT = enabled; break;
    case SpvCapabilityBindlessTextureNV: caps->BindlessTextureNV = enabled; break;
@@ -508,6 +514,7 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityCooperativeVectorTrainingNV: caps->CooperativeVectorTrainingNV = enabled; break;
    case SpvCapabilityRayTracingClusterAccelerationStructureNV: caps->RayTracingClusterAccelerationStructureNV = enabled; break;
    case SpvCapabilityTensorAddressingNV: caps->TensorAddressingNV = enabled; break;
+   case SpvCapabilityCooperativeMatrixDecodeVectorNV: caps->CooperativeMatrixDecodeVectorNV = enabled; break;
    case SpvCapabilitySubgroupShuffleINTEL: caps->SubgroupShuffleINTEL = enabled; break;
    case SpvCapabilitySubgroupBufferBlockIOINTEL: caps->SubgroupBufferBlockIOINTEL = enabled; break;
    case SpvCapabilitySubgroupImageBlockIOINTEL: caps->SubgroupImageBlockIOINTEL = enabled; break;
@@ -561,6 +568,7 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityGroupNonUniformRotateKHR: caps->GroupNonUniformRotateKHR = enabled; break;
    case SpvCapabilityFloatControls2: caps->FloatControls2 = enabled; break;
    case SpvCapabilityFMAKHR: caps->FMAKHR = enabled; break;
+   case SpvCapabilityRayTracingOpacityMicromapExecutionModeKHR: caps->RayTracingOpacityMicromapExecutionModeKHR = enabled; break;
    case SpvCapabilityAtomicFloat32AddEXT: caps->AtomicFloat32AddEXT = enabled; break;
    case SpvCapabilityAtomicFloat64AddEXT: caps->AtomicFloat64AddEXT = enabled; break;
    case SpvCapabilityLongCompositesINTEL: caps->LongCompositesINTEL = enabled; break;
@@ -568,7 +576,7 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityAtomicFloat16AddEXT: caps->AtomicFloat16AddEXT = enabled; break;
    case SpvCapabilityDebugInfoModuleINTEL: caps->DebugInfoModuleINTEL = enabled; break;
    case SpvCapabilityBFloat16ConversionINTEL: caps->BFloat16ConversionINTEL = enabled; break;
-   case SpvCapabilitySplitBarrierINTEL: caps->SplitBarrierINTEL = enabled; break;
+   case SpvCapabilitySplitBarrierEXT: caps->SplitBarrierEXT = enabled; break;
    case SpvCapabilityArithmeticFenceEXT: caps->ArithmeticFenceEXT = enabled; break;
    case SpvCapabilityFPGAClusterAttributesV2ALTERA: caps->FPGAClusterAttributesV2ALTERA = enabled; break;
    case SpvCapabilityFPGAKernelAttributesv2INTEL: caps->FPGAKernelAttributesv2INTEL = enabled; break;
@@ -587,6 +595,8 @@ spirv_capabilities_set(struct spirv_capabilities *caps,
    case SpvCapabilityUntypedVariableLengthArrayINTEL: caps->UntypedVariableLengthArrayINTEL = enabled; break;
    case SpvCapabilitySpecConditionalINTEL: caps->SpecConditionalINTEL = enabled; break;
    case SpvCapabilityFunctionVariantsINTEL: caps->FunctionVariantsINTEL = enabled; break;
+   case SpvCapabilityPredicatedIOINTEL: caps->PredicatedIOINTEL = enabled; break;
+   case SpvCapabilityRoundedDivideSqrtINTEL: caps->RoundedDivideSqrtINTEL = enabled; break;
    case SpvCapabilityGroupUniformArithmeticKHR: caps->GroupUniformArithmeticKHR = enabled; break;
    case SpvCapabilityTensorFloat32RoundingINTEL: caps->TensorFloat32RoundingINTEL = enabled; break;
    case SpvCapabilityMaskedGatherScatterINTEL: caps->MaskedGatherScatterINTEL = enabled; break;
@@ -894,6 +904,7 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityDescriptorHeapEXT: return "SpvCapabilityDescriptorHeapEXT";
    case SpvCapabilityConstantDataKHR: return "SpvCapabilityConstantDataKHR";
    case SpvCapabilityPoisonFreezeKHR: return "SpvCapabilityPoisonFreezeKHR";
+   case SpvCapabilityWeakLinkageAMD: return "SpvCapabilityWeakLinkageAMD";
    case SpvCapabilitySampleMaskOverrideCoverageNV: return "SpvCapabilitySampleMaskOverrideCoverageNV";
    case SpvCapabilityGeometryShaderPassthroughNV: return "SpvCapabilityGeometryShaderPassthroughNV";
    case SpvCapabilityShaderViewportIndexLayerEXT: return "SpvCapabilityShaderViewportIndexLayerEXT";
@@ -935,7 +946,7 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityFragmentShaderPixelInterlockEXT: return "SpvCapabilityFragmentShaderPixelInterlockEXT";
    case SpvCapabilityDemoteToHelperInvocation: return "SpvCapabilityDemoteToHelperInvocation";
    case SpvCapabilityDisplacementMicromapNV: return "SpvCapabilityDisplacementMicromapNV";
-   case SpvCapabilityRayTracingOpacityMicromapEXT: return "SpvCapabilityRayTracingOpacityMicromapEXT";
+   case SpvCapabilityRayTracingOpacityMicromapKHR: return "SpvCapabilityRayTracingOpacityMicromapKHR";
    case SpvCapabilityShaderInvocationReorderNV: return "SpvCapabilityShaderInvocationReorderNV";
    case SpvCapabilityShaderInvocationReorderEXT: return "SpvCapabilityShaderInvocationReorderEXT";
    case SpvCapabilityBindlessTextureNV: return "SpvCapabilityBindlessTextureNV";
@@ -957,6 +968,7 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityCooperativeVectorTrainingNV: return "SpvCapabilityCooperativeVectorTrainingNV";
    case SpvCapabilityRayTracingClusterAccelerationStructureNV: return "SpvCapabilityRayTracingClusterAccelerationStructureNV";
    case SpvCapabilityTensorAddressingNV: return "SpvCapabilityTensorAddressingNV";
+   case SpvCapabilityCooperativeMatrixDecodeVectorNV: return "SpvCapabilityCooperativeMatrixDecodeVectorNV";
    case SpvCapabilitySubgroupShuffleINTEL: return "SpvCapabilitySubgroupShuffleINTEL";
    case SpvCapabilitySubgroupBufferBlockIOINTEL: return "SpvCapabilitySubgroupBufferBlockIOINTEL";
    case SpvCapabilitySubgroupImageBlockIOINTEL: return "SpvCapabilitySubgroupImageBlockIOINTEL";
@@ -1010,6 +1022,7 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityGroupNonUniformRotateKHR: return "SpvCapabilityGroupNonUniformRotateKHR";
    case SpvCapabilityFloatControls2: return "SpvCapabilityFloatControls2";
    case SpvCapabilityFMAKHR: return "SpvCapabilityFMAKHR";
+   case SpvCapabilityRayTracingOpacityMicromapExecutionModeKHR: return "SpvCapabilityRayTracingOpacityMicromapExecutionModeKHR";
    case SpvCapabilityAtomicFloat32AddEXT: return "SpvCapabilityAtomicFloat32AddEXT";
    case SpvCapabilityAtomicFloat64AddEXT: return "SpvCapabilityAtomicFloat64AddEXT";
    case SpvCapabilityLongCompositesINTEL: return "SpvCapabilityLongCompositesINTEL";
@@ -1017,7 +1030,7 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityAtomicFloat16AddEXT: return "SpvCapabilityAtomicFloat16AddEXT";
    case SpvCapabilityDebugInfoModuleINTEL: return "SpvCapabilityDebugInfoModuleINTEL";
    case SpvCapabilityBFloat16ConversionINTEL: return "SpvCapabilityBFloat16ConversionINTEL";
-   case SpvCapabilitySplitBarrierINTEL: return "SpvCapabilitySplitBarrierINTEL";
+   case SpvCapabilitySplitBarrierEXT: return "SpvCapabilitySplitBarrierEXT";
    case SpvCapabilityArithmeticFenceEXT: return "SpvCapabilityArithmeticFenceEXT";
    case SpvCapabilityFPGAClusterAttributesV2ALTERA: return "SpvCapabilityFPGAClusterAttributesV2ALTERA";
    case SpvCapabilityFPGAKernelAttributesv2INTEL: return "SpvCapabilityFPGAKernelAttributesv2INTEL";
@@ -1036,6 +1049,8 @@ spirv_capability_to_string(SpvCapability v)
    case SpvCapabilityUntypedVariableLengthArrayINTEL: return "SpvCapabilityUntypedVariableLengthArrayINTEL";
    case SpvCapabilitySpecConditionalINTEL: return "SpvCapabilitySpecConditionalINTEL";
    case SpvCapabilityFunctionVariantsINTEL: return "SpvCapabilityFunctionVariantsINTEL";
+   case SpvCapabilityPredicatedIOINTEL: return "SpvCapabilityPredicatedIOINTEL";
+   case SpvCapabilityRoundedDivideSqrtINTEL: return "SpvCapabilityRoundedDivideSqrtINTEL";
    case SpvCapabilityGroupUniformArithmeticKHR: return "SpvCapabilityGroupUniformArithmeticKHR";
    case SpvCapabilityTensorFloat32RoundingINTEL: return "SpvCapabilityTensorFloat32RoundingINTEL";
    case SpvCapabilityMaskedGatherScatterINTEL: return "SpvCapabilityMaskedGatherScatterINTEL";
@@ -1326,6 +1341,7 @@ spirv_executionmode_to_string(SpvExecutionMode v)
    case SpvExecutionModeSchedulerTargetFmaxMhzINTEL: return "SpvExecutionModeSchedulerTargetFmaxMhzINTEL";
    case SpvExecutionModeMaximallyReconvergesKHR: return "SpvExecutionModeMaximallyReconvergesKHR";
    case SpvExecutionModeFPFastMathDefault: return "SpvExecutionModeFPFastMathDefault";
+   case SpvExecutionModeOpacityMicromapIdKHR: return "SpvExecutionModeOpacityMicromapIdKHR";
    case SpvExecutionModeStreamingInterfaceINTEL: return "SpvExecutionModeStreamingInterfaceINTEL";
    case SpvExecutionModeRegisterMapInterfaceINTEL: return "SpvExecutionModeRegisterMapInterfaceINTEL";
    case SpvExecutionModeNamedBarrierCountINTEL: return "SpvExecutionModeNamedBarrierCountINTEL";
@@ -2363,8 +2379,8 @@ spirv_op_to_string(SpvOp v)
    case SpvOpCompositeConstructContinuedINTEL: return "SpvOpCompositeConstructContinuedINTEL";
    case SpvOpConvertFToBF16INTEL: return "SpvOpConvertFToBF16INTEL";
    case SpvOpConvertBF16ToFINTEL: return "SpvOpConvertBF16ToFINTEL";
-   case SpvOpControlBarrierArriveINTEL: return "SpvOpControlBarrierArriveINTEL";
-   case SpvOpControlBarrierWaitINTEL: return "SpvOpControlBarrierWaitINTEL";
+   case SpvOpControlBarrierArriveEXT: return "SpvOpControlBarrierArriveEXT";
+   case SpvOpControlBarrierWaitEXT: return "SpvOpControlBarrierWaitEXT";
    case SpvOpArithmeticFenceEXT: return "SpvOpArithmeticFenceEXT";
    case SpvOpTaskSequenceCreateALTERA: return "SpvOpTaskSequenceCreateALTERA";
    case SpvOpTaskSequenceAsyncALTERA: return "SpvOpTaskSequenceAsyncALTERA";
@@ -2387,6 +2403,8 @@ spirv_op_to_string(SpvOp v)
    case SpvOpSpecConstantArchitectureINTEL: return "SpvOpSpecConstantArchitectureINTEL";
    case SpvOpSpecConstantCapabilitiesINTEL: return "SpvOpSpecConstantCapabilitiesINTEL";
    case SpvOpConditionalCopyObjectINTEL: return "SpvOpConditionalCopyObjectINTEL";
+   case SpvOpPredicatedLoadINTEL: return "SpvOpPredicatedLoadINTEL";
+   case SpvOpPredicatedStoreINTEL: return "SpvOpPredicatedStoreINTEL";
    case SpvOpGroupIMulKHR: return "SpvOpGroupIMulKHR";
    case SpvOpGroupFMulKHR: return "SpvOpGroupFMulKHR";
    case SpvOpGroupBitwiseAndKHR: return "SpvOpGroupBitwiseAndKHR";

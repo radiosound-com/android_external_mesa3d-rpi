@@ -165,6 +165,8 @@ vk_physical_device_get_spirv_capabilities(const struct vk_physical_device *pdev)
     caps.TextureBlockMatch2QCOM |= f->textureBlockMatch2;
     caps.MeshShadingEXT |= e->EXT_mesh_shader;
     caps.RayTracingOpacityMicromapEXT |= e->EXT_opacity_micromap;
+    caps.RayTracingOpacityMicromapKHR |= f->micromap;
+    caps.RayTracingOpacityMicromapExecutionModeKHR |= f->micromap;
     caps.CoreBuiltinsARM |= f->shaderCoreBuiltins;
     caps.ShaderInvocationReorderNV |= e->NV_ray_tracing_invocation_reorder;
     caps.RayTracingPositionFetchKHR |= f->rayTracingPositionFetch;
@@ -189,6 +191,7 @@ vk_physical_device_get_spirv_capabilities(const struct vk_physical_device *pdev)
     caps.CooperativeMatrixPerElementOperationsNV |= f->cooperativeMatrixPerElementOperations;
     caps.CooperativeMatrixTensorAddressingNV |= f->cooperativeMatrixTensorAddressing;
     caps.CooperativeMatrixBlockLoadsNV |= f->cooperativeMatrixBlockLoads;
+    caps.CooperativeMatrixDecodeVectorNV |= f->cooperativeMatrixDecodeVector;
     caps.RayTracingSpheresGeometryNV |= f->spheres;
     caps.RayTracingLinearSweptSpheresGeometryNV |= f->linearSweptSpheres;
     caps.RayTracingClusterAccelerationStructureNV |= f->clusterAccelerationStructure;
@@ -197,6 +200,7 @@ vk_physical_device_get_spirv_capabilities(const struct vk_physical_device *pdev)
     caps.PushConstantBanksNV |= f->pushConstantBank;
     caps.ShaderInvocationReorderEXT |= e->EXT_ray_tracing_invocation_reorder;
     caps.TileShadingQCOM |= f->tileShading;
+    caps.SplitBarrierEXT |= f->shaderSplitBarrier;
     caps.TensorsARM |= f->shaderTensorAccess;
     caps.StorageTensorArrayDynamicIndexingARM |= f->shaderStorageTensorArrayDynamicIndexing;
     caps.StorageTensorArrayNonUniformIndexingARM |= f->shaderStorageTensorArrayNonUniformIndexing;
