@@ -55,14 +55,23 @@ struct driconf_device {
 
 
     
-static const struct driconf_option engine_403_options[] = {
+static const struct driconf_option engine_401_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
+};
+
+    
+static const struct driconf_option engine_403_options[] = {
+    { .name = "vk_dont_care_as_load", .value = "true" },
 };
 
 
 static const struct driconf_engine device_1_engines[] = {
     { .engine_name_match = "UnrealEngine4.*",
       .engine_versions = "0:23",
+      .num_options = 1,
+      .options = engine_401_options,
+    },
+    { .engine_name_match = "Kex Engine",
       .num_options = 1,
       .options = engine_403_options,
     },
@@ -923,12 +932,12 @@ static const struct driconf_option application_373_options[] = {
 
     
 static const struct driconf_option application_375_options[] = {
-    { .name = "vk_dont_care_as_load", .value = "true" },
+    { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
 static const struct driconf_option application_377_options[] = {
-    { .name = "vk_x11_strict_image_count", .value = "true" },
+    { .name = "no_fp16", .value = "true" },
 };
 
     
@@ -978,16 +987,11 @@ static const struct driconf_option application_395_options[] = {
 
     
 static const struct driconf_option application_397_options[] = {
-    { .name = "no_fp16", .value = "true" },
-};
-
-    
-static const struct driconf_option application_399_options[] = {
     { .name = "vk_x11_strict_image_count", .value = "true" },
 };
 
     
-static const struct driconf_option application_401_options[] = {
+static const struct driconf_option application_399_options[] = {
     { .name = "wgl_require_gdi_compat", .value = "true" },
 };
 
@@ -1788,87 +1792,82 @@ static const struct driconf_application device_1_applications[] = {
       .num_options = 1,
       .options = application_371_options,
     },
-    { .name = "Forsaken Remastered",
-      .executable = "ForsakenEx",
-      .num_options = 1,
-      .options = application_373_options,
-    },
     { .name = "Spilled!",
       .executable = "Spilled!.exe",
       .num_options = 1,
-      .options = application_375_options,
+      .options = application_373_options,
     },
     { .name = "Atlas Fallen",
       .executable = "AtlasFallen (VK).exe",
       .num_options = 1,
-      .options = application_377_options,
+      .options = application_375_options,
     },
     { .name = "Firefox",
       .executable = "firefox",
       .num_options = 1,
-      .options = application_379_options,
+      .options = application_377_options,
     },
     { .name = "Firefox ESR",
       .executable = "firefox-esr",
       .num_options = 1,
-      .options = application_381_options,
+      .options = application_379_options,
     },
     { .name = "Chromium",
       .executable = "chromium",
       .num_options = 1,
-      .options = application_383_options,
+      .options = application_381_options,
     },
     { .name = "Google Chrome",
       .executable = "chrome",
       .num_options = 1,
-      .options = application_385_options,
+      .options = application_383_options,
     },
     { .name = "Iceweasel",
       .executable = "iceweasel",
       .num_options = 1,
-      .options = application_387_options,
+      .options = application_385_options,
     },
     { .name = "Epiphany",
       .executable = "epiphany",
       .num_options = 1,
-      .options = application_389_options,
+      .options = application_387_options,
     },
     { .name = "Konqueror",
       .executable = "konqueror",
       .num_options = 1,
-      .options = application_391_options,
+      .options = application_389_options,
     },
     { .name = "Falkon",
       .executable = "falkon",
       .num_options = 1,
-      .options = application_393_options,
+      .options = application_391_options,
     },
     { .name = "Seamonkey",
       .executable = "seamonkey",
       .num_options = 1,
-      .options = application_395_options,
+      .options = application_393_options,
     },
     { .name = "Waterfox",
       .executable = "waterfox",
       .num_options = 1,
-      .options = application_397_options,
+      .options = application_395_options,
     },
     { .name = "Detroit Become Human",
       .application_name_match = "DetroitBecomeHuman",
       .num_options = 1,
-      .options = application_399_options,
+      .options = application_397_options,
     },
     { .name = "文香白板",
       .executable = "WxBoardMain.exe",
       .num_options = 1,
-      .options = application_401_options,
+      .options = application_399_options,
     },
 };
 
 static const struct driconf_device device_1 = {
-    .num_engines = 1,
+    .num_engines = 2,
     .engines = device_1_engines,
-    .num_applications = 174,
+    .num_applications = 173,
     .applications = device_1_applications,
 };
 

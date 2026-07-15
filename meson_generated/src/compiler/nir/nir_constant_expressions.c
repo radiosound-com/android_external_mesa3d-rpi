@@ -30639,9 +30639,11 @@ evaluate_f2i1(nir_const_value *_dst_val,
             int1_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(1) || src0 > u_intN_max(1)) {
+                if (isnan(src0) || src0 < u_intN_min(1) || src0 >= 1.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30669,9 +30671,11 @@ evaluate_f2i1(nir_const_value *_dst_val,
             int1_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(1) || src0 > u_intN_max(1)) {
+                if (isnan(src0) || src0 < u_intN_min(1) || src0 >= 1.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30699,9 +30703,11 @@ evaluate_f2i1(nir_const_value *_dst_val,
             int1_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(1) || src0 > u_intN_max(1)) {
+                if (isnan(src0) || src0 < u_intN_min(1) || src0 >= 1.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30746,9 +30752,11 @@ evaluate_f2i16(nir_const_value *_dst_val,
             int16_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(16) || src0 > u_intN_max(16)) {
+                if (isnan(src0) || src0 < u_intN_min(16) || src0 >= 32768.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30775,9 +30783,11 @@ evaluate_f2i16(nir_const_value *_dst_val,
             int16_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(16) || src0 > u_intN_max(16)) {
+                if (isnan(src0) || src0 < u_intN_min(16) || src0 >= 32768.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30804,9 +30814,11 @@ evaluate_f2i16(nir_const_value *_dst_val,
             int16_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(16) || src0 > u_intN_max(16)) {
+                if (isnan(src0) || src0 < u_intN_min(16) || src0 >= 32768.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30933,9 +30945,11 @@ evaluate_f2i32(nir_const_value *_dst_val,
             int32_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(32) || src0 > u_intN_max(32)) {
+                if (isnan(src0) || src0 < u_intN_min(32) || src0 >= 2147483648.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30962,9 +30976,11 @@ evaluate_f2i32(nir_const_value *_dst_val,
             int32_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(32) || src0 > u_intN_max(32)) {
+                if (isnan(src0) || src0 < u_intN_min(32) || src0 >= 2147483648.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -30991,9 +31007,11 @@ evaluate_f2i32(nir_const_value *_dst_val,
             int32_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(32) || src0 > u_intN_max(32)) {
+                if (isnan(src0) || src0 < u_intN_min(32) || src0 >= 2147483648.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31151,9 +31169,11 @@ evaluate_f2i64(nir_const_value *_dst_val,
             int64_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(64) || src0 > u_intN_max(64)) {
+                if (isnan(src0) || src0 < u_intN_min(64) || src0 >= 9223372036854775808.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31180,9 +31200,11 @@ evaluate_f2i64(nir_const_value *_dst_val,
             int64_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(64) || src0 > u_intN_max(64)) {
+                if (isnan(src0) || src0 < u_intN_min(64) || src0 >= 9223372036854775808.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31209,9 +31231,11 @@ evaluate_f2i64(nir_const_value *_dst_val,
             int64_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(64) || src0 > u_intN_max(64)) {
+                if (isnan(src0) || src0 < u_intN_min(64) || src0 >= 9223372036854775808.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31255,9 +31279,11 @@ evaluate_f2i8(nir_const_value *_dst_val,
             int8_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(8) || src0 > u_intN_max(8)) {
+                if (isnan(src0) || src0 < u_intN_min(8) || src0 >= 128.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31284,9 +31310,11 @@ evaluate_f2i8(nir_const_value *_dst_val,
             int8_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(8) || src0 > u_intN_max(8)) {
+                if (isnan(src0) || src0 < u_intN_min(8) || src0 >= 128.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31313,9 +31341,11 @@ evaluate_f2i8(nir_const_value *_dst_val,
             int8_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(8) || src0 > u_intN_max(8)) {
+                if (isnan(src0) || src0 < u_intN_min(8) || src0 >= 128.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31440,9 +31470,11 @@ evaluate_f2imp(nir_const_value *_dst_val,
             int16_t dst;
 
             
-                dst = src0;
-                if (src0 < u_intN_min(16) || src0 > u_intN_max(16)) {
+                if (isnan(src0) || src0 < u_intN_min(16) || src0 >= 32768.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31511,9 +31543,11 @@ evaluate_f2u1(nir_const_value *_dst_val,
             uint1_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(1)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 2.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31541,9 +31575,11 @@ evaluate_f2u1(nir_const_value *_dst_val,
             uint1_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(1)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 2.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31571,9 +31607,11 @@ evaluate_f2u1(nir_const_value *_dst_val,
             uint1_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(1)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 2.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31618,9 +31656,11 @@ evaluate_f2u16(nir_const_value *_dst_val,
             uint16_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(16)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 65536.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31647,9 +31687,11 @@ evaluate_f2u16(nir_const_value *_dst_val,
             uint16_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(16)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 65536.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31676,9 +31718,11 @@ evaluate_f2u16(nir_const_value *_dst_val,
             uint16_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(16)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 65536.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31805,9 +31849,11 @@ evaluate_f2u32(nir_const_value *_dst_val,
             uint32_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(32)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 4294967296.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31834,9 +31880,11 @@ evaluate_f2u32(nir_const_value *_dst_val,
             uint32_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(32)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 4294967296.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31863,9 +31911,11 @@ evaluate_f2u32(nir_const_value *_dst_val,
             uint32_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(32)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 4294967296.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -31992,9 +32042,11 @@ evaluate_f2u64(nir_const_value *_dst_val,
             uint64_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(64)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 18446744073709551616.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32021,9 +32073,11 @@ evaluate_f2u64(nir_const_value *_dst_val,
             uint64_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(64)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 18446744073709551616.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32050,9 +32104,11 @@ evaluate_f2u64(nir_const_value *_dst_val,
             uint64_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(64)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 18446744073709551616.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32096,9 +32152,11 @@ evaluate_f2u8(nir_const_value *_dst_val,
             uint8_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(8)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 256.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32125,9 +32183,11 @@ evaluate_f2u8(nir_const_value *_dst_val,
             uint8_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(8)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 256.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32154,9 +32214,11 @@ evaluate_f2u8(nir_const_value *_dst_val,
             uint8_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(8)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 256.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -32281,9 +32343,11 @@ evaluate_f2ump(nir_const_value *_dst_val,
             uint16_t dst;
 
             
-                dst = src0;
-                if (src0 < 0.0 || src0 > u_uintN_max(16)) {
+                if (isnan(src0) || src0 < 0.0 || src0 >= 65536.0) {
                    poison = true;
+                   dst = 0;
+                } else {
+                   dst = src0;
                 }
               
 
@@ -53895,10 +53959,10 @@ evaluate_pack_uvec4_to_uint(nir_const_value *_dst_val,
       struct uint32_vec dst;
 
          
-dst.x = (src0.x <<  0) |
-        (src0.y <<  8) |
-        (src0.z << 16) |
-        (src0.w << 24);
+dst.x = ((src0.x & 0xff) <<  0) |
+        ((src0.y & 0xff) <<  8) |
+        ((src0.z & 0xff) << 16) |
+        ((src0.w & 0xff) << 24);
 
 
             _dst_val[0].u32 = dst.x;

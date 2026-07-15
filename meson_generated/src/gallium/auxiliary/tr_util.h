@@ -1,5 +1,5 @@
 /*
- * File generated with ../../../home/tuomas/android/raspberry-vanilla/aosp16/external/mesa3d-rpi/src/gallium/auxiliary/driver_trace/enums2names.py, please do not edit manually.
+ * File generated with ../../../home/tuomas/android/raspberry-vanilla/aosp17/external/mesa3d-rpi/src/gallium/auxiliary/driver_trace/enums2names.py, please do not edit manually.
  */
 #ifndef TR_UTIL_H
 #define TR_UTIL_H
