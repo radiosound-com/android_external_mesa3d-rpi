@@ -1725,6 +1725,7 @@ cc_library_static {
     ],
     header_libs: [
         "libdrm_headers",
+        "libcutils_headers",
         "liblog_headers",
     ],
     defaults: ["mesa3d-rpi-defaults"],
@@ -2693,6 +2694,10 @@ cc_defaults {
         "-fno-trapping-math",
         "-fvisibility=hidden",
         "-std=c11",
+    ],
+    header_libs: [
+        "libcutils_headers",
+        "liblog_headers",
     ],
     defaults: ["mesa3d-rpi-raw-defaults"],
 }
