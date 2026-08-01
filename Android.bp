@@ -1719,7 +1719,10 @@ cc_library_static {
         "src/gallium/auxiliary",
         "src/gallium/include",
     ],
-    header_libs: ["libdrm_headers"],
+    header_libs: [
+        "libdrm_headers",
+        "liblog_headers",
+    ],
     defaults: ["mesa3d-rpi-defaults"],
 }
 
