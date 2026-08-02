@@ -2540,7 +2540,10 @@ cc_library_static {
 
 cc_defaults {
     name: "mesa3d-rpi-defaults",
-    header_libs: ["liblog_headers"],
+    header_libs: [
+        "libcutils_headers",
+        "liblog_headers",
+    ],
     cflags: [
         "-DAMD_LLVM_AVAILABLE=0",
         "-DANDROID_STRICT",
