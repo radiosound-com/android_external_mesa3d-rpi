@@ -142,6 +142,7 @@ cc_library_shared {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_util_libxmlconfig_a",
     srcs: ["src/util/xmlconfig.c"],
     cflags: [
@@ -168,6 +169,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_util_libmesa_util_simd_a",
     srcs: ["src/util/streaming-load-memcpy.c"],
     cflags: [
@@ -187,6 +189,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_util_libmesa_util_a",
     srcs: [
         "meson_generated/src/util/format/u_format_table.c",
@@ -288,6 +291,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_util_blake3_libblake3_a",
     srcs: [
         "src/util/blake3/blake3.c",
@@ -301,6 +305,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_mesa_libmesa_a",
     srcs: [
         "meson_generated/src/mesa/format_fallback.c",
@@ -477,6 +482,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_mesa_glapi_shared-glapi_libglapi_a",
     srcs: ["src/mesa/glapi/shared-glapi/core.c"],
     cflags: [
@@ -504,6 +510,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_loader_libloader_a",
     srcs: [
         "src/loader/loader.c",
@@ -529,6 +536,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_vc4_drm_libvc4winsys_a",
     srcs: ["src/gallium/winsys/vc4/drm/vc4_drm_winsys.c"],
     cflags: [
@@ -554,6 +562,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_v3d_drm_libv3dwinsys_a",
     srcs: ["src/gallium/winsys/v3d/drm/v3d_drm_winsys.c"],
     cflags: [
@@ -577,6 +586,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_sw_wrapper_libwsw_a",
     srcs: ["src/gallium/winsys/sw/wrapper/wrapper_sw_winsys.c"],
     cflags: [
@@ -599,6 +609,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_sw_null_libws_null_a",
     srcs: ["src/gallium/winsys/sw/null/null_sw_winsys.c"],
     cflags: [
@@ -621,6 +632,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_sw_kms-dri_libswkmsdri_a",
     srcs: ["src/gallium/winsys/sw/kms-dri/kms_dri_sw_winsys.c"],
     cflags: [
@@ -644,6 +656,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_sw_dri_libswdri_a",
     srcs: ["src/gallium/winsys/sw/dri/dri_sw_winsys.c"],
     cflags: [
@@ -666,6 +679,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_winsys_kmsro_drm_libkmsrowinsys_a",
     srcs: ["src/gallium/winsys/kmsro/drm/kmsro_drm_winsys.c"],
     cflags: [
@@ -693,6 +707,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_frontends_dri_libdri_a",
     srcs: [
         "src/gallium/frontends/dri/dri2.c",
@@ -731,6 +746,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_drivers_vc4_libvc4_a",
     srcs: [
         "src/gallium/drivers/vc4/*.c",
@@ -766,6 +782,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_drivers_v3d_libv3d_a",
     srcs: [
         "src/gallium/drivers/v3d/v3d_blit.c",
@@ -816,6 +833,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_drivers_v3d_libv3d-v71_a",
     srcs: [
         "src/gallium/drivers/v3d/v3dx_draw.c",
@@ -859,6 +877,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_drivers_v3d_libv3d-v42_a",
     srcs: [
         "src/gallium/drivers/v3d/v3dx_draw.c",
@@ -902,6 +921,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_auxiliary_pipe-loader_libpipe_loader_static_a",
     srcs: ["src/gallium/auxiliary/pipe-loader/*.c"],
     cflags: [
@@ -930,6 +950,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_auxiliary_libgalliumvl_a",
     srcs: [
         "src/gallium/auxiliary/vl/vl_codec.c",
@@ -970,6 +991,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_gallium_auxiliary_libgallium_a",
     srcs: [
         "meson_generated/src/gallium/auxiliary/*.c",
@@ -1059,6 +1081,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_compiler_spirv_libvtn_a",
     srcs: [
         "meson_generated/src/compiler/spirv/*.c",
@@ -1102,6 +1125,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_compiler_nir_libnir_a",
     srcs: [
         "meson_generated/src/compiler/nir/*.c",
@@ -1360,6 +1384,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_compiler_libcompiler_a",
     srcs: [
         "meson_generated/src/compiler/builtin_types.c",
@@ -1383,6 +1408,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_compiler_glsl_libglsl_a",
     srcs: [
         "meson_generated/src/compiler/glsl/*.cpp",
@@ -1470,6 +1496,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_compiler_glsl_glcpp_libglcpp_a",
     srcs: [
         "meson_generated/src/compiler/glsl/glcpp/*.c",
@@ -1503,6 +1530,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_c11_impl_libmesa_util_c11_a",
     srcs: ["src/c11/impl/time.c"],
     cflags: [
@@ -1520,6 +1548,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_perfcntrs_libv3d-perfcntrs-v71_a",
     srcs: ["src/broadcom/perfcntrs/v3dx_counter.c"],
     cflags: [
@@ -1546,6 +1575,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_perfcntrs_libv3d-perfcntrs-v42_a",
     srcs: ["src/broadcom/perfcntrs/v3dx_counter.c"],
     cflags: [
@@ -1572,6 +1602,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_perfcntrs_libbroadcom_perfcntrs_a",
     srcs: ["src/broadcom/perfcntrs/v3d_perfcntrs.c"],
     cflags: [
@@ -1597,6 +1628,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_libv3d_neon_a",
     srcs: ["src/broadcom/common/v3d_tiling.c"],
     cflags: [
@@ -1624,6 +1656,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_libbroadcom-v71_a_p_clif_v3dx_dump_c_o",
     srcs: ["src/broadcom/clif/v3dx_dump.c"],
     cflags: [
@@ -1644,6 +1677,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_libbroadcom_v3d_a",
     srcs: [
         "meson_generated/src/broadcom/compiler/v3d_nir_lower_algebraic.c",
@@ -1690,6 +1724,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_cle_libbroadcom_cle_a",
     srcs: ["src/broadcom/cle/v3d_decoder.c"],
     cflags: [
@@ -1902,6 +1937,7 @@ cc_library_shared {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_util_u_gralloc_lib_mesa_u_gralloc_a",
     srcs: [
         "src/util/u_gralloc/*.c",
@@ -2019,6 +2055,7 @@ cc_library_shared {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_vulkan_wsi_libvulkan_wsi_a",
     srcs: [
         "meson_generated/src/vulkan/wsi/wsi_common_entrypoints.c",
@@ -2053,6 +2090,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_vulkan_util_libvulkan_util_a",
     srcs: [
         "meson_generated/src/vulkan/util/*.c",
@@ -2085,6 +2123,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_vulkan_runtime_libvulkan_runtime_a",
     srcs: [
         "src/vulkan/runtime/vk_meta.c",
@@ -2131,6 +2170,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_vulkan_runtime_libvulkan_lite_runtime_a",
     srcs: [
         "meson_generated/src/vulkan/runtime/*.c",
@@ -2216,6 +2256,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_vulkan_runtime_libvulkan_instance_a",
     srcs: ["src/vulkan/runtime/vk_instance.c"],
     cflags: [
@@ -2250,6 +2291,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_vulkan_libv3dv-v71_a",
     srcs: [
         "meson_generated/src/vulkan/runtime/*.c",
@@ -2373,6 +2415,7 @@ cc_library_static {
 }
 
 cc_library_static {
+    vendor_available: true,
     name: "mesa3d-rpi_src_broadcom_vulkan_libv3dv-v42_a",
     srcs: [
         "meson_generated/src/vulkan/runtime/*.c",
@@ -2497,6 +2540,10 @@ cc_library_static {
 
 cc_defaults {
     name: "mesa3d-rpi-defaults",
+    header_libs: [
+        "libcutils_headers",
+        "liblog_headers",
+    ],
     cflags: [
         "-DAMD_LLVM_AVAILABLE=0",
         "-DANDROID_STRICT",
